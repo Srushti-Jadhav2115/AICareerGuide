@@ -1,0 +1,20 @@
+<%--
+  owner-meta.jspf — included in <head> of every assessment page that reads the
+  temporary (localStorage) answers. Emits a random, per-login token that
+  assessment.js uses to make sure the browser-saved answers belong to the
+  CURRENT login. The token is random: it is not the phone number, user id or
+  session id, and it is never sent to Gemini.
+--%>
+<%
+    // Keep these pages out of the browser cache / back-forward cache so a previous
+    // login's token or form values can never be shown to the next person.
+    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+    String cgOwnerToken = (String) session.getAttribute("assessmentOwnerToken");
+    if (cgOwnerToken == null) {
+        cgOwnerToken = java.util.UUID.randomUUID().toString();
+        session.setAttribute("assessmentOwnerToken", cgOwnerToken);
+    }
+%>
+<meta name="cg-owner" content="<%= cgOwnerToken %>">

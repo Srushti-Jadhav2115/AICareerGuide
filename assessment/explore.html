@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Your Options · Career Guidance Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+  --paper:#F6F7FB;
+  --paper-raised:#FFFFFF;
+  --ink:#1B1E27;
+  --ink-soft:#4C5265;
+  --line:#E3E6EF;
+  --gold:#5B6EE8;
+  --gold-soft:#E7E9FB;
+  --teal:#101A33;
+  --teal-soft:#E7E9FB;
+  --rust:#E6A23C;
+  --rust-soft:#FBEED9;
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height:1.55;
+}
+h1,h2,h3,h4{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  margin:0 0 .4em 0;
+  color:var(--ink);
+}
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.72rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--teal);
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- DISCLAIMER PILL ---------- */
+.disclaimer-pill{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.68rem;
+  color:var(--ink-soft);
+  background:var(--gold-soft);
+  border-radius:999px;
+  padding:5px 12px;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.disclaimer-pill:hover{border-color:var(--gold);}
+.subheader-row{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  padding-top:6px;
+}
+.back-journey-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:.86rem;
+  color:var(--teal);text-decoration:none;
+  padding:7px 4px;
+}
+.back-journey-link:hover{color:var(--gold);}
+
+/* ---------- HERO ---------- */
+.hero{padding:56px 0 32px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr;}}
+.hero h1{font-size:2.5rem;line-height:1.08;letter-spacing:-.01em;}
+.hero p.lede{font-size:1.05rem;color:var(--ink-soft);max-width:46ch;}
+.entry-buttons{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+.entry-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--paper-raised);
+  border:1.5px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px 18px;
+  text-align:left;
+  transition:border-color .15s, transform .15s;
+}
+.entry-btn:hover{border-color:var(--teal);transform:translateX(3px);}
+.entry-btn .lbl{font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem;}
+.entry-btn .sub{font-size:.85rem;color:var(--ink-soft);margin-top:2px;}
+.entry-btn .arrow{font-size:1.3rem;color:var(--gold);}
+
+/* signature: branching path svg */
+.path-svg-box{background:var(--paper-raised);border:1px solid var(--line);border-radius:20px;padding:18px;}
+.path-svg-box svg{width:100%;height:auto;display:block;}
+
+/* ---------- BREADCRUMB TRAIL ---------- */
+.trail{
+  display:flex;align-items:center;flex-wrap:wrap;gap:6px;
+  padding:14px 0;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.78rem;
+}
+.trail button{
+  background:none;border:none;color:var(--teal);padding:2px 4px;border-radius:6px;
+}
+.trail button:hover{background:var(--teal-soft);}
+.trail .sep{color:var(--ink-soft);}
+.trail .current{color:var(--ink-soft);}
+
+/* ---------- SECTION HEADINGS ---------- */
+.section-head{margin:8px 0 20px;}
+.section-head h2{font-size:1.7rem;}
+.section-head p{color:var(--ink-soft);max-width:70ch;}
+
+/* ---------- CARD GRID ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-bottom:28px;}
+.card{
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px;
+  text-align:left;
+  transition:border-color .15s, box-shadow .15s;
+  display:flex;flex-direction:column;gap:6px;
+  min-height:120px;
+}
+.card:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(31,92,82,.08);}
+.card .tag{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;}
+.card h3,.card .ctitle{font-size:1.02rem;font-family:'Fraunces',serif;font-weight:600;}
+.card .desc{font-size:.85rem;color:var(--ink-soft);}
+
+/* list-style entries for lighter items (commerce/arts pathways, career fields) */
+.plist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.pitem{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;
+}
+.pitem summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.pitem summary::-webkit-details-marker{display:none;}
+.pitem summary .t{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;}
+.pitem summary .plus{color:var(--gold);font-size:1.2rem;transition:transform .15s;}
+.pitem[open] summary .plus{transform:rotate(45deg);}
+.pitem .body{margin-top:10px;font-size:.92rem;color:var(--ink-soft);}
+.pitem .body p{margin:.4em 0;}
+.pitem .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.chip{font-size:.72rem;font-family:'IBM Plex Mono',monospace;background:var(--teal-soft);color:var(--teal);padding:3px 9px;border-radius:999px;}
+
+/* ---------- DETAIL PANEL (full branch template) ---------- */
+.detail{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:20px;
+  padding:30px 30px 26px;margin-bottom:32px;
+}
+.detail-head{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px;}
+.detail-head h2{font-size:1.9rem;}
+.detail-head .tagline{color:var(--ink-soft);font-size:.95rem;}
+.dsec{margin-bottom:18px;}
+.dsec h4{
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--rust);margin-bottom:6px;
+}
+.dsec p, .dsec li{font-size:.94rem;color:var(--ink);}
+.dsec ul{margin:4px 0;padding-left:1.1em;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;}
+@media(max-width:700px){.two-col{grid-template-columns:1fr;}}
+.related-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.related-btn{
+  background:var(--gold-soft);border:1px solid transparent;border-radius:999px;
+  padding:6px 13px;font-size:.8rem;color:var(--ink);
+}
+.related-btn:hover{border-color:var(--gold);}
+.back-btn{
+  background:none;border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  font-size:.82rem;color:var(--ink-soft);margin-bottom:16px;
+}
+.back-btn:hover{border-color:var(--teal);color:var(--teal);}
+
+.note-box{
+  background:var(--rust-soft);border-left:3px solid var(--rust);border-radius:8px;
+  padding:12px 16px;font-size:.85rem;color:var(--ink);margin:20px 0;
+}
+.stub-box{
+  background:var(--teal-soft);border-radius:12px;padding:16px 18px;font-size:.9rem;color:var(--ink);
+}
+
+footer{
+  border-top:1px solid var(--line);margin-top:40px;padding:26px 0 60px;
+  font-size:.8rem;color:var(--ink-soft);
+}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+</style>
+<link rel="stylesheet" href="../header.css">
+</head>
+<body>
+
+<nav class="cg-navbar">
+        <div class="cg-nav-container">
+            <a class="cg-logo" href="../index.jsp">
+                <img class="cg-logo-img" src="../images/nexthorizon-logo.png" alt="NextHorizon">
+            </a>
+            <div class="cg-nav-links">
+                <a href="../index.jsp" class="cg-nav-link">Home</a>
+                <a href="../assessment/index.jsp" class="cg-nav-link active">Career Assessment</a>
+                <a href="../resume.html" class="cg-nav-link">Resume</a>
+                <a href="../feedback.html" class="cg-nav-link">Feedback</a>
+                <div class="header-right">
+                    <div class="user-chip">
+                        <span class="user-avatar" id="userAvatar">?</span>
+                        <span id="userNameChip">Guest</span>
+                    </div>
+                    <a class="logout-link" href="../logout.jsp">Log out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<div class="cg-nav-spacer"></div>
+
+<div class="wrap">
+  <div class="subheader-row">
+    <a class="back-journey-link" href="page1.jsp">← Back to your journey</a>
+    <button class="disclaimer-pill" onclick="document.getElementById('disc-full').scrollIntoView()">variation notice ⓘ</button>
+  </div>
+  <div id="trail" class="trail"></div>
+</div>
+
+<main class="wrap" id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <p id="disc-full"><strong>Course availability, eligibility, duration, admission requirements and progression options may vary by board, state, institution, program and admission year.</strong> Nothing on this page guarantees admission, employment, or outcomes. Streams and diplomas do not lock you into one career — most fields can be reached through more than one route, and eligibility rules for "further study" options should always be checked with the specific college or professional body before you commit.</p>
+    <p style="margin-top:14px;"><a class="back-journey-link" href="page1.jsp">← Back to your journey</a></p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+
+const DISCLAIMER = "Course availability, eligibility, duration, admission requirements and progression options may vary by board, state, institution, program and admission year.";
+
+/* ---------- 11th-12th STREAMS ---------- */
+const streams = {
+  science: {
+    title:"Science",
+    tagline:"Physics, Chemistry and a third subject that decides which doors open next — Maths, Biology, or both.",
+    combos:{
+      pcm:{
+        title:"PCM — Physics, Chemistry, Mathematics",
+        overview:"The maths-and-physical-sciences combination. Core subjects are Physics, Chemistry and Mathematics, usually alongside English and one more elective (Computer Science, Physical Education, Economics, etc.).",
+        subjects:"Physics, Chemistry, Mathematics + English + one elective.",
+        studyEmphasis:"Heavy on problem-solving, formulae, numerical work, and abstract reasoning. Chemistry adds a mix of numerical, conceptual and organic-reaction learning.",
+        higherEd:"Engineering (all branches), Architecture, pure sciences (B.Sc. Physics/Chemistry/Maths/Statistics), Computer Science & IT degrees, Data Science, Defence technical entries (NDA), Merchant Navy, Actuarial Science, Economics (many universities accept PCM), Commercial Pilot training, and Design programs that test spatial/maths aptitude.",
+        related:["Technology & Computing","Engineering","Architecture","Science & Research"],
+        entrance:"JEE Main/Advanced for engineering; NATA/JEE for architecture; CUET or institution-specific tests for many B.Sc./university programs; state CETs for state colleges.",
+        considerations:"Biology is generally not covered, so direct entry to MBBS/BDS/most medical and life-science programs is usually not available unless the institution allows a bridge or additional subject."
+      },
+      pcb:{
+        title:"PCB — Physics, Chemistry, Biology",
+        overview:"The life-sciences combination. Core subjects are Physics, Chemistry and Biology, usually with English and an elective.",
+        subjects:"Physics, Chemistry, Biology + English + one elective.",
+        studyEmphasis:"Strong emphasis on descriptive and diagram-based learning in Biology alongside conceptual Physics and Chemistry; practicals and lab work feature heavily.",
+        higherEd:"MBBS, BDS, BAMS/BHMS/BUMS (AYUSH systems), Veterinary Science (B.V.Sc.), Nursing, Pharmacy (B.Pharm), Allied Health Sciences (Medical Lab Technology, Radiology, Physiotherapy, Optometry), Biotechnology, Microbiology, Agriculture (B.Sc. Agriculture), Fisheries and Forestry sciences, B.Sc. in life-science subjects.",
+        related:["Healthcare & Medicine","Science & Research","Agriculture & Allied Sciences"],
+        entrance:"NEET-UG for medical, dental and most AYUSH/veterinary programs; separate entrance or merit-based admission for many Allied Health, Agriculture and Nursing programs.",
+        considerations:"Mathematics is generally not covered, so direct entry to core Engineering (via JEE) is usually not available unless Maths was taken as an additional subject."
+      },
+      pcmb:{
+        title:"PCMB — Physics, Chemistry, Mathematics, Biology",
+        overview:"Both Maths and Biology are taken together as a fifth/extra subject alongside the usual Physics-Chemistry-Maths or Physics-Chemistry-Biology core, keeping both the engineering and medical routes technically open.",
+        subjects:"Physics, Chemistry, Mathematics, Biology (five main subjects instead of the usual four), often without a separate elective.",
+        studyEmphasis:"A heavier academic load than PCM or PCB alone, since two demanding subjects (Maths and Biology) are studied together rather than choosing one.",
+        higherEd:"Keeps eligibility open for both the PCM-linked routes (engineering, architecture, pure sciences) and the PCB-linked routes (medical, dental, life sciences, agriculture) — subject to each individual institution's eligibility rules.",
+        related:["Engineering","Healthcare & Medicine","Science & Research","Agriculture & Allied Sciences"],
+        entrance:"Whichever entrance exam matches the eventual choice — JEE for engineering-linked courses, NEET for medical-linked courses.",
+        considerations:"Not every school or board offers PCMB, and it is a heavier workload. It does not automatically guarantee eligibility for every PCM or every PCB course — some universities set their own subject-combination rules, so specific eligibility should always be checked."
+      },
+      other:{
+        title:"Other Science combinations",
+        overview:"Some boards and schools offer variations such as Physics-Chemistry-Biology-Computer Science, Physics-Chemistry-Maths-Biotechnology, or Science with vocational/skill electives instead of a traditional third science.",
+        subjects:"Varies by school/board — commonly swaps the usual elective for Computer Science, Biotechnology, Physical Education, or a vocational subject.",
+        studyEmphasis:"Depends on the elective chosen; generally follows the same PCM or PCB pattern with one substituted subject.",
+        higherEd:"Broadly follows the PCM or PCB route the student is paired with, plus whatever additional exposure the elective gives (e.g., Computer Science elective can help with later Computer Science admissions/aptitude, though it does not replace core eligibility subjects).",
+        related:["Technology & Computing","Science & Research"],
+        entrance:"Same as the underlying PCM or PCB route.",
+        considerations:"Availability of these combinations differs significantly by school and board; always confirm which combinations a specific school actually offers."
+      }
+    }
+  },
+  commerce:{
+    title:"Commerce",
+    tagline:"Business, money, numbers, organisations and how they run — commerce leads to far more than just Chartered Accountancy.",
+    overview:"Commerce students typically study Accountancy, Business Studies and Economics, with Mathematics or an elective such as Informatics Practices/Entrepreneurship. It is the natural base for finance, business, management, law, and analytics careers, but it also feeds into liberal-arts style degrees like Economics or even design/media if a student later chooses that direction.",
+    pathways:[
+      {name:"Chartered Accountancy (CA)",body:"A professional qualification in accounting, auditing, taxation and financial reporting, run by the Institute of Chartered Accountants of India (ICAI). Structured in stages (Foundation → Intermediate → Final) with mandatory practical articleship training, rather than a university degree. Leads to careers in audit, taxation, corporate finance, and independent practice.",chips:["Professional body route","Long-format qualification","Articleship required"]},
+      {name:"Company Secretary (CS)",body:"A professional qualification (via ICSI) focused on corporate law, governance and compliance. CS professionals ensure companies follow legal and regulatory requirements, and often work closely with company boards. Also structured in stages with practical training.",chips:["Corporate law & governance","Professional body route"]},
+      {name:"Cost and Management Accountancy (CMA)",body:"A professional qualification (via ICMAI) focused on cost accounting, budgeting and management accounting — helping organisations control costs and make financial decisions. Common in manufacturing, FMCG and consulting.",chips:["Cost & management focus","Professional body route"]},
+      {name:"ACCA",body:"The Association of Chartered Certified Accountants, a UK-based global accounting qualification increasingly pursued alongside or instead of CA for students aiming at international finance and audit roles, especially with multinational firms.",chips:["Globally recognised","Often paired with a degree"]},
+      {name:"CFA (Chartered Financial Analyst)",body:"A globally recognised qualification (US-based CFA Institute) focused on investment management, equity research, portfolio management and financial analysis. Usually pursued after or alongside a bachelor's degree, not right after 12th.",chips:["Investment & portfolio management","Usually post-graduation"]},
+      {name:"Actuarial Science",body:"The mathematics of risk — actuaries assess financial risk in insurance, pensions and investments using statistics and probability. Involves clearing a structured series of professional actuarial exams alongside or after a relevant degree (often Statistics, Maths, Economics, or a dedicated Actuarial Science course).",chips:["Heavy in statistics/maths","Insurance & risk"]},
+      {name:"Accounting",body:"The broader discipline behind CA/CMA/ACCA — recording, classifying and reporting financial transactions. Can be pursued through a B.Com with an accounting specialisation, and leads to roles from junior accountant up through corporate finance.",chips:["B.Com specialisation"]},
+      {name:"Finance",body:"Covers corporate finance, financial planning, financial markets and analysis. Pursued via B.Com (Finance), BBA (Finance), or specialised finance degrees, often followed by an MBA or a certification like CFA/FRM.",chips:["Corporate & markets"]},
+      {name:"Banking",body:"Careers in retail, corporate, investment or cooperative banking — through bank recruitment exams (like IBPS/SBI PO/Clerk), a B.Com/BBA in Banking & Finance, or general commerce degrees followed by banking-sector exams.",chips:["Public & private sector exams"]},
+      {name:"Economics",body:"The study of how resources, markets, and policy interact. A B.A./B.Sc. in Economics (many universities keep this open to commerce students) builds strong analytical and quantitative skills, useful for research, policy, consulting, data analysis and further study (M.A. Economics, public policy, or an MBA).",chips:["Analytical & policy-facing"]},
+      {name:"Business / Management",body:"Broad business education through a BBA, BMS or B.Com, covering management principles, operations, marketing and finance basics — typically followed by an MBA for specialisation and leadership roles.",chips:["Generalist business foundation"]},
+      {name:"Entrepreneurship",body:"Not a single fixed job route but a direction many commerce students build toward — through BBA/B.Com electives in entrepreneurship, incubation cells, and hands-on venture-building, sometimes alongside or instead of formal further study.",chips:["Venture-building focus"]},
+      {name:"Marketing",body:"Understanding consumer behaviour, branding, and market strategy — pursued through BBA/B.Com (Marketing) and later specialised postgraduate marketing or MBA programs. Leads into brand management, market research, product marketing and sales leadership.",chips:["Consumer & brand strategy"]},
+      {name:"Human Resources (HR)",body:"Focused on people-management — recruitment, training, organisational development and employee relations. Usually built through a BBA/B.Com followed by an HR-specialised MBA or postgraduate diploma.",chips:["People & organisations"]},
+      {name:"Business Analytics",body:"Using data to guide business decisions — a growing field combining commerce fundamentals with statistics and data tools. Pursued via specialised undergraduate programs or a B.Com/BBA followed by a postgraduate analytics course.",chips:["Data-driven decisions","Emerging field"]},
+      {name:"Financial Analytics",body:"A more finance-specific offshoot of analytics — using data and quantitative methods to analyse markets, risk and investment performance. Often pursued through specialised degrees or add-on certifications after a finance-focused undergraduate degree.",chips:["Finance + data"]},
+      {name:"Investment / Wealth Management",body:"Advising individuals or institutions on managing and growing money — through finance-focused degrees, followed by certifications such as CFA, or specific wealth-management postgraduate programs.",chips:["Client-facing finance"]},
+      {name:"Insurance",body:"Careers in underwriting, claims, risk assessment and insurance sales/management — through B.Com/BBA (Insurance), or actuarial and risk-management specialisations for more technical roles.",chips:["Risk & underwriting"]},
+      {name:"FinTech",body:"The intersection of finance and technology — digital payments, lending platforms, blockchain-based finance. An emerging field pursued via finance degrees with a technology elective, or specialised FinTech postgraduate programs.",chips:["Finance + technology","Emerging field"]},
+      {name:"Law",body:"Commerce students can pursue an integrated five-year law degree (BBA LLB / B.Com LLB) straight after 12th, combining business grounding with legal study — useful for corporate law, taxation law and compliance roles.",chips:["Integrated 5-year degree"]},
+      {name:"B.Com and specialisations",body:"The core commerce degree, offered in general and specialised forms (Honours, Accounting & Finance, Banking & Insurance, Taxation, International Business, etc.), forming the base for further professional study or direct employment.",chips:["Core undergraduate degree"]},
+      {name:"BBA / BBM / BMS",body:"Management-focused undergraduate degrees (Bachelor of Business Administration/Management/Management Studies) — more applied and business-practice oriented than a straight B.Com, often followed by an MBA.",chips:["Applied management degree"]},
+      {name:"Economics & Statistics",body:"A quantitative pairing that builds strong data and analytical skills, useful for research roles, policy work, data science, and further postgraduate study in economics, statistics or analytics.",chips:["Quantitative pairing"]},
+      {name:"International Business",body:"Focused on cross-border trade, global markets and international finance/logistics — through a specialised B.Com/BBA (International Business) leading to roles in export-import, global supply chains and multinational operations.",chips:["Global trade focus"]},
+      {name:"Supply Chain / Operations",body:"Managing how goods and services move from production to customer — through BBA/B.Com specialisations or dedicated logistics and operations-management programs, leading to roles in logistics, procurement and operations management.",chips:["Logistics & operations"]},
+      {name:"Retail and E-commerce",body:"Covers retail management, merchandising and the growing online-commerce sector — through specialised BBA/B.Com programs, leading to roles in retail operations, e-commerce management and merchandising.",chips:["Retail & online commerce"]},
+      {name:"Consulting",body:"Advising organisations on strategy, operations or finance — usually entered after a strong undergraduate commerce/business degree, often followed by an MBA, rather than a direct-entry field on its own.",chips:["Usually post-degree entry"]},
+      {name:"Digital Marketing",body:"Marketing through online channels — search, social media, content and paid advertising. Increasingly taught as a specialisation within BBA/B.Com marketing programs or through standalone certifications alongside a degree.",chips:["Online channels focus"]},
+      {name:"Advertising",body:"Creative and strategic communication for brands — pursued via mass communication or specialised advertising programs, sometimes alongside a commerce background for the business/client-handling side.",chips:["Creative + business"]},
+      {name:"Media (business-related)",body:"Business and management roles within media organisations (media planning, media sales, business operations) — distinct from the creative/editorial media roles covered under Arts & Humanities.",chips:["Media operations"]},
+      {name:"Government / Public-sector opportunities",body:"Commerce graduates commonly appear for banking exams, SSC exams, state PSC exams, and UPSC Civil Services — a B.Com/BBA background pairs well with the accounts, finance and administrative sections of these exams.",chips:["Competitive exam route"]},
+      {name:"Other emerging Commerce pathways",body:"Newer and hybrid directions continue to emerge — sustainability/ESG analysis, data-driven marketing, cryptocurrency and digital-asset compliance, and other business-technology hybrids — typically reached by adding a specialised certification or postgraduate program on top of a commerce base.",chips:["Hybrid & evolving"]}
+    ]
+  },
+  arts:{
+    title:"Arts & Humanities",
+    tagline:"The study of people, society, thought, language and expression — a broad and genuinely high-opportunity stream, not a fallback option.",
+    overview:"Arts & Humanities students typically choose from subjects such as History, Political Science, Geography, Sociology, Psychology, Economics, and a language/literature elective. The stream underpins law, civil services, journalism, design, psychology, research, social work and much of public policy and international relations — many competitive and creative careers are built on an Arts foundation.",
+    pathways:[
+      {name:"History",body:"The study of past events, societies and change over time. Leads to research, archival work, teaching, museology/heritage management, civil services, and further postgraduate study in History or allied humanities.",chips:["Research & heritage"]},
+      {name:"Political Science",body:"The study of governments, political systems, institutions and power. A common base for civil services, public policy, journalism, law, and political consulting/research roles.",chips:["Governance & policy"]},
+      {name:"Geography",body:"Combines physical (environment, climate, landforms) and human (population, urbanisation, economy) study of the earth. Leads to urban planning, environmental studies, GIS/remote-sensing careers, civil services, and research.",chips:["Physical + human geography"]},
+      {name:"Sociology",body:"The study of society, social behaviour and institutions. A strong base for social work, public policy, human resources, research, journalism, and civil services.",chips:["Society & social structures"]},
+      {name:"Psychology",body:"The scientific study of mind and behaviour. Leads to clinical/counselling psychology (with further specialised postgraduate study and supervised practice), HR, research, UX/human-factors work, and education — one of the most in-demand Arts-linked subjects today.",chips:["Mind & behaviour","High demand"]},
+      {name:"Economics (Arts stream)",body:"Available to Arts students at many universities, not just Commerce — builds strong analytical and policy-relevant skills, useful for research, public policy, journalism, and further postgraduate economics study.",chips:["Analytical & policy-facing"]},
+      {name:"Languages",body:"Study of a specific language's structure, literature and use — foreign languages (French, German, Japanese, Spanish, etc.) or classical/regional languages, leading to translation, interpretation, teaching, foreign-service-linked roles, and international business support.",chips:["Translation & communication"]},
+      {name:"Literature",body:"The critical study of written works — leads to publishing, content and editorial work, teaching, academic research, and writing careers.",chips:["Publishing & writing"]},
+      {name:"Philosophy",body:"The study of reasoning, ethics, logic and fundamental questions. Builds strong analytical and argumentation skills, useful for law, civil services, journalism, academia and policy work.",chips:["Reasoning & ethics"]},
+      {name:"Public Policy",body:"The study of how policies are designed, implemented and evaluated — usually pursued at postgraduate level after a first degree in Political Science, Economics, Sociology or a related humanities subject, leading to government, think-tank and NGO roles.",chips:["Usually postgraduate specialisation"]},
+      {name:"Social Sciences (general)",body:"An interdisciplinary base spanning sociology, economics, political science and psychology, common in liberal-arts style degree programs, useful for research, policy, and further specialised postgraduate study.",chips:["Interdisciplinary base"]},
+      {name:"Law",body:"Arts students can pursue the integrated five-year B.A. LLB after 12th, combining humanities grounding with legal training — a strong pairing given Law's overlap with History, Political Science and Sociology.",chips:["Integrated 5-year degree"]},
+      {name:"Journalism",body:"Reporting, writing and producing news content across print, broadcast and digital media — through a B.A./B.Sc. in Journalism & Mass Communication, leading to reporting, editing, and digital-content careers.",chips:["News & reporting"]},
+      {name:"Media & Communication",body:"A broader field than journalism alone — covering television, digital content, public relations, corporate communication and media production, through Mass Communication or specialised media degrees.",chips:["Broadcast, digital & PR"]},
+      {name:"Education",body:"Teaching and educational administration — through a B.A. followed by a B.Ed. (Bachelor of Education), or integrated B.A.-B.Ed. programs, leading to school teaching, curriculum design and educational leadership roles.",chips:["Teaching & curriculum"]},
+      {name:"Civil / Public Services",body:"Preparation for UPSC Civil Services and state PSC exams is closely linked to Arts subjects (History, Political Science, Geography, Sociology, Public Administration are common optional subjects) — pursued after any bachelor's degree, with dedicated exam preparation.",chips:["Competitive exam route"]},
+      {name:"Design",body:"Visual, product, communication or UX design — through dedicated design entrance exams (like UCEED/NID/NIFT) rather than a strict stream requirement; an Arts background often supports the creative and research side of design well.",chips:["Entrance-exam based"]},
+      {name:"Research",body:"Academic and applied research across humanities and social sciences, usually built through a bachelor's degree, a master's, and often a Ph.D., leading to academia, think-tanks, and research organisations.",chips:["Academic pathway"]},
+      {name:"International Relations",body:"The study of relations between countries, diplomacy, and global institutions — usually a specialised bachelor's or postgraduate program (often after Political Science), leading to diplomacy-linked exams, international organisations, and policy research.",chips:["Diplomacy & global affairs"]},
+      {name:"Social Work",body:"Direct and systemic work supporting communities and vulnerable groups — through a Bachelor of Social Work (BSW), leading to NGO work, community development, counselling-adjacent roles, and public-sector social welfare programs.",chips:["Community & welfare work"]},
+      {name:"Other emerging Humanities pathways",body:"Newer interdisciplinary programs continue to appear — liberal arts degrees combining multiple humanities subjects, heritage and museum studies, gender studies, environmental humanities, and digital humanities — each opening further specialised postgraduate and career routes.",chips:["Interdisciplinary & evolving"]}
+    ]
+  }
+};
+
+/* ---------- DIPLOMA DATA ---------- */
+/* Each field has: title, blurb, branches[]. Each branch has either `full` (complete template) or `short` (brief branch-specific note). */
+const diplomaFields = {
+  engineering:{
+    title:"Engineering & Technology",
+    blurb:"Technical, hands-on diploma programs, most commonly entered directly after Class 10 through polytechnic institutions, typically 3 years in duration.",
+    branches:[
+      {key:"civil",name:"Civil Engineering",full:{
+        overview:"Focuses on the planning, design, construction and maintenance of physical infrastructure — buildings, roads, bridges, dams and water systems.",
+        entry:"Generally open after Class 10 through polytechnic entrance/merit admission; some institutes also admit after Class 12 (Science) with lateral entry into the 2nd year.",
+        duration:"Typically 3 years (polytechnic diploma).",
+        study:"Surveying, building materials, structural analysis basics, concrete technology, estimating & costing, construction methods, AutoCAD/drafting, and site-management fundamentals.",
+        practical:"Surveying fieldwork, materials-testing labs, drawing/drafting studios, and site visits to ongoing construction projects.",
+        skills:"Technical drawing, site supervision, quantity estimation, basic structural understanding, and project coordination.",
+        learningStyle:"A mix of classroom theory, drawing-board/CAD work, and field-based practical sessions — less abstract than pure science, more applied and site-oriented.",
+        whoLikes:"Students who enjoy building/construction, technical drawing, working outdoors or on-site, and seeing tangible physical results of their work.",
+        career:"Site supervisor, junior engineer/site engineer, draftsperson, estimator, and government infrastructure departments (PWD, municipal bodies) via technical-staff recruitment.",
+        relatedFields:["Architecture, Construction & Design","Technology & Computing"],
+        furtherEd:"Lateral entry into the 2nd year of a B.E./B.Tech in Civil Engineering (via a Diploma-to-Degree lateral entry route, where offered by the state/university); further specialisation through postgraduate diplomas in structural design, construction management, etc.",
+        lateral:"Many states offer lateral entry into 2nd-year B.Tech Civil Engineering for diploma holders through a separate entrance test (e.g., state-level lateral entry exams); eligibility and seat availability vary by state and institution.",
+        admission:"Merit/entrance-based polytechnic admission after Class 10; some states use a common polytechnic entrance test.",
+        considerations:"Involves fieldwork and site visits, sometimes in outdoor/on-site conditions; strong spatial and numerical aptitude helps.",
+        relatedBranches:["mechanical","electrical","architecture-diploma"]
+      }},
+      {key:"mechanical",name:"Mechanical Engineering",full:{
+        overview:"Covers the design, manufacturing, and maintenance of machines, engines, tools and mechanical systems.",
+        entry:"Generally open after Class 10 via polytechnic admission; lateral entry after Class 12 (Science) also common.",
+        duration:"Typically 3 years.",
+        study:"Engineering drawing, workshop technology, thermodynamics basics, machine design fundamentals, manufacturing processes, CAD/CAM, and maintenance practices.",
+        practical:"Workshop practice (fitting, welding, machining), CAD labs, and industrial visits.",
+        skills:"Technical drawing, machine operation, basic design and manufacturing know-how, and troubleshooting.",
+        learningStyle:"Workshop-heavy and hands-on, balanced with technical theory and drawing.",
+        whoLikes:"Students curious about how machines and engines work, who enjoy hands-on tinkering and workshop-based learning.",
+        career:"Junior/production engineer, maintenance technician, quality-control roles, and manufacturing-floor supervisory roles.",
+        relatedFields:["Technology & Computing","Engineering"],
+        furtherEd:"Lateral entry into 2nd-year B.E./B.Tech Mechanical Engineering; postgraduate diplomas in areas like CAD/CAM, tool design, or industrial automation.",
+        lateral:"Lateral-entry routes into degree engineering exist in most states, subject to entrance test and seat availability.",
+        admission:"Polytechnic entrance/merit admission after Class 10.",
+        considerations:"Involves physically demanding workshop practice; comfort with tools and machinery is useful.",
+        relatedBranches:["civil","electrical","automobile","production"]
+      }},
+      {key:"electrical",name:"Electrical Engineering",full:{
+        overview:"Focuses on electrical power systems, machines, wiring, and control systems used in homes, industry and infrastructure.",
+        entry:"Generally open after Class 10 via polytechnic admission.",
+        duration:"Typically 3 years.",
+        study:"Circuit theory, electrical machines, power systems basics, wiring practice, control systems fundamentals, and safety standards.",
+        practical:"Electrical workshops, wiring practicals, machine labs, and industrial visits to power/electrical installations.",
+        skills:"Circuit troubleshooting, wiring and installation practice, and understanding of electrical safety standards.",
+        learningStyle:"Combines circuit theory with substantial hands-on lab and wiring practice.",
+        whoLikes:"Students interested in how electrical systems and power distribution work, and who enjoy precise, methodical hands-on work.",
+        career:"Junior electrical engineer, maintenance technician, site electrician-supervisor roles, and utility/power-sector technical staff.",
+        relatedFields:["Technology & Computing","Engineering"],
+        furtherEd:"Lateral entry into 2nd-year B.E./B.Tech Electrical Engineering; postgraduate diplomas in power systems or industrial automation.",
+        lateral:"Lateral-entry degree routes are commonly available, subject to state-specific entrance tests.",
+        admission:"Polytechnic entrance/merit admission after Class 10.",
+        considerations:"Requires care around electrical-safety practices during practical training.",
+        relatedBranches:["electronics","mechanical","mechatronics"]
+      }},
+      {key:"electronics",name:"Electronics Engineering",full:{
+        overview:"Covers electronic circuits, devices and systems — the foundation for consumer electronics, communication devices and embedded systems.",
+        entry:"Generally open after Class 10 via polytechnic admission.",
+        duration:"Typically 3 years.",
+        study:"Electronic devices & circuits, digital electronics, microprocessors/microcontrollers basics, communication systems fundamentals, and PCB design basics.",
+        practical:"Electronics labs, circuit-building and soldering practice, microcontroller-based mini-projects.",
+        skills:"Circuit design and testing, basic programming for microcontrollers, and troubleshooting electronic systems.",
+        learningStyle:"Lab-heavy, with a good deal of hands-on circuit assembly and testing alongside theory.",
+        whoLikes:"Students curious about how electronic gadgets and circuits work, who enjoy detail-oriented, precise hands-on work.",
+        career:"Junior electronics engineer/technician, service-and-repair roles, embedded-systems support roles, and telecom-sector technical positions.",
+        relatedFields:["Technology & Computing"],
+        furtherEd:"Lateral entry into 2nd-year B.E./B.Tech Electronics Engineering; postgraduate diplomas in embedded systems or VLSI.",
+        lateral:"Common lateral-entry routes into degree engineering, state-dependent.",
+        admission:"Polytechnic entrance/merit admission after Class 10.",
+        considerations:"Fast-evolving field — staying updated with newer devices and tools is useful.",
+        relatedBranches:["electronics-telecom","electrical","computer"]
+      }},
+      {key:"electronics-telecom",name:"Electronics & Telecommunication",short:"A branch of electronics diploma specifically focused on communication systems — telephony, networks, satellite and wireless communication — alongside the general electronics curriculum. Leads to roles in telecom operations, network maintenance, and further study/lateral entry into Electronics & Telecommunication degree engineering."},
+      {key:"computer",name:"Computer Engineering",full:{
+        overview:"Combines computer hardware and software fundamentals — covering programming, computer architecture, networking and systems.",
+        entry:"Generally open after Class 10 via polytechnic admission.",
+        duration:"Typically 3 years.",
+        study:"Programming fundamentals (C/C++/Java or similar), data structures basics, computer organisation, operating systems basics, database fundamentals, and networking basics.",
+        practical:"Programming labs, hardware-assembly practicals, and mini software/hardware projects.",
+        skills:"Programming logic, basic software development, computer maintenance and troubleshooting, and foundational networking skills.",
+        learningStyle:"A mix of programming practice, theory, and some hardware-oriented lab work.",
+        whoLikes:"Students interested in coding, computers and how software/hardware systems work together.",
+        career:"Junior programmer/developer, IT support technician, hardware/network technician, and entry-level roles in IT service companies.",
+        relatedFields:["Technology & Computing"],
+        furtherEd:"Lateral entry into 2nd-year B.E./B.Tech Computer Engineering or Information Technology; further certifications in specific programming languages, cloud platforms, or cybersecurity.",
+        lateral:"Lateral-entry degree routes into Computer/IT engineering are widely available, state-dependent.",
+        admission:"Polytechnic entrance/merit admission after Class 10.",
+        considerations:"A fast-changing field — keeping skills current with modern programming practices matters for employability.",
+        relatedBranches:["it","electronics","ai-ml"]
+      }},
+      {key:"it",name:"Information Technology",short:"Closely related to Computer Engineering but more focused on IT systems, networking, databases and enterprise software applications rather than hardware/core computing theory. Leads to IT-support, systems-administration and software-service roles, with similar lateral-entry options into a B.Tech IT/CS degree."},
+      {key:"automobile",name:"Automobile Engineering",short:"Focuses specifically on the design, manufacturing, maintenance and repair of automobiles — engines, transmission systems and vehicle electronics. Leads to roles in automobile service centres, manufacturing plants, and vehicle-testing/quality roles, with lateral entry available into Automobile or Mechanical Engineering degrees."},
+      {key:"chemical",name:"Chemical Engineering",short:"Covers chemical processes used in manufacturing — from petrochemicals to pharmaceuticals and food processing. Involves process-plant practicals and safety training. Leads to plant-operator and process-technician roles, with lateral entry into B.Tech Chemical Engineering."},
+      {key:"production",name:"Production Engineering",short:"Focused on manufacturing processes, production planning and quality control in industrial settings, closely related to Mechanical Engineering but with a stronger manufacturing-systems focus. Leads to production-floor and quality-control roles in manufacturing industries."},
+      {key:"instrumentation",name:"Instrumentation Engineering",short:"Covers measurement and control instruments used in industrial process automation — sensors, control systems and calibration. Leads to instrumentation-technician roles in process industries (oil & gas, power, pharma manufacturing)."},
+      {key:"mechatronics",name:"Mechatronics",short:"An interdisciplinary combination of mechanical, electrical and computer engineering focused on automation and robotics systems. A newer, increasingly offered diploma branch, leading toward automation-technician and robotics-support roles."},
+      {key:"ai-ml",name:"AI / Machine Learning-related programs",short:"Newer diploma-level programs offered by some polytechnics introducing programming, data handling and basic machine-learning concepts alongside core computer engineering fundamentals. Availability varies significantly by institution; check the specific curriculum before assuming full AI/ML depth at diploma level."},
+      {key:"cs-diploma",name:"Computer Science-related programs",short:"Some polytechnics offer a Computer Science-labelled diploma alongside or instead of Computer Engineering, with a similar core curriculum of programming, data structures and systems fundamentals — naming and exact syllabus vary by institution."},
+      {key:"mining",name:"Mining-related programs",short:"Focused on mineral extraction, mine safety, and mining operations — offered mainly in states with active mining industries. Leads to mine-supervisor and technical roles in mining companies."},
+      {key:"metallurgy",name:"Metallurgy-related programs",short:"Covers the properties, processing and testing of metals — relevant to steel plants, foundries and metal-manufacturing industries. Leads to quality-control and process-technician roles in metal industries."},
+      {key:"textile-tech",name:"Textile-related technical programs",short:"Focused on textile manufacturing processes — spinning, weaving, processing and quality control — distinct from the design-focused Textile Design program under Fashion & Textile. Leads to production and quality roles in textile mills."},
+      {key:"printing",name:"Printing-related technical programs",short:"Covers printing technology, press operations and packaging production — a specialised technical diploma leading to roles in the printing and packaging industry."},
+      {key:"agri-eng",name:"Agricultural Engineering",short:"Applies engineering principles to farm machinery, irrigation systems and agricultural processing — bridging Engineering and Agriculture. Leads to roles with farm-equipment manufacturers, irrigation projects and agri-processing units."},
+      {key:"env-eng",name:"Environmental Engineering",short:"Focused on pollution control, waste management and environmental-protection systems — a growing area linked to sustainability. Leads to technician roles in environmental monitoring, water treatment and pollution-control boards."},
+      {key:"food-tech",name:"Food Technology",short:"Covers food processing, preservation, quality control and packaging — relevant to the growing food-processing industry. Leads to quality-control and production roles in food manufacturing companies, and connects into the Food Processing pathway under Agriculture & Allied."},
+      {key:"manufacturing",name:"Manufacturing-related programs",short:"Broader manufacturing-systems and industrial-production diploma programs, related to Production Engineering, focused on modern manufacturing techniques and quality systems."}
+    ]
+  },
+  agriculture:{
+    title:"Agriculture & Allied",
+    blurb:"Diploma programs connected to farming, food production and allied rural industries — offered by agricultural universities and polytechnics.",
+    branches:[
+      {key:"agriculture",name:"Agriculture",full:{
+        overview:"Covers crop production, soil science, farm management and modern agricultural techniques.",
+        entry:"Generally open after Class 10 or Class 12 (Science, often with Biology/Agriculture subjects), depending on the institution.",
+        duration:"Typically 2–3 years depending on the program and institution.",
+        study:"Crop science, soil and fertility management, plant protection, farm machinery basics, and agricultural economics fundamentals.",
+        practical:"Field practicals on farms, soil-testing labs, and seasonal crop-cycle observation.",
+        skills:"Practical farm-management skills, understanding of crop cycles, and basic agri-business awareness.",
+        learningStyle:"Field-based and seasonal, combining classroom study with hands-on farm work.",
+        whoLikes:"Students interested in farming, rural development, and working closely with land and crops.",
+        career:"Farm supervisor, agricultural extension worker, roles with agri-input companies (seed, fertiliser), and government agriculture department technical posts.",
+        relatedFields:["Agriculture & Allied Sciences","Environment & Sustainability"],
+        furtherEd:"Progression into a B.Sc. Agriculture degree where lateral-entry or further-study routes are offered; specialised postgraduate diplomas in agri-business.",
+        lateral:"Lateral entry possibilities exist in some agricultural universities, subject to specific eligibility rules.",
+        admission:"Merit or entrance-based admission through agricultural universities/polytechnics.",
+        considerations:"Involves outdoor fieldwork across seasons; availability of specific programs varies significantly by state/region.",
+        relatedBranches:["horticulture","agri-tech","food-processing"]
+      }},
+      {key:"horticulture",name:"Horticulture",short:"Focused specifically on fruit, vegetable, flower and ornamental-plant cultivation rather than general field crops. Leads to roles in nurseries, landscaping, orchard management, and horticultural produce businesses."},
+      {key:"agri-tech",name:"Agricultural Technology",short:"Applies modern technology (mechanisation, irrigation tech, sometimes precision-farming tools) to agricultural practice, sitting between core Agriculture and Agricultural Engineering."},
+      {key:"agri-engineering-allied",name:"Agricultural Engineering (allied route)",short:"See also the Engineering & Technology field's Agricultural Engineering branch — some agricultural universities offer this diploma directly under their agriculture faculty instead of under a polytechnic."},
+      {key:"food-processing",name:"Food Processing",short:"Covers preservation, packaging and processing of agricultural produce into food products — connects closely to Food Technology under Engineering & Technology. Leads to roles in food-processing units and agri-business."},
+      {key:"dairy",name:"Dairy-related programs",short:"Focused on milk production, processing and dairy-product manufacturing (Dairy Technology/Dairy Science diplomas). Leads to roles in dairy cooperatives and milk-processing companies."},
+      {key:"fisheries",name:"Fisheries-related programs",short:"Covers fish farming, aquaculture and fisheries management — offered by some agricultural/fisheries universities. Leads to roles in aquaculture operations and fisheries departments."},
+      {key:"forestry",name:"Forestry-related programs",short:"Focused on forest management, conservation and forest-produce industries. Leads to roles supporting forest departments, conservation projects, and forest-based industries."}
+    ]
+  },
+  healthcare:{
+    title:"Healthcare & Allied",
+    blurb:"Allied-health diploma programs that support doctors and hospitals in diagnosis, treatment and patient care, distinct from the MBBS/BDS degree route.",
+    branches:[
+      {key:"mlt",name:"Medical Laboratory Technology",full:{
+        overview:"Trains students to run diagnostic laboratory tests — blood tests, pathology samples, microbiology cultures — that doctors use for diagnosis.",
+        entry:"Generally requires Class 12 with Science (PCB) for most recognised programs; some shorter certificate-level options may accept Class 10, but diploma-level MLT typically expects Class 12 Science.",
+        duration:"Typically 2 years, sometimes including a further internship period.",
+        study:"Clinical biochemistry, haematology, microbiology, pathology basics, and laboratory safety/quality-control practices.",
+        practical:"Hands-on laboratory training in sample collection, testing procedures and equipment handling, usually including hospital/lab attachment.",
+        skills:"Precision and attention to detail, lab-equipment handling, and adherence to safety/hygiene protocols.",
+        learningStyle:"Lab-intensive, with continuous hands-on practice alongside theory.",
+        whoLikes:"Students interested in healthcare and science who prefer lab-based, precise, detail-oriented work over direct patient-facing clinical roles.",
+        career:"Lab technician in hospitals, diagnostic centres and pathology labs; roles in blood banks and research laboratories.",
+        relatedFields:["Healthcare & Medicine","Science & Research"],
+        furtherEd:"Further diplomas/degrees (B.Sc. Medical Lab Technology) for career progression into senior lab-technologist or lab-management roles.",
+        lateral:"Some institutions allow progression into a related B.Sc. program with additional study.",
+        admission:"Merit-based or entrance-based admission, varies by state/institution; registration with a state paramedical council may be required to practise.",
+        considerations:"Involves handling biological samples, requiring strict safety protocols; registration/licensing requirements vary by state — check local rules before enrolling.",
+        relatedBranches:["radiology","optometry","ot-tech"]
+      }},
+      {key:"radiology",name:"Radiology / Medical Imaging",short:"Trains students to operate imaging equipment (X-ray, CT, MRI support roles) under supervision of radiologists. Typically requires Class 12 Science; leads to radiology-technician roles in hospitals and diagnostic centres, subject to state paramedical council registration."},
+      {key:"ot-tech",name:"Operation Theatre Technology",short:"Trains students to assist surgeons and anaesthetists in operation theatres — sterilisation, equipment handling and surgical support. Typically requires Class 12 Science; leads to OT-technician roles in hospitals."},
+      {key:"dialysis",name:"Dialysis Technology",short:"A specialised allied-health diploma training students to operate dialysis equipment and assist patients with renal (kidney) treatment under medical supervision. Typically requires Class 12 Science."},
+      {key:"emergency-care",name:"Emergency / Critical Care Technology",short:"Trains students in emergency and critical-care support — ambulance/emergency-response assistance and ICU support roles under medical supervision. Typically requires Class 12 Science."},
+      {key:"optometry",name:"Optometry",short:"Trains students in eye examination, vision testing and prescribing corrective lenses under optometric/ophthalmic supervision. Typically requires Class 12 Science; leads to roles in optical stores, eye hospitals and vision-care centres."},
+      {key:"physio-diploma",name:"Physiotherapy (diploma-level, where applicable)",short:"Some institutions offer diploma-level physiotherapy-assistant programs, distinct from the full Bachelor of Physiotherapy (BPT) degree; scope of practice for diploma-holders is more limited and varies by state regulation — this should be confirmed carefully before enrolling."},
+      {key:"healthcare-technician",name:"Healthcare Technician programs (general)",short:"Various shorter, allied healthcare-technician diploma/certificate programs exist (ECG technician, CSSD technician, etc.) — each with its own specific scope, typically requiring Class 12 Science and leading to a specific support role within hospitals."}
+    ]
+  },
+  pharmacy:{
+    title:"Pharmacy",
+    blurb:"Diploma-level pharmacy education regulated by the Pharmacy Council of India, distinct from a full Bachelor of Pharmacy (B.Pharm) degree.",
+    branches:[
+      {key:"dpharm",name:"Diploma in Pharmacy (D.Pharm)",full:{
+        overview:"A foundational pharmacy qualification covering drug composition, dispensing, pharmacology basics and pharmacy-practice regulations.",
+        entry:"Generally requires Class 12 with Science (Physics, Chemistry, and Biology or Mathematics), as per Pharmacy Council of India norms.",
+        duration:"Typically 2 years, followed by a mandatory internship period before registration.",
+        study:"Pharmaceutics, pharmaceutical chemistry, pharmacology, pharmacognosy, and pharmacy-practice/regulatory basics.",
+        practical:"Laboratory work in drug compounding/dispensing, and practical training (often including hospital or retail pharmacy attachment).",
+        skills:"Accurate dispensing practice, drug-interaction awareness, and regulatory/documentation discipline.",
+        learningStyle:"A mix of chemistry-heavy theory and hands-on pharmacy-practice training.",
+        whoLikes:"Students interested in medicines and healthcare who want a quicker route into a licensed healthcare profession than a full degree.",
+        career:"Registered pharmacist roles in retail/community pharmacies, hospital pharmacies, and pharmaceutical distribution — registration with the State Pharmacy Council is mandatory to practise.",
+        relatedFields:["Healthcare & Medicine"],
+        furtherEd:"Progression to B.Pharm (Bachelor of Pharmacy) is possible at many institutions, sometimes with lateral entry into the 2nd year, subject to each university's specific rules.",
+        lateral:"Lateral entry into B.Pharm 2nd year is offered by many universities for D.Pharm holders, but rules vary — always confirm with the specific university.",
+        admission:"Merit or entrance-based admission after Class 12 Science, as per state/institution norms.",
+        considerations:"Registration with the State Pharmacy Council after completing the mandatory internship is required to legally practise as a pharmacist — this is a regulatory requirement, not optional.",
+        relatedBranches:["mlt"]
+      }},
+      {key:"pharmacy-other",name:"Other recognised pharmacy-related diploma pathways",short:"A small number of specialised shorter pharmacy-adjacent certificate/diploma programs exist (e.g., in pharmaceutical marketing or drug-store management) — these are distinct from the registrable D.Pharm qualification and do not by themselves confer pharmacist registration."}
+    ]
+  },
+  architecture:{
+    title:"Architecture, Construction & Design",
+    blurb:"Diploma programs bridging technical construction knowledge and design/drafting skills.",
+    branches:[
+      {key:"arch-assistant",name:"Architectural Assistantship",full:{
+        overview:"Trains students to support architects — technical drawing, model-making, and basic design documentation — without the full design education of a B.Arch degree.",
+        entry:"Generally open after Class 10 through polytechnic admission.",
+        duration:"Typically 3 years.",
+        study:"Building drawing, architectural drafting, building materials & construction basics, model-making, and introductory design principles.",
+        practical:"Drafting studios, model-making workshops, and site visits to under-construction buildings.",
+        skills:"Technical and architectural drawing (manual and CAD), model-making, and basic design documentation.",
+        learningStyle:"Studio-based and drawing-intensive, with a creative-technical mix.",
+        whoLikes:"Students who enjoy drawing, design, and technical/visual problem-solving, and want a faster entry into architecture-adjacent work than the 5-year B.Arch route.",
+        career:"Architectural draftsperson, junior design assistant in architecture firms, and site-documentation roles.",
+        relatedFields:["Architecture, Construction & Design","Engineering"],
+        furtherEd:"Some institutions allow progression toward further design/architecture study, though full registration as an 'Architect' in India specifically requires a recognised B.Arch degree and Council of Architecture registration — a diploma alone does not confer that title.",
+        lateral:"Progression routes vary significantly by institution; always confirm whether a specific pathway leads to B.Arch eligibility.",
+        admission:"Polytechnic entrance/merit admission after Class 10.",
+        considerations:"Does not by itself make someone a registered 'Architect' under Indian law — that requires a B.Arch degree and Council of Architecture registration.",
+        relatedBranches:["interior-design","civil","drafting"]
+      }},
+      {key:"interior-design",name:"Interior Design",short:"Focused on planning and designing functional, aesthetic interior spaces — residential and commercial. Combines design theory with drafting/CAD and material knowledge. Leads to roles as junior interior designer, design-firm assistant, or work with furniture/furnishing businesses."},
+      {key:"drafting",name:"Drafting-related programs",short:"Focused specifically on technical/engineering drawing and CAD drafting skills applicable across civil, mechanical and architectural contexts. Leads to draftsperson roles across construction and manufacturing industries."},
+      {key:"construction-mgmt",name:"Construction-related programs",short:"Covers construction management, site supervision, and building-project coordination — related to but distinct from core Civil Engineering, with more emphasis on project execution and site management. Leads to site-supervisor and construction-coordinator roles."}
+    ]
+  },
+  hospitality:{
+    title:"Hospitality & Tourism",
+    blurb:"Diploma programs preparing students for hotels, food service, travel and tourism industries — generally practice-heavy and service-oriented.",
+    branches:[
+      {key:"hotel-mgmt",name:"Hotel Management",full:{
+        overview:"Covers the full range of hotel operations — front office, housekeeping, food & beverage service, and basic hotel administration.",
+        entry:"Generally open after Class 10 or Class 12, depending on the institute and specific program level.",
+        duration:"Typically 1–3 years depending on the specific diploma/certificate program.",
+        study:"Front-office operations, housekeeping management, food & beverage service, basic accounting for hospitality, and hospitality communication/etiquette.",
+        practical:"Hands-on training in mock front-office/housekeeping setups, food & beverage service practicals, and industry internships at hotels.",
+        skills:"Guest-service skills, operational coordination, and cross-departmental hotel-operations understanding.",
+        learningStyle:"Highly practical and service-oriented, with strong emphasis on internships and real hotel-floor experience.",
+        whoLikes:"Students who enjoy guest interaction, structured service environments, and fast-paced, people-facing work.",
+        career:"Front-office associate, housekeeping supervisor, food & beverage service staff, and entry-level hotel management-trainee roles.",
+        relatedFields:["Hospitality & Tourism"],
+        furtherEd:"Progression to a full Bachelor's in Hotel Management (BHM) for management-track roles; specialised certifications in specific hotel departments.",
+        lateral:"Some institutes offer lateral entry into degree-level hotel management programs.",
+        admission:"Merit or entrance-based admission (e.g., institutes affiliated with hotel-management entrance tests) after Class 10/12.",
+        considerations:"Hospitality work often involves shift schedules, including weekends and holidays.",
+        relatedBranches:["culinary","food-production","tourism"]
+      }},
+      {key:"food-production",name:"Food Production",short:"Focused specifically on kitchen operations and food-production techniques as part of the broader hospitality curriculum, distinct from the more specialised Culinary Arts track. Leads to kitchen-staff and commis-chef entry roles."},
+      {key:"bakery",name:"Bakery & Confectionery",short:"A specialised culinary diploma focused on baking, pastry and confectionery techniques. Leads to roles as a baker/pastry chef in hotels, bakeries and confectionery businesses."},
+      {key:"culinary",name:"Culinary Arts",short:"A more intensive, chef-focused culinary training program than general Food Production, covering advanced cooking techniques and cuisine specialisation. Leads to chef and kitchen-management career tracks."},
+      {key:"catering",name:"Catering",short:"Focused on large-scale food service and catering-business operations, distinct from restaurant-style culinary training. Leads to roles in catering companies and event food-service management."},
+      {key:"tourism",name:"Tourism",short:"Covers tour planning, destination knowledge, and tourism-business operations. Leads to roles with tour operators, tourism boards, and destination-management companies."},
+      {key:"travel",name:"Travel",short:"Focused specifically on travel-agency operations, ticketing and travel-related customer service, closely related to but more specialised than general Tourism. Leads to roles with travel agencies and airlines' ground-service teams."}
+    ]
+  },
+  fashion:{
+    title:"Fashion, Textile & Creative",
+    blurb:"Design-oriented diploma programs spanning fashion, textiles and visual/digital creative fields.",
+    branches:[
+      {key:"fashion-design",name:"Fashion Design",full:{
+        overview:"Covers garment design, pattern-making and the fashion-design process from concept sketch to finished garment.",
+        entry:"Generally open after Class 10 or Class 12; some reputed institutes use design-aptitude entrance tests.",
+        duration:"Typically 1–3 years depending on the specific program.",
+        study:"Design fundamentals, illustration/fashion sketching, pattern-making, garment construction, textile knowledge, and portfolio development.",
+        practical:"Studio-based design and sewing practicals, pattern-making workshops, and portfolio/collection projects.",
+        skills:"Sketching and illustration, garment construction, an eye for trend and styling, and portfolio presentation.",
+        learningStyle:"Studio and project-based, with strong emphasis on building a creative portfolio.",
+        whoLikes:"Students with an interest in clothing design, styling, and visual creativity who enjoy hands-on making as much as design thinking.",
+        career:"Junior fashion designer, design assistant, roles with garment-export houses, and freelance/small-label design work.",
+        relatedFields:["Fashion, Textile & Creative"],
+        furtherEd:"Progression to a full Bachelor's in Fashion Design (e.g., at NIFT or similar institutes) for stronger industry entry and design-leadership roles.",
+        lateral:"Some institutes allow progression or credit transfer into degree-level fashion programs; rules vary by institute.",
+        admission:"Merit-based or design-aptitude-test-based admission, depending on the institute.",
+        considerations:"A competitive, portfolio-driven field where the reputation of the specific institute strongly affects industry entry.",
+        relatedBranches:["textile-design","garment-tech","graphic-design"]
+      }},
+      {key:"textile-design",name:"Textile Design",short:"Focused on designing fabric patterns, prints and textile surface design, distinct from garment construction in Fashion Design. Leads to roles as a textile/print designer with textile mills, fashion labels or home-furnishing brands."},
+      {key:"garment-tech",name:"Garment Technology",short:"Focused on the technical and production side of garment manufacturing — pattern grading, garment construction techniques and production processes — more manufacturing-oriented than the design-first Fashion Design track. Leads to production-supervisor roles in garment factories."},
+      {key:"apparel",name:"Apparel-related programs",short:"General apparel-industry diploma programs covering merchandising, quality control and production planning for the garment industry."},
+      {key:"graphic-design",name:"Graphic Design",short:"Covers visual communication — branding, layout, typography and digital design tools. Leads to junior graphic-designer roles in design studios, advertising agencies and in-house creative teams."},
+      {key:"animation",name:"Animation",short:"Covers 2D/3D animation techniques and digital animation software. Leads to junior animator roles in animation studios, gaming companies, and digital-content production houses."},
+      {key:"multimedia",name:"Multimedia",short:"A broader creative-technology program covering animation, video editing, and interactive digital content. Leads to multimedia-production and digital-content roles."},
+      {key:"visual-design",name:"Visual Design",short:"Focused on visual/UI-adjacent design principles across print and digital media, closely related to Graphic Design. Leads to visual-designer roles in design and digital-product teams."}
+    ]
+  },
+  business:{
+    title:"Business, Commerce & Services",
+    blurb:"Diploma-level programs in business operations and services, distinct from full degree programs like B.Com/BBA.",
+    branches:[
+      {key:"business-diploma",name:"Business-related programs",short:"General business-administration diploma programs covering basic management, office operations and business communication — a shorter, more applied alternative to a full BBA degree."},
+      {key:"accounting-diploma",name:"Accounting-related programs",short:"Diploma-level accounting and bookkeeping programs covering practical accounting software and basic financial record-keeping, leading to junior accounts-assistant roles."},
+      {key:"office-admin",name:"Office Administration",short:"Covers office management, administrative procedures and business-communication skills, leading to administrative-assistant and office-coordinator roles."},
+      {key:"retail-diploma",name:"Retail",short:"Focused on retail-store operations, merchandising and customer service, leading to store-supervisor and retail-operations roles."},
+      {key:"logistics",name:"Logistics",short:"Covers warehousing, transportation and logistics coordination, leading to logistics-coordinator and warehouse-supervisor roles."},
+      {key:"supply-chain-diploma",name:"Supply Chain",short:"A diploma-level introduction to supply-chain and operations coordination, related to the degree-level Supply Chain/Operations pathway under Commerce, leading to junior supply-chain roles."},
+      {key:"ecommerce-diploma",name:"E-commerce-related programs",short:"Covers online-retail operations, digital-order fulfilment and basic digital-marketing awareness, leading to roles supporting e-commerce business operations."}
+    ]
+  },
+  vocational:{
+    title:"Vocational & Specialised Areas",
+    blurb:"A wide and still-expanding set of shorter, skill-focused diploma and vocational-training programs (many run through Industrial Training Institutes/ITIs, skill-development missions, and specialised polytechnics) that lead directly toward specific trades and technical roles.",
+    branches:[
+      {key:"iti-trades",name:"ITI Trade Programs",short:"Industrial Training Institutes offer a wide range of trade-specific certificate/diploma programs (electrician, fitter, welder, plumber, mechanic, and many more), generally open after Class 10 or Class 8 depending on the trade, leading directly to skilled-trade employment or self-employment."},
+      {key:"beauty-wellness",name:"Beauty & Wellness",short:"Covers cosmetology, hairstyling, spa and wellness-service skills, leading to careers in salons, spas and the personal-care industry."},
+      {key:"it-vocational",name:"IT & Computer Vocational Programs",short:"Shorter, skill-focused computer-training certificate/diploma programs (basic programming, office software, hardware repair) distinct from the full 3-year Computer Engineering diploma."},
+      {key:"renewable-energy",name:"Renewable Energy Technician programs",short:"An emerging vocational area covering solar and other renewable-energy installation and maintenance skills, connected to the Environment & Sustainability career field."},
+      {key:"other-vocational",name:"Other emerging vocational fields",short:"New skill-development and vocational programs continue to be introduced under various national and state skill-mission initiatives; availability and recognition vary significantly by state and awarding body, so specific accreditation should always be checked."}
+    ]
+  }
+};
+
+/* ---------- CAREER FIELDS ---------- */
+const careerFields = [
+  {key:"technology",name:"Technology & Computing",body:"Software development, IT services, data, cybersecurity and computer systems broadly.",areas:"Software engineering, web/app development, data science & analytics, cybersecurity, cloud computing, IT support & systems administration, product management, quality assurance/testing.",examples:"Software developer, data analyst, cybersecurity analyst, cloud engineer, QA engineer, IT support specialist.",eleven:"Science (PCM) is the most direct route via Computer Science electives and engineering degrees.",diploma:"Diploma in Computer Engineering or Information Technology, often with lateral entry into a B.Tech.",higher:"B.Tech/B.E. in CS/IT, BCA, B.Sc. Computer Science, and further specialisation via M.Tech/MCA or industry certifications.",related:["Engineering","Emerging & Interdisciplinary Careers"]},
+  {key:"engineering",name:"Engineering",body:"Applying scientific and mathematical principles to design, build and maintain physical and technical systems.",areas:"Civil, Mechanical, Electrical, Electronics, Chemical, Automobile, Aerospace, and many other specialised branches.",examples:"Design engineer, site engineer, manufacturing engineer, R&D engineer.",eleven:"Science (PCM) leading to JEE/state-CET-based B.E./B.Tech admission.",diploma:"Any Engineering & Technology diploma branch, often with lateral entry into a related B.Tech program.",higher:"B.E./B.Tech across specialisations, followed by M.Tech or industry specialisation.",related:["Technology & Computing","Architecture","Science & Research"]},
+  {key:"healthcare",name:"Healthcare & Medicine",body:"Diagnosing, treating and caring for patients, and supporting medical systems and public health.",areas:"Medicine, dentistry, nursing, allied health (lab technology, radiology, physiotherapy), AYUSH systems, veterinary science, public health.",examples:"Doctor, dentist, nurse, physiotherapist, lab technologist, veterinarian.",eleven:"Science (PCB) leading to NEET-based admission for most medical/dental/AYUSH/veterinary programs.",diploma:"Healthcare & Allied diploma branches (Medical Lab Technology, Radiology, OT Technology, etc.) and the Pharmacy diploma.",higher:"MBBS/BDS/BAMS/BHMS/BUMS, B.V.Sc., B.Sc. Nursing, B.Pharm, and Allied Health degrees, followed by specialisation.",related:["Science & Research","Agriculture & Allied Sciences"]},
+  {key:"science-research",name:"Science & Research",body:"Investigating natural phenomena and generating new knowledge across the physical, life and social sciences.",areas:"Physics, Chemistry, Biology, Mathematics/Statistics, Earth sciences, interdisciplinary research.",examples:"Research scientist, lab researcher, academic/faculty researcher, R&D analyst in industry.",eleven:"Science (PCM, PCB or PCMB), depending on the specific research area.",diploma:"Less common as a direct diploma route; some allied fields (e.g., lab technology) provide a partial bridge.",higher:"B.Sc. in the relevant science, typically followed by M.Sc. and often a Ph.D. for research-track careers.",related:["Healthcare & Medicine","Technology & Computing","Agriculture & Allied Sciences"]},
+  {key:"commerce-finance",name:"Commerce & Finance",body:"Managing money, markets, accounting and financial decision-making for individuals and organisations.",areas:"Accounting, auditing, taxation, banking, investment, insurance, financial analysis, actuarial work.",examples:"Chartered accountant, financial analyst, bank officer, actuary, investment advisor.",eleven:"Commerce stream is the most direct route, though some paths (Economics, Statistics) are open to Science students too.",diploma:"Business, Commerce & Services diploma branches offer an applied, shorter entry route into accounting/office roles.",higher:"B.Com, BBA (Finance), and professional qualifications like CA/CS/CMA/CFA/Actuarial Science.",related:["Business & Management","Law"]},
+  {key:"business-mgmt",name:"Business & Management",body:"Running and growing organisations — strategy, operations, marketing, HR and leadership.",areas:"General management, marketing, HR, operations, entrepreneurship, consulting.",examples:"Management trainee, marketing executive, HR executive, operations manager, entrepreneur.",eleven:"Commerce is the most common route, though many management programs also accept Science/Arts students.",diploma:"Business, Commerce & Services diploma branches provide an applied entry route.",higher:"BBA/BMS/B.Com followed by an MBA for leadership-track roles.",related:["Commerce & Finance","Media & Communication"]},
+  {key:"law",name:"Law",body:"Legal advice, advocacy, drafting, compliance and the justice system.",areas:"Litigation, corporate law, criminal law, tax law, intellectual property, compliance.",examples:"Lawyer/advocate, corporate counsel, legal analyst, judicial services (after further exams).",eleven:"Any stream (Science, Commerce or Arts) can lead to Law via the integrated 5-year LLB or a 3-year LLB after a bachelor's degree.",diploma:"Not a typical diploma route; Law is generally pursued via degree programs.",higher:"Integrated B.A./BBA/B.Com/B.Sc. LLB (5 years) after 12th, or a 3-year LLB after any bachelor's degree, followed by the Bar exam to practise.",related:["Commerce & Finance","Arts & Humanities related fields","Civil/Public Services"]},
+  {key:"psychology-social",name:"Psychology & Social Sciences",body:"Understanding human behaviour, mental health, and social structures — and applying that understanding to help individuals and communities.",areas:"Clinical/counselling psychology, HR-linked organisational psychology, sociology, social work, public policy.",examples:"Counsellor/psychologist (with further specialised training), HR professional, social worker, policy researcher.",eleven:"Arts (Psychology, Sociology) is the most direct route, though Science students can often also pursue Psychology degrees.",diploma:"Not a typical diploma route.",higher:"B.A. Psychology/Sociology or BSW, followed by a master's and, for clinical practice, supervised specialised training/registration.",related:["Arts & Humanities related fields","Education"]},
+  {key:"arts-humanities-field",name:"Arts & Humanities",body:"The study of culture, history, thought, language and society, feeding into research, public service, media, education and more.",areas:"History, Political Science, Literature, Philosophy, Languages, and related disciplines.",examples:"Researcher, civil servant, teacher, writer, policy analyst.",eleven:"Arts & Humanities stream directly; some subjects (like Economics) are also open to Commerce/Science students.",diploma:"Not a typical diploma route.",higher:"B.A. in the relevant subject, often followed by a master's or professional/competitive-exam preparation.",related:["Civil/Public Services","Media & Communication","Education"]},
+  {key:"design",name:"Design",body:"Visual, product, spatial and experience design across industries.",areas:"Fashion design, graphic design, product/industrial design, UX/UI design, animation.",examples:"Fashion designer, graphic designer, product designer, UX designer, animator.",eleven:"Open to any stream; entry is usually via dedicated design-aptitude entrance exams rather than a specific stream requirement.",diploma:"Fashion, Textile & Creative diploma branches offer a direct applied route.",higher:"Dedicated design degrees (via NID/NIFT/UCEED-based admission or similar), or a B.Des/B.F.A.",related:["Fashion, Textile & Creative","Media & Communication","Architecture"]},
+  {key:"architecture-field",name:"Architecture",body:"Designing buildings and spaces, balancing aesthetics, function and structural feasibility.",areas:"Building design, urban design, landscape architecture, interior architecture.",examples:"Architect, urban designer, interior architect.",eleven:"Science (PCM) is the most common route via NATA/JEE-based B.Arch admission.",diploma:"Architectural Assistantship or Interior Design diploma branches provide an applied, related entry route (not equivalent to a registered Architect qualification).",higher:"B.Arch (5 years), followed by Council of Architecture registration to practise as an Architect.",related:["Architecture, Construction & Design","Engineering","Design"]},
+  {key:"media-comm",name:"Media & Communication",body:"Creating and distributing news, entertainment and brand content across print, broadcast and digital platforms.",areas:"Journalism, broadcast media, digital content, public relations, advertising.",examples:"Journalist, content creator, PR executive, media planner, video producer.",eleven:"Arts & Humanities (Journalism-linked subjects) is common, though Commerce students often enter via advertising/media-business roles.",diploma:"Not a typical diploma route.",higher:"B.A./B.Sc. in Journalism & Mass Communication, or specialised media degrees.",related:["Arts & Humanities related fields","Design","Business & Management"]},
+  {key:"agri-allied",name:"Agriculture & Allied Sciences",body:"Producing food and managing land, crops, livestock and rural industry.",areas:"Crop production, horticulture, animal husbandry, fisheries, forestry, agri-business.",examples:"Agricultural officer, farm manager, agri-business executive, horticulturist.",eleven:"Science (PCB) is the most common route for B.Sc. Agriculture-linked admissions.",diploma:"Agriculture & Allied diploma branches provide a direct, applied entry route.",higher:"B.Sc. Agriculture/Horticulture/Fisheries/Forestry, followed by specialisation or agri-business management study.",related:["Healthcare & Medicine related fields","Environment & Sustainability"]},
+  {key:"environment",name:"Environment & Sustainability",body:"Protecting natural resources and addressing environmental and climate challenges.",areas:"Environmental science, conservation, renewable energy, pollution control, sustainability consulting.",examples:"Environmental scientist, sustainability analyst, renewable-energy technician, conservation researcher.",eleven:"Science (PCB or PCM depending on the specific sub-field) is the common base.",diploma:"Environmental Engineering (under Engineering & Technology) or the emerging Renewable Energy Technician vocational programs.",higher:"B.Sc. Environmental Science, relevant Engineering degrees, or specialised sustainability postgraduate programs.",related:["Agriculture & Allied Sciences","Engineering"]},
+  {key:"education",name:"Education",body:"Teaching, curriculum design and educational leadership across school and higher-education levels.",areas:"School teaching, curriculum development, educational administration, ed-tech.",examples:"School teacher, curriculum designer, school administrator, ed-tech content developer.",eleven:"Any stream can lead here, since teaching eligibility is determined mainly by the subject and level taught later, plus a B.Ed.",diploma:"Not a typical diploma route.",higher:"A bachelor's degree in the subject to be taught, followed by a B.Ed. (or an integrated B.A./B.Sc.-B.Ed. program).",related:["Arts & Humanities related fields","Psychology & Social Sciences"]},
+  {key:"hospitality-field",name:"Hospitality & Tourism",body:"Hotel operations, food service, travel and tourism experiences.",areas:"Hotel management, food & beverage, travel & tour operations, event management.",examples:"Hotel manager, chef, travel consultant, event manager.",eleven:"Open to any stream; entry is largely institution/program based rather than stream-restricted.",diploma:"Hospitality & Tourism diploma branches provide a direct, practice-heavy entry route.",higher:"Bachelor of Hotel Management (BHM) or specialised tourism/culinary degrees.",related:["Business & Management"]},
+  {key:"defence-public",name:"Defence & Public Services",body:"Careers in the armed forces, police, and government administrative services.",areas:"Armed forces (Army/Navy/Air Force), paramilitary forces, police services, civil administration.",examples:"Defence officer, police officer, civil servant (IAS/IPS/IFS and allied services).",eleven:"Science (PCM) is required for the technical-entry defence routes (via NDA); other streams can pursue non-technical defence and civil-service entries after a bachelor's degree.",diploma:"Not a typical diploma route, though some technical trades within the armed forces have diploma-linked entries.",higher:"NDA (after 12th, PCM for technical entry) or UPSC Civil Services/state PSC exams (after any bachelor's degree).",related:["Law","Arts & Humanities related fields"]},
+  {key:"sports-fitness",name:"Sports & Fitness",body:"Competitive sport, coaching, sports science and fitness training.",areas:"Athlete/competitive sport, coaching, sports science, fitness training, sports management.",examples:"Professional athlete, coach, fitness trainer, sports scientist, sports-event manager.",eleven:"Open to any stream; Science (PCB) helps for sports-science/physiology-linked study.",diploma:"Not a typical diploma route, though some physical-education certificate programs exist.",higher:"Bachelor's in Physical Education/Sports Science, or direct competitive-sport pathways alongside formal education.",related:["Healthcare & Medicine related fields","Business & Management"]},
+  {key:"animation-gaming",name:"Animation & Gaming",body:"Creating animated content, visual effects and video games.",areas:"2D/3D animation, VFX, game design, game programming, game art.",examples:"Animator, VFX artist, game designer, game developer.",eleven:"Open to any stream; Science (PCM) helps for the programming-heavy game-development side, while Arts helps for the design/art side.",diploma:"Animation diploma branch under Fashion, Textile & Creative provides a direct entry route.",higher:"Specialised animation/gaming degrees, or a Computer Science degree for the programming-focused roles.",related:["Design","Technology & Computing"]},
+  {key:"skilled-vocational",name:"Skilled & Vocational Careers",body:"Hands-on trade and technical skills leading directly to employment or self-employment, often through ITIs and shorter vocational programs.",areas:"Electrical/mechanical trades, beauty & wellness, construction trades, IT-support trades.",examples:"Electrician, fitter, welder, beautician, computer-hardware technician.",eleven:"Not applicable — this route runs mainly through vocational/ITI training rather than the 11th-12th stream system.",diploma:"Vocational & Specialised Areas diploma/certificate branches under the Diploma route.",higher:"Advanced trade certifications, and in some cases progression into related diploma/degree engineering programs.",related:["Engineering"]},
+  {key:"emerging",name:"Emerging & Interdisciplinary Careers",body:"Newer fields that combine two or more traditional disciplines, evolving quickly with technology and industry change.",areas:"Data science, UX research, FinTech, business analytics, sustainability consulting, digital humanities.",examples:"Data scientist, UX researcher, FinTech analyst, sustainability consultant.",eleven:"Varies by specific field — often reachable from Science, Commerce or Arts depending on the exact combination.",diploma:"Some emerging diploma-level programs exist (e.g., AI/ML-related diploma electives) but formal recognition and depth vary by institution.",higher:"Usually reached by combining a core degree (Computer Science, Commerce, Statistics, Design, etc.) with a specialised postgraduate program or certification.",related:["Technology & Computing","Commerce & Finance","Design"]}
+];
+
+/* ============================================================
+   RENDER ENGINE
+   ============================================================ */
+
+let state = {view:"home", path:[]};
+
+function go(view, path){
+  state = {view, path: path || []};
+  window.scrollTo({top:0, behavior:"smooth"});
+  render();
+}
+
+function trailLabel(view, path){
+  const labels = {
+    home:"Start",
+    streamPicker:"11th–12th Streams",
+    stream:path[0] ? streams[path[0]].title : "",
+    combo: path[1] ? (streams[path[0]].combos ? streams[path[0]].combos[path[1]].title : path[1]) : "",
+    diplomaPicker:"Diploma",
+    diplomaField: path[0] ? diplomaFields[path[0]].title : "",
+    diplomaBranch: path[1] ? "Branch" : "",
+    careerPicker:"Career Fields",
+    careerField: path[0] ? (careerFields.find(f=>f.key===path[0])||{}).name : ""
+  };
+  return labels[view] || view;
+}
+
+function renderTrail(){
+  const t = document.getElementById("trail");
+  let crumbs = [{label:"Start", view:"home", path:[]}];
+  if(state.view==="streamPicker") crumbs.push({label:"11th–12th Streams", view:"streamPicker", path:[]});
+  if(state.view==="stream") {
+    crumbs.push({label:"11th–12th Streams", view:"streamPicker", path:[]});
+    crumbs.push({label:streams[state.path[0]].title, view:"stream", path:[state.path[0]]});
+  }
+  if(state.view==="combo"){
+    crumbs.push({label:"11th–12th Streams", view:"streamPicker", path:[]});
+    crumbs.push({label:streams[state.path[0]].title, view:"stream", path:[state.path[0]]});
+    crumbs.push({label:streams[state.path[0]].combos[state.path[1]].title, view:"combo", path:state.path});
+  }
+  if(state.view==="diplomaPicker") crumbs.push({label:"Diploma", view:"diplomaPicker", path:[]});
+  if(state.view==="diplomaField"){
+    crumbs.push({label:"Diploma", view:"diplomaPicker", path:[]});
+    crumbs.push({label:diplomaFields[state.path[0]].title, view:"diplomaField", path:[state.path[0]]});
+  }
+  if(state.view==="diplomaBranch"){
+    const field = diplomaFields[state.path[0]];
+    const branch = field.branches.find(b=>b.key===state.path[1]);
+    crumbs.push({label:"Diploma", view:"diplomaPicker", path:[]});
+    crumbs.push({label:field.title, view:"diplomaField", path:[state.path[0]]});
+    crumbs.push({label:branch.name, view:"diplomaBranch", path:state.path});
+  }
+  if(state.view==="careerPicker") crumbs.push({label:"Career Fields", view:"careerPicker", path:[]});
+  if(state.view==="careerField"){
+    crumbs.push({label:"Career Fields", view:"careerPicker", path:[]});
+    const f = careerFields.find(x=>x.key===state.path[0]);
+    crumbs.push({label:f.name, view:"careerField", path:state.path});
+  }
+  t.innerHTML = crumbs.map((c,i)=>{
+    const isLast = i===crumbs.length-1;
+    if(isLast) return `<span class="current">${c.label}</span>`;
+    return `<button onclick='go(${JSON.stringify(c.view)}, ${JSON.stringify(c.path)})'>${c.label}</button><span class="sep">/</span>`;
+  }).join("");
+}
+
+function esc(s){ return (s||"").replace(/'/g,"&#39;"); }
+
+function render(){
+  renderTrail();
+  const app = document.getElementById("app");
+  if(state.view==="home") app.innerHTML = renderHome();
+  else if(state.view==="streamPicker") app.innerHTML = renderStreamPicker();
+  else if(state.view==="stream") app.innerHTML = renderStream(state.path[0]);
+  else if(state.view==="combo") app.innerHTML = renderCombo(state.path[0], state.path[1]);
+  else if(state.view==="diplomaPicker") app.innerHTML = renderDiplomaPicker();
+  else if(state.view==="diplomaField") app.innerHTML = renderDiplomaField(state.path[0]);
+  else if(state.view==="diplomaBranch") app.innerHTML = renderDiplomaBranch(state.path[0], state.path[1]);
+  else if(state.view==="careerPicker") app.innerHTML = renderCareerPicker();
+  else if(state.view==="careerField") app.innerHTML = renderCareerField(state.path[0]);
+}
+
+function renderHome(){
+  return `
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Class 10 is a fork, not a finish line</div>
+        <h1>Where does 10th std lead?</h1>
+        <p class="lede">Explore the two main routes after Class 10 — 11th–12th streams or a Diploma — and see how both connect onward into real career fields. Nothing here is a fixed track: most fields can be reached more than one way.</p>
+        <div class="entry-buttons">
+          <button class="entry-btn" onclick='go("streamPicker",[])'>
+            <div><div class="lbl">11th–12th: Choose a stream</div><div class="sub">Science, Commerce, or Arts & Humanities</div></div>
+            <div class="arrow">→</div>
+          </button>
+          <button class="entry-btn" onclick='go("diplomaPicker",[])'>
+            <div><div class="lbl">Diploma: Explore fields & branches</div><div class="sub">Polytechnic & technical diploma routes</div></div>
+            <div class="arrow">→</div>
+          </button>
+          <button class="entry-btn" onclick='go("careerPicker",[])'>
+            <div><div class="lbl">Start from a career field instead</div><div class="sub">See which stream or diploma leads there</div></div>
+            <div class="arrow">→</div>
+          </button>
+        </div>
+      </div>
+      <div class="path-svg-box">
+        ${pathSvg()}
+      </div>
+    </div>
+  </div>
+  `;
+}
+
+function pathSvg(){
+  return `<svg viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="30" r="7" fill="#1F5C52"/>
+    <text x="55" y="35" font-family="IBM Plex Mono" font-size="11" fill="#4A5A4C">Class 10</text>
+    <path d="M40 40 C 40 90, 110 90, 110 130" stroke="#D8DED2" stroke-width="3" fill="none"/>
+    <path d="M40 40 C 40 90, -20 90, -20 130 C -20 170, 40 170, 40 210" stroke="#D8DED2" stroke-width="3" fill="none" transform="translate(20,0)"/>
+    <circle cx="110" cy="135" r="6" fill="#B9832E"/>
+    <text x="122" y="139" font-family="IBM Plex Mono" font-size="10" fill="#4A5A4C">11th–12th</text>
+    <circle cx="60" cy="210" r="6" fill="#AD5A3B"/>
+    <text x="72" y="214" font-family="IBM Plex Mono" font-size="10" fill="#4A5A4C">Diploma</text>
+    <path d="M110 141 C 110 180, 200 190, 200 230" stroke="#D8DED2" stroke-width="2.4" fill="none"/>
+    <path d="M110 141 C 110 190, 60 200, 60 230" stroke="#D8DED2" stroke-width="2.4" fill="none"/>
+    <path d="M60 216 C 60 250, 160 250, 200 268" stroke="#D8DED2" stroke-width="2.4" fill="none"/>
+    <circle cx="200" cy="235" r="5" fill="#1F5C52"/>
+    <circle cx="60" cy="235" r="5" fill="#1F5C52"/>
+    <text x="150" y="290" font-family="IBM Plex Mono" font-size="10" fill="#4A5A4C" text-anchor="middle">many small forks → career fields</text>
+    <circle cx="150" cy="270" r="4" fill="#B9832E"/>
+    <circle cx="230" cy="255" r="4" fill="#B9832E"/>
+    <circle cx="100" cy="260" r="4" fill="#B9832E"/>
+  </svg>`;
+}
+
+function renderStreamPicker(){
+  let cards = Object.keys(streams).map(k=>{
+    const s = streams[k];
+    return `<button class="card" onclick='go("stream",${JSON.stringify([k])})'>
+      <div class="tag">Stream</div>
+      <div class="ctitle">${s.title}</div>
+      <div class="desc">${s.tagline}</div>
+    </button>`;
+  }).join("");
+  return `
+  <div class="section-head">
+    <h2>11th–12th Streams</h2>
+    <p>Pick a stream to see subject combinations, what students study, and where each one can lead.</p>
+  </div>
+  <div class="grid">${cards}</div>
+  `;
+}
+
+function renderStream(key){
+  const s = streams[key];
+  if(s.combos){
+    const cards = Object.keys(s.combos).map(ck=>{
+      const c = s.combos[ck];
+      return `<button class="card" onclick='go("combo",${JSON.stringify([key,ck])})'>
+        <div class="tag">Combination</div>
+        <div class="ctitle">${c.title}</div>
+        <div class="desc">${c.overview}</div>
+      </button>`;
+    }).join("");
+    return `
+    <button class="back-btn" onclick='go("streamPicker",[])'>← All streams</button>
+    <div class="section-head"><h2>${s.title}</h2><p>${s.tagline}</p></div>
+    <div class="grid">${cards}</div>
+    <div class="note-box">${DISCLAIMER}</div>
+    `;
+  } else {
+    const items = s.pathways.map(p=>`
+      <details class="pitem">
+        <summary><span class="t">${p.name}</span><span class="plus">+</span></summary>
+        <div class="body"><p>${p.body}</p>
+        <div class="chips">${p.chips.map(c=>`<span class="chip">${c}</span>`).join("")}</div></div>
+      </details>`).join("");
+    return `
+    <button class="back-btn" onclick='go("streamPicker",[])'>← All streams</button>
+    <div class="section-head"><h2>${s.title}</h2><p>${s.tagline}</p><p style="font-size:.9rem;color:var(--ink-soft);margin-top:8px;">${s.overview}</p></div>
+    <div class="plist">${items}</div>
+    <div class="note-box">${DISCLAIMER}</div>
+    `;
+  }
+}
+
+function renderCombo(streamKey, comboKey){
+  const c = streams[streamKey].combos[comboKey];
+  return `
+  <button class="back-btn" onclick='go("stream",${JSON.stringify([streamKey])})'>← ${streams[streamKey].title}</button>
+  <div class="detail">
+    <div class="detail-head"><h2>${c.title}</h2><div class="tagline">${c.overview}</div></div>
+    <div class="two-col">
+      <div class="dsec"><h4>Subjects</h4><p>${c.subjects}</p></div>
+      <div class="dsec"><h4>Academic emphasis</h4><p>${c.studyEmphasis}</p></div>
+      <div class="dsec"><h4>Higher-education directions</h4><p>${c.higherEd}</p></div>
+      <div class="dsec"><h4>Entrance / admission routes</h4><p>${c.entrance}</p></div>
+      <div class="dsec" style="grid-column:1/-1;"><h4>Important considerations</h4><p>${c.considerations}</p></div>
+    </div>
+    <div class="dsec"><h4>Related career fields</h4>
+      <div class="related-row">${c.related.map(r=>`<button class="related-btn" onclick='jumpToCareerField(${JSON.stringify(r)})'>${r}</button>`).join("")}</div>
+    </div>
+  </div>
+  <div class="note-box">${DISCLAIMER}</div>
+  `;
+}
+
+function renderDiplomaPicker(){
+  const cards = Object.keys(diplomaFields).map(k=>{
+    const f = diplomaFields[k];
+    return `<button class="card" onclick='go("diplomaField",${JSON.stringify([k])})'>
+      <div class="tag">${f.branches.length} branches</div>
+      <div class="ctitle">${f.title}</div>
+      <div class="desc">${f.blurb}</div>
+    </button>`;
+  }).join("");
+  return `
+  <div class="section-head">
+    <h2>Diploma</h2>
+    <p>Diploma is a large group of fields, each with individual branches/programs — not a single course. Pick a field to see its branches.</p>
+  </div>
+  <div class="grid">${cards}</div>
+  <div class="note-box">${DISCLAIMER}</div>
+  `;
+}
+
+function renderDiplomaField(key){
+  const f = diplomaFields[key];
+  const cards = f.branches.map(b=>`
+    <button class="card" onclick='go("diplomaBranch",${JSON.stringify([key,b.key])})'>
+      <div class="tag">${b.full ? "Full profile" : "Overview"}</div>
+      <div class="ctitle">${b.name}</div>
+      <div class="desc">${b.full ? b.full.overview : b.short}</div>
+    </button>`).join("");
+  return `
+  <button class="back-btn" onclick='go("diplomaPicker",[])'>← All diploma fields</button>
+  <div class="section-head"><h2>${f.title}</h2><p>${f.blurb}</p></div>
+  <div class="grid">${cards}</div>
+  <div class="note-box">${DISCLAIMER}</div>
+  `;
+}
+
+function renderDiplomaBranch(fieldKey, branchKey){
+  const field = diplomaFields[fieldKey];
+  const b = field.branches.find(x=>x.key===branchKey);
+  const backBtn = `<button class="back-btn" onclick='go("diplomaField",${JSON.stringify([fieldKey])})'>← ${field.title}</button>`;
+  if(b.full){
+    const d = b.full;
+    const relatedBtns = (d.relatedBranches||[]).map(rk=>{
+      const rb = field.branches.find(x=>x.key===rk);
+      if(!rb) return "";
+      return `<button class="related-btn" onclick='go("diplomaBranch",${JSON.stringify([fieldKey,rk])})'>${rb.name}</button>`;
+    }).join("");
+    return `
+    ${backBtn}
+    <div class="detail">
+      <div class="detail-head"><h2>${b.name}</h2><div class="tagline">${d.overview}</div></div>
+      <div class="two-col">
+        <div class="dsec"><h4>Entry</h4><p>${d.entry}</p></div>
+        <div class="dsec"><h4>Duration</h4><p>${d.duration}</p></div>
+        <div class="dsec"><h4>What you study</h4><p>${d.study}</p></div>
+        <div class="dsec"><h4>Practical learning</h4><p>${d.practical}</p></div>
+        <div class="dsec"><h4>Skills developed</h4><p>${d.skills}</p></div>
+        <div class="dsec"><h4>What the learning is like</h4><p>${d.learningStyle}</p></div>
+        <div class="dsec"><h4>Who may find it interesting</h4><p>${d.whoLikes}</p></div>
+        <div class="dsec"><h4>Career / work areas</h4><p>${d.career}</p></div>
+        <div class="dsec"><h4>Further education</h4><p>${d.furtherEd}</p></div>
+        <div class="dsec"><h4>Lateral entry / progression</h4><p>${d.lateral}</p></div>
+        <div class="dsec"><h4>Admission</h4><p>${d.admission}</p></div>
+        <div class="dsec" style="grid-column:1/-1;"><h4>Important considerations</h4><p>${d.considerations}</p></div>
+      </div>
+      <div class="dsec"><h4>Related career fields</h4>
+        <div class="related-row">${d.relatedFields.map(r=>`<button class="related-btn" onclick='jumpToCareerField(${JSON.stringify(r)})'>${r}</button>`).join("")}</div>
+      </div>
+      ${relatedBtns ? `<div class="dsec"><h4>Related diploma branches</h4><div class="related-row">${relatedBtns}</div></div>` : ""}
+    </div>
+    <div class="note-box">${DISCLAIMER}</div>
+    `;
+  } else {
+    return `
+    ${backBtn}
+    <div class="detail">
+      <div class="detail-head"><h2>${b.name}</h2></div>
+      <div class="dsec"><p>${b.short}</p></div>
+      <div class="stub-box">This branch's full step-by-step profile is being expanded. The overview above is branch-specific — for exact eligibility, duration and institution availability, check with the specific polytechnic or board, since these vary by state and year.</div>
+    </div>
+    <div class="note-box">${DISCLAIMER}</div>
+    `;
+  }
+}
+
+function renderCareerPicker(){
+  const cards = careerFields.map(f=>`
+    <button class="card" onclick='go("careerField",${JSON.stringify([f.key])})'>
+      <div class="tag">Career field</div>
+      <div class="ctitle">${f.name}</div>
+      <div class="desc">${f.body}</div>
+    </button>`).join("");
+  return `
+  <div class="section-head">
+    <h2>Career Fields</h2>
+    <p>Career fields aren't a third route after 10th — they're reached through either 11th–12th streams or Diploma. Explore a field to see how to get there.</p>
+  </div>
+  <div class="grid">${cards}</div>
+  `;
+}
+
+function renderCareerField(key){
+  const f = careerFields.find(x=>x.key===key);
+  return `
+  <button class="back-btn" onclick='go("careerPicker",[])'>← All career fields</button>
+  <div class="detail">
+    <div class="detail-head"><h2>${f.name}</h2><div class="tagline">${f.body}</div></div>
+    <div class="two-col">
+      <div class="dsec"><h4>Areas within this field</h4><p>${f.areas}</p></div>
+      <div class="dsec"><h4>Example careers</h4><p>${f.examples}</p></div>
+      <div class="dsec"><h4>11th–12th route</h4><p>${f.eleven}</p></div>
+      <div class="dsec"><h4>Diploma route</h4><p>${f.diploma}</p></div>
+      <div class="dsec" style="grid-column:1/-1;"><h4>Higher-education directions</h4><p>${f.higher}</p></div>
+    </div>
+    <div class="dsec"><h4>Related fields</h4>
+      <div class="related-row">${f.related.map(r=>`<span class="chip">${r}</span>`).join("")}</div>
+    </div>
+  </div>
+  <div class="note-box">${DISCLAIMER}</div>
+  `;
+}
+
+function jumpToCareerField(name){
+  const f = careerFields.find(x=>x.name===name || x.name.includes(name) || name.includes(x.name));
+  if(f) go("careerField",[f.key]);
+  else go("careerPicker",[]);
+}
+
+render();
+</script>
+
+<script src="js/assessment.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const state = getState();
+    if (state.profile && state.profile.name) {
+      document.getElementById("userAvatar").textContent = state.profile.name.charAt(0).toUpperCase();
+      document.getElementById("userNameChip").textContent = state.profile.name;
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,754 @@
+/* =========================================================
+   ASSESSMENT UI — progress rail, cards, controls
+   ========================================================= */
+
+/* ---------- Signature element: the vertical journey rail ---------- */
+
+.progress-rail {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rail-step {
+  position: relative;
+  padding: 0 0 34px 28px;
+  border-left: 2px solid var(--line);
+}
+
+.rail-step:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.rail-step::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--line-strong);
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.rail-step .rail-label {
+  font-size: 13.5px;
+  color: var(--ink-400);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.rail-step .rail-sub {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  opacity: 0.7;
+  display: block;
+  margin-top: 2px;
+}
+
+.rail-step.is-complete {
+  border-left-color: var(--indigo-500);
+}
+
+.rail-step.is-complete::before {
+  background: var(--grad-brand);
+  border-color: transparent;
+}
+
+.rail-step.is-complete .rail-label {
+  color: var(--ink-600);
+}
+
+.rail-step.is-current::before {
+  background: var(--grad-brand);
+  border-color: transparent;
+  box-shadow: 0 0 0 4px var(--indigo-100), 0 0 14px rgba(91, 110, 232, 0.5);
+  animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 4px var(--indigo-100), 0 0 14px rgba(91, 110, 232, 0.5); }
+  50% { box-shadow: 0 0 0 6px var(--indigo-100), 0 0 18px rgba(91, 110, 232, 0.7); }
+}
+
+.rail-step.is-current .rail-label {
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+/* Compact top progress bar (mobile companion to the rail) */
+
+.progress-track {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 6px;
+}
+
+.progress-track .tick {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.progress-track .tick > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--grad-brand);
+  transition: width var(--transition-slow);
+}
+
+.progress-track .tick.is-complete > span {
+  width: 100%;
+}
+
+.progress-track .tick.is-current > span {
+  width: 55%;
+}
+
+.progress-caption {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-400);
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+/* ---------- Generic card ---------- */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-card);
+  padding: 28px clamp(20px, 3vw, 34px);
+  animation: fadeSlideUp 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.question-card:hover,
+.textarea-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Stagger the entrance of stacked question/textarea cards a little. */
+.card:nth-of-type(2) { animation-delay: 40ms; }
+.card:nth-of-type(3) { animation-delay: 80ms; }
+.card:nth-of-type(4) { animation-delay: 120ms; }
+.card:nth-of-type(5) { animation-delay: 160ms; }
+
+.card + .card {
+  margin-top: 18px;
+}
+
+/* ---------- Profile form (Page 1) ---------- */
+
+.card-heading {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 13.5px;
+  color: var(--ink-600);
+  margin-bottom: 20px;
+}
+
+/* ---------- Journey cards (education-stage decision points) ---------- */
+
+.journey-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.journey-card-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.journey-card-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.journey-card-option {
+  position: relative;
+}
+
+.journey-card-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.journey-card-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  height: 100%;
+  padding: 20px 18px;
+  border-radius: var(--radius-m);
+  border: 1.5px solid var(--line-strong);
+  background: var(--card);
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 56px;
+}
+
+.journey-card-option label:hover {
+  border-color: var(--navy-800);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.journey-emoji {
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.journey-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--navy-900);
+}
+
+.journey-sub {
+  font-size: 13px;
+  color: var(--ink-600);
+  line-height: 1.4;
+}
+
+.journey-card-option input:checked + label {
+  background: var(--grad-brand-soft);
+  border-color: var(--indigo-500);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.journey-card-option input:focus-visible + label {
+  outline: 2px solid var(--indigo-500);
+  outline-offset: 2px;
+}
+
+/* ---------- Inline notices (max-selection feedback) ---------- */
+
+.inline-notice {
+  display: none;
+  font-size: 12.5px;
+  color: var(--danger);
+  margin-top: 8px;
+}
+
+.inline-notice.visible {
+  display: block;
+}
+
+.info-note {
+  font-size: 13.5px;
+  color: var(--ink-600);
+  background: var(--indigo-100);
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* ---------- Privacy / consent card (Page 1) ---------- */
+
+.privacy-card {
+  background: var(--indigo-100);
+  border-color: var(--indigo-500);
+}
+
+.privacy-heading {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--navy-900);
+  margin-bottom: 8px;
+}
+
+.privacy-body {
+  font-size: 13.5px;
+  color: var(--ink-600);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.consent-row input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  accent-color: var(--navy-900);
+}
+
+.consent-row label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy-900);
+  cursor: pointer;
+  line-height: 1.45;
+}
+
+/* ---------- Free-text security note (Page 4) ---------- */
+
+.security-note {
+  font-size: 12.5px;
+  color: var(--ink-400);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+
+
+.field-group {
+  margin-bottom: 24px;
+}
+
+.field-group:last-child {
+  margin-bottom: 0;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--navy-900);
+  margin-bottom: 8px;
+}
+
+.field-label .optional-tag {
+  font-weight: 400;
+  color: var(--ink-400);
+  font-size: 12.5px;
+  margin-left: 6px;
+}
+
+.text-input,
+.select-input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
+  background: var(--card);
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--ink-900);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.text-input:focus,
+.select-input:focus {
+  border-color: var(--indigo-500);
+  box-shadow: 0 0 0 3px var(--indigo-100);
+}
+
+.text-input.has-error,
+.select-input.has-error {
+  border-color: var(--danger);
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill-option {
+  position: relative;
+}
+
+.pill-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.pill-option label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-600);
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.pill-option label:hover {
+  border-color: var(--navy-800);
+  color: var(--navy-900);
+  transform: translateY(-1px);
+}
+
+.pill-option input:checked + label {
+  background: var(--grad-brand);
+  border-color: transparent;
+  color: #fff;
+}
+
+.pill-option input:focus-visible + label {
+  outline: 2px solid var(--indigo-500);
+  outline-offset: 2px;
+}
+
+.conditional-block {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 320ms ease, opacity 260ms ease, margin-top 320ms ease;
+}
+
+.conditional-block.is-open {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 22px;
+}
+
+/* ---------- Question cards (Page 2) ---------- */
+
+.q-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.q-progress-text {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-400);
+}
+
+.q-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--navy-900);
+  font-weight: 600;
+  background: var(--grad-brand-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 110, 232, 0.2);
+}
+
+.question-card .q-index {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--indigo-500);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.question-card .q-text {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-top: 6px;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.question-card .q-select-hint {
+  font-size: 13px;
+  color: var(--ink-400);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.option-card {
+  position: relative;
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.option-card label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 15px;
+  border-radius: var(--radius-s);
+  border: 1.5px solid var(--line-strong);
+  font-size: 14px;
+  color: var(--ink-600);
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 48px;
+}
+
+.option-card .mark {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 5px;
+  border: 1.5px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.option-card.is-radio .mark {
+  border-radius: 50%;
+}
+
+.option-card .mark svg {
+  width: 11px;
+  height: 11px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all var(--transition);
+}
+
+.option-card label:hover {
+  border-color: var(--navy-800);
+  transform: translateY(-1px);
+}
+
+.option-card input:checked + label {
+  background: var(--grad-brand-soft);
+  border-color: var(--indigo-500);
+  color: var(--navy-900);
+  font-weight: 500;
+  box-shadow: 0 0 0 1px rgba(91, 110, 232, 0.25);
+}
+
+.option-card input:checked + label .mark {
+  background: var(--grad-brand);
+  border-color: transparent;
+}
+
+.option-card input:checked + label .mark svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.option-card input:disabled + label {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.option-card input:focus-visible + label {
+  outline: 2px solid var(--indigo-500);
+  outline-offset: 2px;
+}
+
+.q-select-counter {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-400);
+}
+
+.q-select-counter.is-satisfied {
+  color: var(--success);
+}
+
+/* ---------- Rating scale (Page 3) ---------- */
+
+.rating-card .q-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 16px;
+}
+
+.rating-scale {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-option {
+  flex: 1;
+}
+
+.rating-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.rating-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  border-radius: var(--radius-s);
+  border: 1.5px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink-600);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.rating-option label:hover {
+  border-color: var(--navy-800);
+  transform: translateY(-1px);
+}
+
+.rating-option input:checked + label {
+  background: var(--grad-brand);
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -8px rgba(91, 110, 232, 0.55);
+}
+
+.rating-option input:focus-visible + label {
+  outline: 2px solid var(--indigo-500);
+  outline-offset: 2px;
+}
+
+.rating-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--ink-400);
+}
+
+/* ---------- Textarea cards (Page 4) ---------- */
+
+.textarea-card .q-text {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+}
+
+.textarea-card .q-explainer {
+  font-size: 13.5px;
+  color: var(--ink-600);
+  margin-bottom: 14px;
+}
+
+.essay-input {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  border-radius: var(--radius-s);
+  border: 1.5px solid var(--line-strong);
+  padding: 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-900);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.essay-input:focus {
+  border-color: var(--indigo-500);
+  box-shadow: 0 0 0 3px var(--indigo-100);
+}
+
+.char-counter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-400);
+}
+
+.char-counter.is-near-limit {
+  color: var(--danger);
+}
+
+/* ---------- Submit / loading state ---------- */
+
+.submit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 26, 51, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 100;
+  color: #fff;
+  text-align: center;
+  padding: 24px;
+}
+
+.submit-overlay.visible {
+  display: flex;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-right-color: rgba(232, 139, 184, 0.9);
+  animation: spin 850ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-overlay p {
+  font-family: var(--font-display);
+  font-size: 17px;
+  max-width: 34ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1600ms;
+  }
+  * {
+    transition-duration: 1ms !important;
+  }
+}

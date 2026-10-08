@@ -1,0 +1,168 @@
+/* =====================================================================
+   header.css — shared CareerGuide header (logo + navigation tabs)
+
+   Visual reference: the header on resume.html. Every page links this one
+   file, so the logo, "CG" mark, font, sizes, spacing, navbar height, hover
+   and active-tab styling are identical everywhere. Class names are all
+   prefixed "cg-" so they cannot clash with page-level CSS (style.css,
+   assessment/css/*.css, resume.html's inline styles).
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.cg-navbar,
+.cg-navbar * {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cg-navbar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 18px rgba(88, 60, 140, 0.10);
+    border-bottom: 1px solid rgba(117, 64, 140, 0.10);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    line-height: 1.5;
+}
+
+.cg-nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;              /* fixed so the bar is the same height on every page */
+    padding: 0 20px;
+}
+
+/* ---- Logo: "CG" + "CareerGuide" (same as resume.html) ---- */
+.cg-logo {
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+/* The resume header shows the CG mark as plain bold blue text next to the name.
+   To switch to a filled badge, replace this rule with e.g.
+   { background:#2563eb; color:#fff; padding:8px 12px; border-radius:10px; }  */
+.cg-logo-icon,
+.cg-logo-text {
+    color: #2563eb;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* ---- NextHorizon logo image (same size + position on every page) ---- */
+.cg-logo-img {
+    display: block;
+    height: 50px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* ---- Navigation tabs ---- */
+.cg-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.cg-nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.cg-nav-link:hover {
+    color: #2563eb;
+}
+
+.cg-nav-link.active {
+    color: #2563eb;
+}
+
+.cg-nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #5b6cff, #ff66c4);
+}
+
+/* ---- Login / Logout button (identical on Home, Resume, Feedback, Recommendation) ---- */
+.cg-nav-links .cg-auth-btn {
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cg-nav-links .cg-auth-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
+}
+
+/* Reserves the space of the fixed bar on pages that don't already have a spacer. */
+.cg-nav-spacer {
+    height: 70px;
+}
+
+/* Footer variant of the logo (index.jsp) */
+.footer-logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+/* ---- Small screens: let the tabs wrap instead of overflowing ---- */
+@media (max-width: 768px) {
+    .cg-nav-container {
+        height: auto;
+        min-height: 64px;
+        padding: 8px 14px;
+        flex-wrap: wrap;
+        row-gap: 4px;
+    }
+    .cg-nav-links {
+        flex-wrap: wrap;
+        gap: 6px 16px;
+    }
+    .cg-nav-link {
+        font-size: 14px;
+    }
+    .cg-logo-img {
+        height: 38px;
+    }
+    .cg-nav-links .cg-auth-btn {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+    .cg-nav-spacer {
+        height: 104px;
+    }
+}

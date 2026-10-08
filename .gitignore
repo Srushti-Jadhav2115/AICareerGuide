@@ -1,0 +1,27 @@
+# Java/Tomcat compiled files
+*.class
+WEB-INF/classes/
+
+# Resume module - temporarily excluded
+resume.html
+*Resume*.java
+*Resume*.class
+
+# Feedback module - temporarily excluded
+feedback.html
+*Feedback*.java
+*Feedback*.class
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local secrets
+*.properties

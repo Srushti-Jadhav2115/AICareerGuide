@@ -1,0 +1,12 @@
+# Copy this file to WEB-INF/gemini.properties (same folder) and fill in
+# your real key. gemini.properties is loaded from the classpath at
+# runtime (it must end up in WEB-INF/classes — see the build/deployment
+# instructions in INTEGRATION_REPORT.md), and is never served as a
+# static file, so the key never reaches the browser.
+#
+# Get a key from https://aistudio.google.com/app/apikey
+
+gemini.api.key=YOUR_GEMINI_API_KEY_HERE
+
+# Optional — defaults to gemini-2.0-flash if omitted.
+# gemini.model=gemini-2.0-flash

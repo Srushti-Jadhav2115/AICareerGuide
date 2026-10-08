@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Job Profile | NextHorizon</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         SHARED HEADER
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="header.css?v=4">
+
+
+    <script src="header.js?v=4"
+            defer></script>
+
+
+    <!-- =====================================================
+         JOB PROFILE PAGE CSS
+    ====================================================== -->
+
+    <style>
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:"Inter",sans-serif; min-height:100vh; background:radial-gradient(circle at top left,rgba(87,174,255,.16),transparent 30%),radial-gradient(circle at top right,rgba(151,112,255,.12),transparent 30%),#f5f9ff; color:#172033; overflow-x:hidden; }
+
+        .cg-navbar { width:100%; background:rgba(255,255,255,.94); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-bottom:1px solid rgba(130,160,200,.16); position:sticky; top:0; z-index:1000; box-shadow:0 4px 24px rgba(20,35,60,.045); }
+        .cg-nav-container { max-width:1400px; margin:auto; min-height:76px; padding:0 30px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+        .cg-logo { display:flex; align-items:center; text-decoration:none; }
+        .cg-logo-img { max-height:48px; width:auto; display:block; }
+        .cg-nav-links { display:flex; align-items:center; gap:5px; flex-wrap:wrap; justify-content:flex-end; }
+        .cg-nav-link { position:relative; text-decoration:none; color:#667085; font-size:13px; font-weight:600; padding:10px 13px; border-radius:10px; transition:.22s ease; }
+        .cg-nav-link:hover,.cg-nav-link.active { color:#176fe8; background:#eef6ff; }
+        .cg-nav-link.active::after { content:""; position:absolute; left:13px; right:13px; bottom:3px; height:2px; background:#176fe8; border-radius:5px; }
+
+        .job-profile-container { width:100%; max-width:1240px; margin:0 auto; padding:44px 22px 70px; }
+
+        .page-heading { text-align:center; margin-bottom:30px; }
+        .page-badge { display:inline-flex; align-items:center; gap:8px; padding:8px 15px; border-radius:50px; background:rgba(37,126,255,.08); color:#176fe8; font-size:11px; font-weight:800; letter-spacing:.9px; margin-bottom:14px; }
+        .page-heading h1 { font-size:clamp(32px,5vw,48px); line-height:1.08; letter-spacing:-1.5px; color:#142039; margin-bottom:12px; font-weight:800; }
+        .page-heading h1 span { background:linear-gradient(135deg,#1677ff,#7b4dff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .page-heading p { max-width:720px; margin:auto; color:#65728a; font-size:14px; line-height:1.75; }
+
+        .module-intro { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:0 auto 24px; width:100%; }
+        .intro-card { position:relative; overflow:hidden; display:flex; align-items:flex-start; gap:17px; padding:23px; background:rgba(255,255,255,.88); border:1px solid rgba(130,160,200,.18); border-radius:22px; box-shadow:0 12px 35px rgba(38,82,130,.07); transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease; }
+        .intro-card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg,#1677ff,#7b4dff); }
+        .readiness-intro-card::before { background:linear-gradient(180deg,#06b6d4,#1677ff); }
+        .intro-card::after { content:""; position:absolute; width:120px; height:120px; border-radius:50%; right:-55px; top:-55px; background:rgba(37,126,255,.05); pointer-events:none; }
+        .readiness-intro-card::after { background:rgba(6,182,212,.05); }
+        .intro-card:hover { transform:translateY(-4px); box-shadow:0 18px 42px rgba(38,82,130,.11); border-color:rgba(71,142,235,.25); }
+        .intro-icon { position:relative; z-index:1; flex:0 0 52px; width:52px; height:52px; display:flex; align-items:center; justify-content:center; border-radius:15px; background:linear-gradient(135deg,#eef6ff,#e5f0ff); font-size:24px; box-shadow:inset 0 0 0 1px rgba(37,126,255,.06); }
+        .readiness-intro-card .intro-icon { background:linear-gradient(135deg,#ecfeff,#e5f7ff); }
+        .intro-content { min-width:0; position:relative; z-index:1; }
+        .intro-kicker { color:#6d7b91; font-size:10px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; margin-bottom:5px; }
+        .intro-content h2 { font-size:19px; color:#173f78; font-weight:800; margin-bottom:7px; }
+        .readiness-intro-card .intro-content h2 { color:#155e75; }
+        .intro-content p { font-size:12px; color:#6b778c; line-height:1.65; margin-bottom:14px; }
+        .intro-points { display:flex; flex-wrap:wrap; gap:7px; }
+        .intro-points span { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; color:#36527a; background:#f0f6ff; padding:7px 9px; border-radius:8px; }
+        .readiness-intro-card .intro-points span { color:#286276; background:#eefbfd; }
+
+        .choose-strip { display:flex; align-items:center; justify-content:center; gap:9px; margin:0 auto 18px; color:#7a879b; font-size:11px; font-weight:600; }
+        .choose-strip::before,.choose-strip::after { content:""; height:1px; width:80px; background:#dfe8f3; }
+        .choose-dot { width:6px; height:6px; border-radius:50%; background:#397fff; box-shadow:0 0 0 4px rgba(57,127,255,.08); }
+
+        .profile-tabs-wrapper { width:100%; display:flex; justify-content:center; margin-bottom:20px; }
+        .profile-tabs { display:inline-flex; align-items:center; gap:5px; padding:5px; background:rgba(255,255,255,.92); border:1px solid rgba(130,160,200,.18); border-radius:15px; box-shadow:0 8px 25px rgba(38,82,130,.07); }
+        .profile-tab { border:0; outline:0; background:transparent; color:#68768a; font-family:"Inter",sans-serif; font-size:12px; font-weight:700; padding:12px 25px; border-radius:11px; cursor:pointer; transition:.22s ease; white-space:nowrap; }
+        .profile-tab:hover { color:#176fe8; background:#f0f6ff; transform:translateY(-1px); }
+        .profile-tab.active { color:#fff; background:linear-gradient(135deg,#1677ff,#704dff); box-shadow:0 8px 20px rgba(60,111,255,.22); }
+
+        .module-container { width:100%; background:rgba(255,255,255,.55); border:1px solid rgba(130,160,200,.18); border-radius:22px; overflow:hidden; box-shadow:0 15px 45px rgba(38,82,130,.07); }
+        .module-frame { width:100%; border:0; display:block; min-height:850px; background:#fff; }
+        .hidden { display:none!important; }.module-frame.hidden { display:none!important; }
+        .module-loading { min-height:500px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:13px; color:#7c8aa0; background:#fff; }
+        .loading-spinner { width:38px; height:38px; border:4px solid #e7effb; border-top-color:#397fff; border-radius:50%; animation:jobProfileSpin .8s linear infinite; }
+        @keyframes jobProfileSpin { to { transform:rotate(360deg); } }
+        .module-loading strong { color:#26344d; font-size:13px; }.module-loading span { font-size:11px; color:#8b96a8; }
+
+        .job-profile-container.fullscreen-mode { max-width:none!important; width:100%!important; margin:0!important; padding:0!important; }
+        .fullscreen-mode .page-heading,.fullscreen-mode .module-intro,.fullscreen-mode .choose-strip,.fullscreen-mode .profile-tabs-wrapper { display:none!important; }
+        .fullscreen-mode .module-container { width:100%!important; margin:0!important; padding:0!important; border:0!important; border-radius:0!important; box-shadow:none!important; }
+        .fullscreen-mode .module-container>div:not(.hidden) { width:100%!important; margin:0!important; padding:0!important; }
+        .fullscreen-mode .module-frame { display:block; width:100%!important; height:calc(100vh - 76px)!important; min-height:calc(100vh - 76px)!important; border:0!important; margin:0!important; }
+        .embedded-go-job-profile { margin:30px auto 40px; text-align:center; }.embedded-go-job-profile button { border:0; border-radius:12px; padding:11px 21px; background:linear-gradient(135deg,#1677ff,#704dff); color:#fff; font-size:12px; font-weight:700; cursor:pointer; box-shadow:0 8px 20px rgba(37,99,235,.18); transition:.2s; }.embedded-go-job-profile button:hover { transform:translateY(-1px); }
+
+        @media(max-width:900px){ .cg-nav-container{padding:11px 18px}.cg-nav-links{gap:2px}.cg-nav-link{font-size:11px;padding:8px}.job-profile-container{padding:34px 18px 50px}.module-intro{grid-template-columns:1fr}.page-heading h1{font-size:34px} }
+        @media(max-width:650px){ .cg-nav-container{flex-direction:column;gap:8px}.cg-nav-links{justify-content:center}.cg-nav-link{font-size:10px;padding:6px 7px}.cg-logo-img{width:130px}.job-profile-container{padding:25px 12px 35px}.page-heading{margin-bottom:24px}.page-badge{font-size:9px;padding:7px 12px}.page-heading h1{font-size:29px;letter-spacing:-.9px}.page-heading p{font-size:11.5px}.module-intro{gap:11px}.intro-card{padding:17px;gap:12px;border-radius:17px}.intro-icon{width:43px;height:43px;flex-basis:43px;font-size:20px;border-radius:12px}.intro-kicker{font-size:8.5px}.intro-content h2{font-size:15px}.intro-content p{font-size:10.5px}.intro-points{gap:5px}.intro-points span{font-size:8.5px;padding:6px 7px}.choose-strip{font-size:9.5px}.choose-strip::before,.choose-strip::after{width:35px}.profile-tabs{width:100%}.profile-tab{flex:1;padding:11px 7px;font-size:10.5px}.module-container{border-radius:16px}.module-frame{min-height:900px} }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="cg-navbar">
+
+        <div class="cg-nav-container">
+
+
+            <!-- LOGO -->
+
+            <a class="cg-logo"
+               href="index.jsp">
+
+                <img
+                    class="cg-logo-img"
+                    src="images/nexthorizon-logo.png"
+                    alt="NextHorizon">
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="cg-nav-links">
+
+
+                <a href="index.jsp"
+                   class="cg-nav-link">
+
+                    Home
+
+                </a>
+
+
+                <a href="assessment/index.jsp"
+                   class="cg-nav-link">
+
+                    Career Assessment
+
+                </a>
+
+
+                <a href="learning-resources.html"
+                   class="cg-nav-link">
+
+                    Resource
+
+                </a>
+
+
+
+                 <a href="resume.html"
+                   class="cg-nav-link">
+
+                    Resume
+
+                </a>
+
+
+                <a href="job-profile.html"
+                   class="cg-nav-link active">
+
+                    Job Profile
+
+                </a>
+
+
+
+                <a href="feedback.html"
+                   class="cg-nav-link">
+
+                    Feedback
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="job-profile-container">
+
+
+        <!-- =================================================
+             PAGE HEADING
+        ================================================== -->
+
+        <section class="page-heading">
+
+            <div class="page-badge">✦ YOUR CAREER DASHBOARD</div>
+
+            <h1>Build A Stronger <span>Job Profile</span></h1>
+
+            <p>Understand where you stand, discover what to improve, and prepare for your next opportunity — all from one simple place.</p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EASY MODULE GUIDE
+        ================================================== -->
+
+        <section class="module-intro">
+
+            <div class="intro-card profile-intro-card">
+
+                <div class="intro-icon">📊</div>
+
+                <div class="intro-content">
+                    <div class="intro-kicker">Understand your profile</div>
+                    <h2>Profile Analysis</h2>
+
+                    <p>
+                        Understand how strong your professional profile is.
+                        Upload your resume and connect your LinkedIn or GitHub
+                        profile to get an easy-to-understand analysis of your
+                        skills, strengths, gaps and job-role match.
+                    </p>
+
+                    <div class="intro-points">
+                        <span>✓ Resume &amp; ATS analysis</span>
+                        <span>✓ Skills &amp; skill gaps</span>
+                        <span>✓ LinkedIn &amp; GitHub review</span>
+                        <span>✓ Role match &amp; suggestions</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="intro-card readiness-intro-card">
+
+                <div class="intro-icon">🚀</div>
+
+                <div class="intro-content">
+                    <div class="intro-kicker">Prepare for your target role</div>
+                    <h2>Job Readiness</h2>
+
+                    <p>
+                        Check how prepared you are for your target job.
+                        Follow a practical roadmap, improve your skills and
+                        prepare yourself for interviews and real job
+                        opportunities.
+                    </p>
+
+                    <div class="intro-points">
+                        <span>✓ Job readiness check</span>
+                        <span>✓ Skills &amp; learning roadmap</span>
+                        <span>✓ Interview preparation</span>
+                        <span>✓ Job-focused guidance</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="choose-strip"><span class="choose-dot"></span> Choose a module to get started <span class="choose-dot"></span></div>
+
+
+        <!-- =================================================
+             INTERNAL TABS
+        ================================================== -->
+
+        <div class="profile-tabs-wrapper">
+
+            <div class="profile-tabs">
+
+
+                <button
+                    type="button"
+                    class="profile-tab active"
+                    id="profileAnalysisTab"
+                    onclick="openModule('profile')">
+
+                    Profile Analysis
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-tab"
+                    id="jobReadinessTab"
+                    onclick="openModule('readiness')">
+
+                    Job Readiness
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MODULES
+        ================================================== -->
+
+        <section class="module-container">
+
+
+            <!-- =============================================
+                 PROFILE ANALYSIS
+            ============================================== -->
+
+            <div id="profileModule">
+
+                <div class="module-loading"
+                     id="profileLoading">
+
+                    <div class="loading-spinner"></div>
+
+                    <strong>
+                        Loading Profile Analysis...
+                    </strong>
+
+                    <span>
+                        Please wait
+                    </span>
+
+                </div>
+
+
+                <iframe
+                    id="profileFrame"
+                    class="module-frame"
+                    src="profile-analysis.html?embedded=1"
+                    title="Profile Analysis"
+                    loading="eager">
+                </iframe>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 JOB READINESS
+            ============================================== -->
+
+            <div id="readinessModule"
+                 class="hidden">
+
+                <div class="module-loading"
+                     id="readinessLoading">
+
+                    <div class="loading-spinner"></div>
+
+                    <strong>
+                        Loading Job Readiness...
+                    </strong>
+
+                    <span>
+                        Please wait
+                    </span>
+
+                </div>
+
+
+                <iframe
+                    id="readinessFrame"
+                    class="module-frame"
+                    title="Job Readiness"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const profileTab =
+            document.getElementById(
+                "profileAnalysisTab"
+            );
+
+
+        const readinessTab =
+            document.getElementById(
+                "jobReadinessTab"
+            );
+
+
+        const profileModule =
+            document.getElementById(
+                "profileModule"
+            );
+
+
+        const readinessModule =
+            document.getElementById(
+                "readinessModule"
+            );
+
+
+        const profileFrame =
+            document.getElementById(
+                "profileFrame"
+            );
+
+
+        const readinessFrame =
+            document.getElementById(
+                "readinessFrame"
+            );
+
+
+        const profileLoading =
+            document.getElementById(
+                "profileLoading"
+            );
+
+
+        const readinessLoading =
+            document.getElementById(
+                "readinessLoading"
+            );
+
+
+
+        /* =====================================================
+           HIDE LOADING AFTER PROFILE LOAD
+        ====================================================== */
+
+        /* =====================================================
+           HIDE THE ORIGINAL NAVBAR INSIDE AN IFRAME
+
+           profile-analysis.html and job-readiness.html are
+           intentionally NOT changed. Their existing navbar is
+           hidden only while those pages are embedded here.
+        ====================================================== */
+
+        function hideInnerNavbar(frame) {
+
+            try {
+
+                const doc =
+                    frame.contentDocument ||
+                    frame.contentWindow.document;
+
+                if (!doc) {
+                    return;
+                }
+
+                /* Hide the child page navbar without changing the
+                   child page's original HTML, CSS or JavaScript. */
+
+                let embeddedStyle =
+                    doc.getElementById("jobProfileEmbeddedStyle");
+
+                if (!embeddedStyle) {
+
+                    embeddedStyle = doc.createElement("style");
+                    embeddedStyle.id = "jobProfileEmbeddedStyle";
+
+                    embeddedStyle.textContent = `
+                        .cg-navbar {
+                            display: none !important;
+                            visibility: hidden !important;
+                            height: 0 !important;
+                            min-height: 0 !important;
+                            overflow: hidden !important;
+                        }
+                    `;
+
+                    (doc.head || doc.documentElement)
+                        .appendChild(embeddedStyle);
+                }
+
+                /* Hide every existing child navbar immediately. */
+
+                doc.querySelectorAll(".cg-navbar")
+                    .forEach(function (navbar) {
+
+                        navbar.style.setProperty(
+                            "display", "none", "important"
+                        );
+
+                        navbar.style.setProperty(
+                            "visibility", "hidden", "important"
+                        );
+
+                    });
+
+                /* header.js can add/update the navbar after iframe load.
+                   Keep watching the child document so a second navbar
+                   can never become visible. */
+
+                if (!frame._jobProfileObserver) {
+
+                    const observer = new MutationObserver(
+                        function () {
+
+                            doc.querySelectorAll(".cg-navbar")
+                                .forEach(function (navbar) {
+
+                                    navbar.style.setProperty(
+                                        "display", "none", "important"
+                                    );
+
+                                    navbar.style.setProperty(
+                                        "visibility", "hidden", "important"
+                                    );
+
+                                });
+
+                        }
+                    );
+
+                    observer.observe(
+                        doc.documentElement,
+                        {
+                            childList: true,
+                            subtree: true
+                        }
+                    );
+
+                    frame._jobProfileObserver = observer;
+                }
+
+                /* Remove the space reserved for the hidden navbar. */
+
+                const profilePage =
+                    doc.querySelector(".page-wrap");
+
+                if (profilePage) {
+
+                    profilePage.style.setProperty(
+                        "padding-top", "35px", "important"
+                    );
+
+                }
+
+                const readinessPage =
+                    doc.querySelector(".page-wrapper");
+
+                if (readinessPage) {
+
+                    readinessPage.style.setProperty(
+                        "padding-top", "35px", "important"
+                    );
+
+                }
+
+                resizeFrame(frame);
+
+            } catch (error) {
+
+                console.log(
+                    "Inner navbar hiding skipped:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           HIDE LOADING AFTER PROFILE LOAD
+        ====================================================== */
+
+        profileFrame.addEventListener(
+            "load",
+            function () {
+
+                profileLoading.style.display =
+                    "none";
+
+                hideInnerNavbar(
+                    profileFrame
+                );
+
+                addGoToJobProfileButton(profileFrame);
+
+                setTimeout(
+                    function () {
+
+                        hideInnerNavbar(
+                            profileFrame
+                        );
+
+                    },
+                    300
+                );
+
+                setTimeout(
+                    function () {
+
+                        resizeFrame(
+                            profileFrame
+                        );
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           HIDE LOADING AFTER READINESS LOAD
+        ====================================================== */
+
+        readinessFrame.addEventListener(
+            "load",
+            function () {
+
+                readinessLoading.style.display =
+                    "none";
+
+                hideInnerNavbar(
+                    readinessFrame
+                );
+
+                addGoToJobProfileButton(readinessFrame);
+
+                setTimeout(
+                    function () {
+
+                        hideInnerNavbar(
+                            readinessFrame
+                        );
+
+                    },
+                    300
+                );
+
+                setTimeout(
+                    function () {
+
+                        resizeFrame(
+                            readinessFrame
+                        );
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           OPEN MODULE
+        ====================================================== */
+
+        function openModule(module) {
+
+            document.querySelector('.job-profile-container').classList.add('fullscreen-mode');
+
+
+            /* ================================================
+               PROFILE ANALYSIS
+            ================================================= */
+
+            if (module === "profile") {
+
+
+                profileModule.classList.remove(
+                    "hidden"
+                );
+
+
+                readinessModule.classList.add(
+                    "hidden"
+                );
+
+
+                profileTab.classList.add(
+                    "active"
+                );
+
+
+                readinessTab.classList.remove(
+                    "active"
+                );
+
+
+                hideInnerNavbar(
+                    profileFrame
+                );
+
+                addGoToJobProfileButton(profileFrame);
+
+
+                resizeFrame(
+                    profileFrame
+                );
+
+
+                return;
+            }
+
+
+
+            /* ================================================
+               JOB READINESS
+            ================================================= */
+
+            if (module === "readiness") {
+
+
+                profileModule.classList.add(
+                    "hidden"
+                );
+
+
+                readinessModule.classList.remove(
+                    "hidden"
+                );
+
+
+                profileTab.classList.remove(
+                    "active"
+                );
+
+
+                readinessTab.classList.add(
+                    "active"
+                );
+
+
+                /*
+                 * Load Job Readiness only when the
+                 * user opens the tab.
+                 *
+                 * This keeps Profile Analysis as
+                 * the default module.
+                 */
+
+                if (
+                    !readinessFrame.getAttribute(
+                        "src"
+                    )
+                ) {
+
+                    readinessLoading.style.display =
+                        "flex";
+
+                    readinessFrame.src =
+                        "job-readiness.html?embedded=1";
+
+                }
+
+
+                setTimeout(
+                    function () {
+
+                        hideInnerNavbar(
+                            readinessFrame
+                        );
+
+                        addGoToJobProfileButton(readinessFrame);
+
+                        resizeFrame(
+                            readinessFrame
+                        );
+
+                    },
+                    500
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           RETURN TO JOB PROFILE
+
+           Called by the button injected at the end of each
+           embedded module.
+        ====================================================== */
+
+        function exitModuleFullscreen() {
+
+            document.querySelector('.job-profile-container')
+                .classList.remove('fullscreen-mode');
+
+            profileModule.classList.add('hidden');
+            readinessModule.classList.add('hidden');
+
+            profileTab.classList.remove('active');
+            readinessTab.classList.remove('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        /* =====================================================
+           ADD "GO TO JOB PROFILE" BUTTON TO MODULE END
+        ====================================================== */
+
+        function addGoToJobProfileButton(frame) {
+
+            try {
+
+                const doc = frame.contentDocument || frame.contentWindow.document;
+
+                if (!doc || !doc.body) return;
+
+                if (doc.getElementById('goToJobProfileButton')) return;
+
+                const wrapper = doc.createElement('div');
+                wrapper.className = 'embedded-go-job-profile';
+                wrapper.id = 'goToJobProfileButton';
+
+                const button = doc.createElement('button');
+                button.type = 'button';
+                button.textContent = '← Go to Job Profile';
+                button.addEventListener('click', function () {
+                    if (window.parent && window.parent !== window &&
+                        typeof window.parent.exitModuleFullscreen === 'function') {
+                        window.parent.exitModuleFullscreen();
+                    }
+                });
+
+                wrapper.appendChild(button);
+                doc.body.appendChild(wrapper);
+
+            } catch (error) {
+                console.log('Go to Job Profile button skipped.');
+            }
+        }
+
+
+        /* =====================================================
+           FRAME HEIGHT
+        ====================================================== */
+
+        function resizeFrame(frame) {
+
+            try {
+
+                if (
+                    !frame.contentWindow ||
+                    !frame.contentDocument
+                ) {
+                    return;
+                }
+
+
+                const documentElement =
+                    frame.contentDocument.documentElement;
+
+
+                const body =
+                    frame.contentDocument.body;
+
+
+                if (
+                    !documentElement ||
+                    !body
+                ) {
+                    return;
+                }
+
+
+                const height =
+                    Math.max(
+                        documentElement.scrollHeight,
+                        documentElement.offsetHeight,
+                        body.scrollHeight,
+                        body.offsetHeight
+                    );
+
+
+                if (height > 400) {
+
+                    frame.style.height =
+                        (height + 20) + "px";
+
+                }
+
+            } catch (error) {
+
+                /*
+                 * Same-origin pages should allow
+                 * access. If the browser blocks
+                 * height calculation, the default
+                 * min-height remains active.
+                 */
+
+                console.log(
+                    "Frame resize skipped."
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           RESIZE PROFILE AFTER PAGE LOAD
+        ====================================================== */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                setTimeout(
+                    function () {
+
+                        resizeFrame(
+                            profileFrame
+                        );
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RESIZE ON WINDOW CHANGE
+        ====================================================== */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                const visibleFrame =
+                    readinessModule.classList.contains(
+                        "hidden"
+                    )
+                        ? profileFrame
+                        : readinessFrame;
+
+
+                resizeFrame(
+                    visibleFrame
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INITIAL STATE
+
+           Nothing is displayed until the user clicks one of
+           the two Job Profile tabs.
+        ====================================================== */
+
+        profileModule.classList.add("hidden");
+        readinessModule.classList.add("hidden");
+
+        profileTab.classList.remove("active");
+        readinessTab.classList.remove("active");
+
+    </script>
+
+
+</body>
+
+</html>

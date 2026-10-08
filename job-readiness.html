@@ -1,0 +1,4491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Readiness | NextHorizon</title>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Existing Header Files -->
+    <link rel="stylesheet" href="header.css?v=4">
+    <script src="header.js?v=4" defer></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(87, 174, 255, 0.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(151, 112, 255, 0.12), transparent 30%),
+                #f5f9ff;
+            color: #172033;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page-wrapper {
+            max-width: 1240px;
+            margin: auto;
+            padding: 45px 22px 70px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 50px;
+            background: rgba(37, 126, 255, 0.08);
+            color: #176fe8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 1.08;
+            letter-spacing: -1.8px;
+            color: #142039;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #1677ff, #7b4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+            color: #65728a;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .process-item {
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(130, 160, 200, 0.18);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            box-shadow: 0 8px 30px rgba(38, 82, 130, 0.05);
+        }
+
+        .process-number {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1677ff, #7254ff);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .process-item strong {
+            display: block;
+            font-size: 14px;
+            color: #25314a;
+            margin-bottom: 3px;
+        }
+
+        .process-item small {
+            color: #8792a6;
+            font-size: 11px;
+        }
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+.profile-source-notice {
+            display:none;
+            margin:0 0 22px;
+            padding:14px 17px;
+            border:1px solid rgba(37,126,255,.16);
+            border-radius:15px;
+            background:rgba(37,126,255,.07);
+            color:#176fe8;
+            font-size:13px;
+            font-weight:700;
+            line-height:1.5;
+        }
+
+        .profile-source-notice span {
+            color:#65728a;
+            font-weight:500;
+        }
+
+        .analyzer-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(130, 160, 200, 0.18);
+            border-radius: 28px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(39, 74, 120, 0.09);
+            margin-bottom: 30px;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            font-size: 22px;
+            color: #17233b;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #7a879b;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #354158;
+        }
+
+        .form-group label span {
+            color: #ef5c67;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #dce5f0;
+            background: #fbfdff;
+            border-radius: 13px;
+            padding: 13px 15px;
+            font-family: inherit;
+            font-size: 13px;
+            color: #26334b;
+            outline: none;
+            transition: 0.25s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #62a9ff;
+            box-shadow: 0 0 0 4px rgba(52, 137, 255, 0.09);
+            background: white;
+        }
+
+        textarea {
+            min-height: 190px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        input[type="file"] {
+            padding: 11px;
+            cursor: pointer;
+        }
+
+        .optional {
+            color: #9aa4b5;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           ANALYZE BUTTON
+        ========================= */
+
+        .button-area {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .analyze-btn {
+            border: none;
+            cursor: pointer;
+            padding: 15px 32px;
+            min-width: 230px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #1677ff, #704dff);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            box-shadow: 0 12px 25px rgba(60, 111, 255, 0.22);
+            transition: 0.25s ease;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(60, 111, 255, 0.28);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading-box {
+            display: none;
+            text-align: center;
+            padding: 35px;
+            background: white;
+            border-radius: 22px;
+            border: 1px solid #e3ebf5;
+            margin-bottom: 30px;
+        }
+
+        .loader {
+            width: 38px;
+            height: 38px;
+            border: 4px solid #e7effb;
+            border-top-color: #397fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-box strong {
+            display: block;
+            color: #26344d;
+            margin-bottom: 6px;
+        }
+
+        .loading-box span {
+            color: #8b96a8;
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESULTS
+        ========================= */
+
+        #results {
+            display: none;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(130, 160, 200, 0.18);
+            border-radius: 25px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 45px rgba(38, 82, 130, 0.06);
+        }
+
+        .result-title {
+            font-size: 19px;
+            color: #1d2941;
+            margin-bottom: 6px;
+        }
+
+        .result-subtitle {
+            font-size: 12px;
+            color: #8792a6;
+            margin-bottom: 20px;
+        }
+
+        /* =====================================================
+   STICKY RESULT NAVIGATION
+===================================================== */
+
+.result-tabs-wrapper {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+
+    margin: 0 0 24px;
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(130, 160, 200, 0.20);
+
+    border-radius: 0 0 20px 20px;
+
+    box-shadow:
+        0 10px 30px rgba(38, 82, 130, 0.10);
+
+    transition:
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Navigation row */
+
+.result-tabs {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    padding: 2px;
+
+    white-space: nowrap;
+}
+
+
+.result-tabs::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+/* Individual tab */
+
+.result-tab {
+
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    border: 1px solid #dce7f5;
+
+    background: #f9fbff;
+
+    color: #66748a;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    white-space: nowrap;
+}
+
+
+.result-tab:hover {
+
+    background: #eef6ff;
+
+    border-color: #a8cbf5;
+
+    color: #216fd3;
+
+    transform: translateY(-1px);
+}
+
+
+.result-tab.active {
+
+    color: white;
+
+    border-color: transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1677ff,
+            #704dff
+        );
+
+    box-shadow:
+        0 7px 18px
+        rgba(61, 111, 255, 0.20);
+}
+
+
+.result-tab-icon {
+
+    margin-right: 5px;
+}
+
+        .result-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            padding: 2px;
+        }
+
+        .result-tabs::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .result-tabs::-webkit-scrollbar-thumb {
+            background: #cbd9ec;
+            border-radius: 20px;
+        }
+
+        .result-tab {
+            flex: 0 0 auto;
+            border: 1px solid #dce7f5;
+            background: #f9fbff;
+            color: #66748a;
+            padding: 10px 15px;
+            border-radius: 11px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .result-tab:hover {
+            background: #eef6ff;
+            border-color: #a8cbf5;
+            color: #216fd3;
+            transform: translateY(-1px);
+        }
+
+        .result-tab.active {
+            color: white;
+            border-color: transparent;
+            background: linear-gradient(135deg, #1677ff, #704dff);
+            box-shadow: 0 7px 18px rgba(61, 111, 255, 0.18);
+        }
+
+        .result-tab-icon {
+            margin-right: 5px;
+        }
+
+        .result-section-hidden {
+            display: none !important;
+        }
+
+        .result-section-visible {
+            display: block !important;
+        }
+
+        /* =========================
+           READINESS HERO
+        ========================= */
+
+        .readiness-hero {
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            align-items: center;
+            gap: 30px;
+            background: linear-gradient(135deg, #eef7ff, #f7f3ff);
+            border: 1px solid #dcecff;
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 22px;
+        }
+
+        .score-circle {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: conic-gradient(#287eff var(--score), #e3edf8 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: auto;
+        }
+
+        .score-circle::before {
+            content: "";
+            position: absolute;
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .score-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1b6fff;
+        }
+
+        .score-percent {
+            font-size: 12px;
+            color: #8b96a8;
+        }
+
+        .readiness-info h2 {
+            font-size: 26px;
+            color: #1d2941;
+            margin-bottom: 8px;
+        }
+
+        .readiness-info p {
+            color: #68758b;
+            line-height: 1.7;
+            font-size: 13px;
+        }
+
+        /* =========================
+           SCORE COMPONENTS
+        ========================= */
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .score-item {
+            border: 1px solid #e2eaf4;
+            border-radius: 16px;
+            padding: 17px;
+            background: #fbfdff;
+        }
+
+        .score-item .label {
+            font-size: 11px;
+            color: #7f8a9c;
+            margin-bottom: 8px;
+        }
+
+        .score-item .value {
+            font-size: 22px;
+            font-weight: 800;
+            color: #236fff;
+        }
+
+        /* =========================
+           SKILL CHIPS
+        ========================= */
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .skill-chip {
+            padding: 8px 12px;
+            background: #edf6ff;
+            color: #176de0;
+            border: 1px solid #d7ebff;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .skill-chip.missing {
+            background: #fff2f3;
+            border-color: #ffd9dd;
+            color: #d95763;
+        }
+
+        .skill-chip.good {
+            background: #eefbf5;
+            border-color: #d4f2e2;
+            color: #168151;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .evidence-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        .evidence-table th {
+            background: #f5f8fc;
+            color: #68758a;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            padding: 13px;
+            text-align: left;
+        }
+
+        .evidence-table td {
+            padding: 14px 13px;
+            border-bottom: 1px solid #edf1f6;
+            color: #455168;
+            font-size: 12px;
+        }
+
+        .status {
+            display: inline-flex;
+            padding: 6px 10px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .status.strong {
+            color: #137d4d;
+            background: #eaf9f1;
+        }
+
+        .status.good {
+            color: #1e72d0;
+            background: #edf6ff;
+        }
+
+        .status.partial {
+            color: #a16c00;
+            background: #fff8e7;
+        }
+
+        .status.missing {
+            color: #cf4c59;
+            background: #fff0f2;
+        }
+
+        /* =========================
+           GAPS
+        ========================= */
+
+        .gap-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .gap-item {
+            border: 1px solid #f0dfe2;
+            background: #fffafb;
+            border-radius: 16px;
+            padding: 17px;
+        }
+
+        .gap-item h4 {
+            color: #cf4d5c;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .gap-item p {
+            color: #737e91;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .gap-action {
+            color: #246fd3;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* =========================
+           ROADMAP
+        ========================= */
+
+        .roadmap {
+            display: grid;
+            gap: 14px;
+        }
+
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 16px;
+            padding: 18px;
+            background: #fbfdff;
+            border: 1px solid #e2eaf3;
+            border-radius: 17px;
+        }
+
+        .day-box {
+            height: 54px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #eaf4ff, #f1edff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #276fda;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .roadmap-content h4 {
+            font-size: 14px;
+            color: #29364d;
+            margin-bottom: 6px;
+        }
+
+        .roadmap-content p {
+            font-size: 12px;
+            color: #7b8799;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MINI PROJECT
+        ========================= */
+
+        .project-box {
+            background: linear-gradient(135deg, #f1f8ff, #f7f3ff);
+            border: 1px solid #dfeaff;
+            border-radius: 19px;
+            padding: 22px;
+        }
+
+        .project-box h3 {
+            font-size: 18px;
+            color: #243149;
+            margin-bottom: 9px;
+        }
+
+        .project-box p {
+            color: #69758a;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .project-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-step {
+            padding: 9px 12px;
+            background: white;
+            border: 1px solid #dce7f5;
+            border-radius: 10px;
+            color: #4d5a70;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .arrow {
+            color: #7b8aa2;
+            font-weight: 800;
+        }
+
+        /* =========================
+           DYNAMIC RESOURCES
+        ========================= */
+
+        .resource-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .resource-tab {
+            border: 1px solid #dce7f5;
+            background: #f9fbff;
+            color: #637087;
+            padding: 9px 14px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .resource-tab:hover {
+            border-color: #9ecaff;
+            color: #2174dc;
+            background: #eef6ff;
+        }
+
+        .resource-tab.active {
+            color: white;
+            border-color: transparent;
+            background: linear-gradient(135deg, #1677ff, #704dff);
+            box-shadow: 0 7px 18px rgba(61, 111, 255, 0.18);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .resource-card {
+            background: #fbfdff;
+            border: 1px solid #e2eaf3;
+            border-radius: 17px;
+            padding: 18px;
+            transition: 0.25s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-2px);
+            border-color: #c9dcf5;
+            box-shadow: 0 10px 25px rgba(39, 88, 140, 0.07);
+        }
+
+        .resource-type {
+            display: inline-block;
+            padding: 5px 9px;
+            background: #eef5ff;
+            color: #2873d8;
+            border-radius: 7px;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .resource-card h4 {
+            color: #29364d;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .resource-card p {
+            color: #7b8799;
+            font-size: 11px;
+            line-height: 1.6;
+            margin-bottom: 13px;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: #216fd3;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .resource-note {
+            margin-top: 15px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: #f6f9fd;
+            border: 1px solid #e7edf5;
+            color: #8a95a7;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           INTERVIEW
+        ========================= */
+
+        .interview-category {
+            margin-bottom: 28px;
+        }
+
+        .interview-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .interview-category-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 13px;
+        }
+
+        .interview-category-number {
+            min-width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #eaf4ff, #f1edff);
+            color: #286fd3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .interview-category-heading h3 {
+            color: #29364d;
+            font-size: 15px;
+        }
+
+        .interview-category-heading span {
+            color: #99a3b3;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .interview-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .question-card {
+            border: 1px solid #e2e9f2;
+            border-radius: 16px;
+            padding: 17px;
+            background: #fbfdff;
+        }
+
+        .question-category {
+            display: inline-block;
+            padding: 5px 9px;
+            background: #eef5ff;
+            color: #2673d9;
+            border-radius: 7px;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .question-card p {
+            color: #364259;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .question-number {
+            color: #9aa5b5;
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           RECHECK
+        ========================= */
+
+        .again-area {
+            text-align: center;
+            padding-top: 8px;
+        }
+
+        .again-btn {
+            border: 1px solid #cfe0f5;
+            background: white;
+            color: #216bd0;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .again-btn:hover {
+            background: #eef6ff;
+        }
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error-box {
+            display: none;
+            margin-top: 16px;
+            padding: 13px 15px;
+            background: #fff2f3;
+            border: 1px solid #ffd8dc;
+            border-radius: 12px;
+            color: #c84e5b;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           FOOTER NOTE
+        ========================= */
+
+        .method-note {
+            text-align: center;
+            color: #98a2b2;
+            font-size: 10px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .cg-nav-container {
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .cg-nav-links {
+                justify-content: center;
+            }
+
+            .process-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .score-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .readiness-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .page-wrapper {
+                padding: 30px 14px 50px;
+            }
+
+            .analyzer-card,
+            .result-card {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .process-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .score-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cg-nav-links {
+                gap: 3px;
+            }
+
+            .cg-nav-link {
+                font-size: 11px;
+                padding: 8px 9px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .roadmap-item {
+                grid-template-columns: 58px 1fr;
+            }
+
+            .result-tabs-wrapper {
+                top: 0;
+                padding: 9px;
+                border-radius: 0 0 16px 16px;
+
+}
+
+            .result-tabs {
+                gap: 6px;
+            }
+
+            .result-tab {
+                padding: 9px 12px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+
+    <!-- =========================
+         PAGE
+    ========================== -->
+
+    <main class="page-wrapper">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                STUDENT JOB READINESS
+            </div>
+
+            <h1>
+                Are You <span>Ready</span> For This Job?
+            </h1>
+
+            <p>
+                Compare the job with your resume, find missing skills,
+                follow a simple plan, and prepare for the interview.
+            </p>
+
+        </section>
+
+
+        <!-- PROCESS -->
+
+        <section class="process-strip">
+
+            <div class="process-item">
+                <div class="process-number">01</div>
+                <div>
+                    <strong>Target Job</strong>
+                    <small>Choose your target role</small>
+                </div>
+            </div>
+
+            <div class="process-item">
+                <div class="process-number">02</div>
+                <div>
+                    <strong>Compare</strong>
+                    <small>Match skills & evidence</small>
+                </div>
+            </div>
+
+            <div class="process-item">
+                <div class="process-number">03</div>
+                <div>
+                    <strong>Improve</strong>
+                    <small>Build your roadmap</small>
+                </div>
+            </div>
+
+            <div class="process-item">
+                <div class="process-number">04</div>
+                <div>
+                    <strong>Prepare</strong>
+                    <small>Practice interview questions</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- INPUT CARD -->
+
+        <section class="analyzer-card">
+
+            <div class="profile-source-notice" id="profileSourceNotice">
+                ✓ Profile Analysis data loaded
+                <span>— Resume, LinkedIn, GitHub and target role are being reused.</span>
+            </div>
+
+            <div class="section-heading">
+
+                <h2>
+                    Tell Us About Your Target Job
+                </h2>
+
+                <p>
+                    Your profile information is automatically taken from Profile Analysis.
+                    Add the job description to see how ready you are for the role and what you should improve.
+                </p>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Target Job <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="targetJob"
+                        placeholder="Example: Python Developer">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Company
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="company"
+                        placeholder="Example: ABC Technologies">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Job Description <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="jobDescription"
+                        placeholder="Paste the complete job description here...
+
+Example:
+We are looking for a Python Developer with experience in Python, FastAPI, REST APIs, SQL, Git, Docker and AWS. The candidate should be able to build APIs, work with databases and deploy applications."></textarea>
+
+                </div>
+
+
+                <div class="form-group" id="resumeInputGroup">
+
+                    <label>
+                        Resume PDF <span>*</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="resumeFile"
+                        accept=".pdf">
+
+                </div>
+
+
+                <div class="form-group" id="githubInputGroup">
+
+                    <label>
+                        GitHub
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="github"
+                        placeholder="https://github.com/username">
+
+                </div>
+
+
+                <div class="form-group full" id="linkedinInputGroup">
+
+                    <label>
+                        LinkedIn
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="linkedin"
+                        placeholder="https://linkedin.com/in/username">
+
+                </div>
+
+            </div>
+
+
+            <div class="error-box" id="errorBox"></div>
+
+
+            <div class="button-area">
+
+                <button
+                    class="analyze-btn"
+                    id="analyzeBtn"
+                    onclick="analyzeReadiness()">
+
+                    ANALYZE READINESS
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+
+        <div class="loading-box" id="loadingBox">
+
+            <div class="loader"></div>
+
+            <strong>
+                Analyzing Your Job Readiness...
+            </strong>
+
+            <span id="loadingText">
+                Reading your resume and job requirements.
+            </span>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <section id="results">
+
+            <!-- READINESS -->
+
+            <div class="result-card">
+
+                <div class="readiness-hero">
+
+                    <div
+                        class="score-circle"
+                        id="scoreCircle">
+
+                        <div class="score-content">
+
+                            <div
+                                class="score-number"
+                                id="scoreNumber">
+                                0
+                            </div>
+
+                            <div class="score-percent">
+                                READINESS
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="readiness-info">
+
+                        <h2 id="readinessTitle">
+                            Job Readiness
+                        </h2>
+
+                        <p id="readinessDescription">
+                            Your job readiness result will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="score-grid">
+
+                    <div class="score-item">
+
+                        <div class="label">
+                            Required Skills
+                        </div>
+
+                        <div
+                            class="value"
+                            id="skillScore">
+                            0%
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-item">
+
+                        <div class="label">
+                            Project Evidence
+                        </div>
+
+                        <div
+                            class="value"
+                            id="projectScore">
+                            0%
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-item">
+
+                        <div class="label">
+                            Interview Readiness
+                        </div>
+
+                        <div
+                            class="value"
+                            id="interviewScore">
+                            0%
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-item">
+
+                        <div class="label">
+                            Profile Evidence
+                        </div>
+
+                        <div
+                            class="value"
+                            id="profileScore">
+                            0%
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REQUIRED SKILLS -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Job Requirements
+                </h2>
+
+                <p class="result-subtitle">
+                    Skills needed for this job.
+                </p>
+
+                <div
+                    class="skills-container"
+                    id="requiredSkills">
+                </div>
+
+            </div>
+
+
+            <!-- PROOF OF SKILL -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Proof-of-Skill Map
+                </h2>
+
+                <p class="result-subtitle">
+                    See which job skills are supported by your resume,
+                    projects and GitHub.
+                </p>
+
+                <div class="table-wrapper">
+
+                    <table class="evidence-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Skill</th>
+                                <th>Resume</th>
+                                <th>Project</th>
+                                <th>GitHub</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="evidenceBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- SKILL GAPS -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Skill Gaps
+                </h2>
+
+                <p class="result-subtitle">
+                    These are the skills you should improve first.
+                </p>
+
+                <div
+                    class="gap-list"
+                    id="gapList">
+                </div>
+
+            </div>
+
+
+            <!-- ROADMAP -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Personalized Roadmap
+                </h2>
+
+                <p class="result-subtitle">
+                    Follow these simple steps to prepare for the job.
+                </p>
+
+                <div
+                    class="roadmap"
+                    id="roadmap">
+                </div>
+
+            </div>
+
+
+            <!-- MINI PROJECT -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Recommended Mini-Project
+                </h2>
+
+                <p class="result-subtitle">
+                    Build a small project to show your missing skills.
+                </p>
+
+                <div
+                    class="project-box"
+                    id="miniProject">
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DYNAMIC RESOURCES
+            ========================== -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Personalized Learning Resources
+                </h2>
+
+                <p class="result-subtitle">
+                    Resources are chosen based on the job, your resume,
+                    and the skills you need to improve.
+                </p>
+
+                <div
+                    class="resource-tabs"
+                    id="resourceTabs">
+                </div>
+
+                <div
+                    class="resource-grid"
+                    id="resourceGrid">
+                </div>
+
+                <div class="resource-note">
+                    Resources are based on the skills found in your analysis.
+                    The current version creates useful search links.
+                    Real resource APIs can be connected later through a backend.
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 INTERVIEW
+            ========================== -->
+
+            <div class="result-card">
+
+                <h2 class="result-title">
+                    Personalized Interview Preparation
+                </h2>
+
+                <p class="result-subtitle">
+                    50 questions are created from your resume, target job,
+                    job description, skills and missing skills.
+                </p>
+
+                <div
+                    class="interview-list"
+                    id="interviewList">
+                </div>
+
+            </div>
+
+
+            <!-- AGAIN -->
+
+            <div class="again-area">
+
+                <button
+                    class="again-btn"
+                    onclick="resetAnalysis()">
+
+                    ANALYZE AGAIN
+
+                </button>
+
+                <div class="method-note">
+                    The readiness score is an estimate based on the information
+                    you provide. It is not an official hiring score.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* ==========================================
+           SKILL DATABASE
+        ========================================== */
+
+        const SKILLS = [
+
+            "python",
+            "java",
+            "javascript",
+            "typescript",
+            "c++",
+            "c",
+            "html",
+            "css",
+
+            "react",
+            "angular",
+            "vue",
+
+            "node.js",
+            "node",
+            "express",
+
+            "fastapi",
+            "django",
+            "flask",
+            "spring boot",
+
+            "rest api",
+            "rest apis",
+            "api",
+
+            "sql",
+            "mysql",
+            "postgresql",
+            "mongodb",
+
+            "git",
+            "github",
+            "gitlab",
+
+            "docker",
+            "kubernetes",
+
+            "aws",
+            "azure",
+            "gcp",
+            "google cloud",
+
+            "machine learning",
+            "deep learning",
+            "artificial intelligence",
+            "ai",
+
+            "tensorflow",
+            "pytorch",
+            "scikit-learn",
+
+            "pandas",
+            "numpy",
+
+            "data analysis",
+            "data visualization",
+
+            "excel",
+            "power bi",
+            "tableau",
+            "statistics",
+
+            "linux",
+            "firebase",
+
+            "communication",
+            "leadership",
+            "problem solving"
+
+        ];
+
+
+        /* ==========================================
+           PDF TEXT EXTRACTION
+        ========================================== */
+
+        async function extractPDFText(file) {
+
+            const arrayBuffer = await file.arrayBuffer();
+
+            const pdf = await pdfjsLib.getDocument({
+                data: arrayBuffer
+            }).promise;
+
+            let text = "";
+
+            for (let i = 1; i <= pdf.numPages; i++) {
+
+                const page = await pdf.getPage(i);
+
+                const content = await page.getTextContent();
+
+                const pageText = content.items
+                    .map(item => item.str)
+                    .join(" ");
+
+                text += pageText + "\n";
+
+            }
+
+            return text;
+
+        }
+
+
+        /* ==========================================
+           SKILL EXTRACTION
+        ========================================== */
+
+        function extractSkills(text) {
+
+            const lower = text.toLowerCase();
+
+            const found = [];
+
+            SKILLS.forEach(skill => {
+
+                const pattern =
+                    skill === "c++"
+                        ? /c\+\+/i
+                        : new RegExp(
+                            "\\b" +
+                            skill
+                                .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+                                .replace(/\s+/g, "\\s+") +
+                            "\\b",
+                            "i"
+                        );
+
+                if (pattern.test(lower)) {
+
+                    if (!found.includes(skill)) {
+                        found.push(skill);
+                    }
+
+                }
+
+            });
+
+            return found;
+
+        }
+
+
+        /* ==========================================
+           DISPLAY NAME
+        ========================================== */
+
+        function displaySkill(skill) {
+
+            const names = {
+
+                "python": "Python",
+                "java": "Java",
+                "javascript": "JavaScript",
+                "typescript": "TypeScript",
+                "c++": "C++",
+                "c": "C",
+                "html": "HTML",
+                "css": "CSS",
+
+                "react": "React",
+                "angular": "Angular",
+                "vue": "Vue",
+
+                "node.js": "Node.js",
+                "node": "Node.js",
+                "express": "Express",
+
+                "fastapi": "FastAPI",
+                "django": "Django",
+                "flask": "Flask",
+                "spring boot": "Spring Boot",
+
+                "rest api": "REST API",
+                "rest apis": "REST API",
+                "api": "API",
+
+                "sql": "SQL",
+                "mysql": "MySQL",
+                "postgresql": "PostgreSQL",
+                "mongodb": "MongoDB",
+
+                "git": "Git",
+                "github": "GitHub",
+                "gitlab": "GitLab",
+
+                "docker": "Docker",
+                "kubernetes": "Kubernetes",
+
+                "aws": "AWS",
+                "azure": "Azure",
+                "gcp": "GCP",
+                "google cloud": "Google Cloud",
+
+                "machine learning": "Machine Learning",
+                "deep learning": "Deep Learning",
+                "artificial intelligence": "Artificial Intelligence",
+                "ai": "AI",
+
+                "tensorflow": "TensorFlow",
+                "pytorch": "PyTorch",
+                "scikit-learn": "Scikit-learn",
+
+                "pandas": "Pandas",
+                "numpy": "NumPy",
+
+                "data analysis": "Data Analysis",
+                "data visualization": "Data Visualization",
+
+                "excel": "Excel",
+                "power bi": "Power BI",
+                "tableau": "Tableau",
+                "statistics": "Statistics",
+
+                "linux": "Linux",
+                "firebase": "Firebase",
+
+                "communication": "Communication",
+                "leadership": "Leadership",
+                "problem solving": "Problem Solving"
+
+            };
+
+            return names[skill] || skill;
+
+        }
+
+
+        /* ==========================================
+           PROJECT EVIDENCE
+        ========================================== */
+
+        function detectProjectEvidence(resumeText, skill) {
+
+            const lower = resumeText.toLowerCase();
+
+            const projectWords = [
+                "project",
+                "projects",
+                "developed",
+                "built",
+                "implemented",
+                "created",
+                "application",
+                "system"
+            ];
+
+            const skillFound =
+                lower.includes(skill.toLowerCase());
+
+            if (!skillFound) {
+                return false;
+            }
+
+            return projectWords.some(word =>
+                lower.includes(word)
+            );
+
+        }
+
+
+        /* ==========================================
+           STATUS
+        ========================================== */
+
+        function getStatus(
+            resume,
+            project,
+            github,
+            linkedin
+        ) {
+
+            if (resume && project && github) {
+
+                return {
+                    name: "Strong",
+                    className: "strong"
+                };
+
+            }
+
+            if (resume && project) {
+
+                return {
+                    name: "Strong",
+                    className: "strong"
+                };
+
+            }
+
+            if (resume && github) {
+
+                return {
+                    name: "Good",
+                    className: "good"
+                };
+
+            }
+
+            if (resume) {
+
+                return {
+                    name: "Good",
+                    className: "good"
+                };
+
+            }
+
+            if (github || linkedin) {
+
+                return {
+                    name: "Partial",
+                    className: "partial"
+                };
+
+            }
+
+            return {
+                name: "Missing",
+                className: "missing"
+            };
+
+        }
+
+
+        /* ==========================================
+           PROJECT SCORE
+        ========================================== */
+
+        function calculateProjectScore(
+            requiredSkills,
+            resumeText
+        ) {
+
+            if (!requiredSkills.length) {
+                return 0;
+            }
+
+            let evidence = 0;
+
+            requiredSkills.forEach(skill => {
+
+                if (
+                    detectProjectEvidence(
+                        resumeText,
+                        skill
+                    )
+                ) {
+
+                    evidence++;
+
+                }
+
+            });
+
+            return Math.round(
+                (evidence / requiredSkills.length) * 100
+            );
+
+        }
+
+
+        /* ==========================================
+           MAIN ANALYSIS
+        ========================================== */
+
+        async function analyzeReadiness() {
+
+            const savedProfile =
+                sessionStorage.getItem("nextHorizonCandidateProfile");
+
+            const profile =
+                savedProfile ? JSON.parse(savedProfile) : null;
+
+            const targetJob =
+                document.getElementById("targetJob").value.trim();
+
+            const company =
+                document.getElementById("company").value.trim();
+
+            const jd =
+                document.getElementById("jobDescription").value.trim();
+
+            hideError();
+
+            if (!profile || !profile.resumeText) {
+                showError("Please complete Profile Analysis first. Your Resume, LinkedIn, GitHub and target role will then be available here automatically.");
+                return;
+            }
+
+            if (!targetJob) {
+                showError("Please enter your target job.");
+                return;
+            }
+
+            if (!jd) {
+                showError("Please paste the job description.");
+                return;
+            }
+
+            const resumeText = profile.resumeText;
+            const github = profile.githubUrl || profile.githubText || "";
+            const linkedin = profile.linkedinUrl || profile.linkedinText || "";
+
+            try {
+
+                const button =
+                    document.getElementById("analyzeBtn");
+
+                button.disabled = true;
+                button.innerText = "ANALYZING...";
+
+
+                showLoading(
+                    "Using your Profile Analysis data..."
+                );
+
+
+                if (!resumeText.trim()) {
+
+                    throw new Error(
+                        "No resume information was found in your Profile Analysis."
+                    );
+
+                }
+
+
+            showLoading(
+                    "Finding the skills needed for the job..."
+                );
+
+
+                const requiredSkills =
+                    extractSkills(jd);
+
+
+                const resumeSkills =
+                    extractSkills(resumeText);
+
+
+                showLoading(
+                    "Checking your skills and projects..."
+                );
+
+
+                const evidence =
+                    requiredSkills.map(skill => {
+
+                        const resume =
+                            resumeSkills.includes(skill);
+
+                        const project =
+                            detectProjectEvidence(
+                                resumeText,
+                                skill
+                            );
+
+                        const githubEvidence =
+                            github.length > 0 &&
+                            github.toLowerCase()
+                                .includes(skill.toLowerCase());
+
+                        const linkedinEvidence =
+                            linkedin.length > 0;
+
+
+                        const status =
+                            getStatus(
+                                resume,
+                                project,
+                                githubEvidence,
+                                linkedinEvidence
+                            );
+
+
+                        return {
+                            skill,
+                            resume,
+                            project,
+                            github: githubEvidence,
+                            linkedin: linkedinEvidence,
+                            status
+                        };
+
+                    });
+
+
+                const matchedSkills =
+                    evidence.filter(
+                        item => item.resume
+                    ).length;
+
+
+                const skillScore =
+                    requiredSkills.length
+                        ? Math.round(
+                            (matchedSkills /
+                                requiredSkills.length) * 100
+                        )
+                        : 0;
+
+
+                const projectScore =
+                    calculateProjectScore(
+                        requiredSkills,
+                        resumeText
+                    );
+
+
+                const interviewScore =
+                    Math.min(
+                        100,
+                        45 +
+                        Math.min(
+                            35,
+                            requiredSkills.length * 5
+                        ) +
+                        (resumeText.length > 1200 ? 20 : 5)
+                    );
+
+
+                const profileScore =
+                    Math.min(
+                        100,
+                        (github ? 50 : 0) +
+                        (linkedin ? 50 : 0)
+                    );
+
+
+                /*
+                 * Application-defined methodology:
+                 *
+                 * Skills       30%
+                 * Projects     25%
+                 * Interview    25%
+                 * Profile      20%
+                 */
+
+                const readiness =
+                    Math.round(
+                        skillScore * 0.30 +
+                        projectScore * 0.25 +
+                        interviewScore * 0.25 +
+                        profileScore * 0.20
+                    );
+
+
+                const missingSkills =
+                    evidence
+                        .filter(
+                            item => !item.resume
+                        )
+                        .map(
+                            item => item.skill
+                        );
+
+
+                showLoading(
+                    "Building your simple job preparation plan..."
+                );
+
+
+                const analysis = {
+
+                    targetJob,
+                    company,
+                    jd,
+                    resumeText,
+                    requiredSkills,
+                    resumeSkills,
+                    evidence,
+                    skillScore,
+                    projectScore,
+                    interviewScore,
+                    profileScore,
+                    readiness,
+                    missingSkills,
+                    github,
+                    linkedin
+
+                };
+
+
+                renderResults(analysis);
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showError(
+                    error.message ||
+                    "Something went wrong while analyzing your resume."
+                );
+
+            } finally {
+
+                document.getElementById(
+                    "analyzeBtn"
+                ).disabled = false;
+
+                document.getElementById(
+                    "analyzeBtn"
+                ).innerText =
+                    "ANALYZE READINESS";
+
+                hideLoading();
+
+            }
+
+        }
+
+
+        /* ==========================================
+           RESULT SECTION TABS
+        ========================================== */
+
+        function createResultTabs() {
+
+            const results =
+                document.getElementById("results");
+
+
+            if (
+                document.getElementById(
+                    "resultTabsWrapper"
+                )
+            ) {
+                return;
+            }
+
+
+            const tabWrapper =
+                document.createElement("div");
+
+
+            tabWrapper.className =
+                "result-tabs-wrapper";
+
+
+            tabWrapper.id =
+                "resultTabsWrapper";
+
+
+            tabWrapper.innerHTML = `
+
+                <div class="result-tabs">
+
+                    <button
+                        type="button"
+                        class="result-tab active"
+                        onclick="showResultSection('overview', this)">
+
+                        <span class="result-tab-icon">📊</span>
+                        Overview
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('requirements', this)">
+
+                        <span class="result-tab-icon">🎯</span>
+                        Job Requirements
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('evidence', this)">
+
+                        <span class="result-tab-icon">🔎</span>
+                        Skill Evidence
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('gaps', this)">
+
+                        <span class="result-tab-icon">⚠️</span>
+                        Skill Gaps
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('roadmap', this)">
+
+                        <span class="result-tab-icon">🗺️</span>
+                        Roadmap
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('project', this)">
+
+                        <span class="result-tab-icon">💻</span>
+                        Mini Project
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('resources', this)">
+
+                        <span class="result-tab-icon">📚</span>
+                        Resources
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="result-tab"
+                        onclick="showResultSection('interview', this)">
+
+                        <span class="result-tab-icon">🎤</span>
+                        Interview
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            results.insertBefore(
+                tabWrapper,
+                results.firstElementChild
+            );
+
+        }
+
+
+        /* ==========================================
+           SHOW SELECTED RESULT SECTION
+        ========================================== */
+
+        function showResultSection(
+            section,
+            selectedButton
+        ) {
+
+            const results =
+                document.getElementById("results");
+
+
+            document
+                .querySelectorAll(
+                    "#resultTabsWrapper .result-tab"
+                )
+                .forEach(tab => {
+
+                    tab.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+            if (selectedButton) {
+
+                selectedButton.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const cards =
+                results.querySelectorAll(
+                    ".result-card"
+                );
+
+
+            cards.forEach(card => {
+
+                card.classList.add(
+                    "result-section-hidden"
+                );
+
+                card.classList.remove(
+                    "result-section-visible"
+                );
+
+            });
+
+
+            let selectedCard = null;
+
+
+            switch (section) {
+
+                case "overview":
+                    selectedCard = cards[0];
+                    break;
+
+                case "requirements":
+                    selectedCard = cards[1];
+                    break;
+
+                case "evidence":
+                    selectedCard = cards[2];
+                    break;
+
+                case "gaps":
+                    selectedCard = cards[3];
+                    break;
+
+                case "roadmap":
+                    selectedCard = cards[4];
+                    break;
+
+                case "project":
+                    selectedCard = cards[5];
+                    break;
+
+                case "resources":
+                    selectedCard = cards[6];
+                    break;
+
+                case "interview":
+                    selectedCard = cards[7];
+                    break;
+
+            }
+
+
+            if (selectedCard) {
+
+                selectedCard.classList.remove(
+                    "result-section-hidden"
+                );
+
+                selectedCard.classList.add(
+                    "result-section-visible"
+                );
+
+            }
+
+
+            const tabWrapper =
+                document.getElementById(
+                    "resultTabsWrapper"
+                );
+
+
+            if (tabWrapper) {
+
+                const top =
+                    tabWrapper.getBoundingClientRect().top +
+                    window.scrollY -
+                    90;
+
+
+                window.scrollTo({
+
+                    top: Math.max(0, top),
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        }
+
+
+        /* ==========================================
+           DEFAULT RESULT SECTION
+        ========================================== */
+
+        function showDefaultResultSection() {
+
+            const results =
+                document.getElementById("results");
+
+
+            const cards =
+                results.querySelectorAll(
+                    ".result-card"
+                );
+
+
+            cards.forEach(card => {
+
+                card.classList.add(
+                    "result-section-hidden"
+                );
+
+                card.classList.remove(
+                    "result-section-visible"
+                );
+
+            });
+
+
+            if (cards[0]) {
+
+                cards[0].classList.remove(
+                    "result-section-hidden"
+                );
+
+                cards[0].classList.add(
+                    "result-section-visible"
+                );
+
+            }
+
+
+            document
+                .querySelectorAll(
+                    "#resultTabsWrapper .result-tab"
+                )
+                .forEach((tab, index) => {
+
+                    tab.classList.toggle(
+                        "active",
+                        index === 0
+                    );
+
+                });
+
+        }
+
+
+        /* ==========================================
+           RENDER RESULTS
+        ========================================== */
+
+        function renderResults(data) {
+
+            const results =
+                document.getElementById("results");
+
+            results.style.display = "block";
+
+
+            createResultTabs();
+
+
+            const score =
+                data.readiness;
+
+
+            document.getElementById(
+                "scoreNumber"
+            ).innerText = score;
+
+
+            document.getElementById(
+                "scoreCircle"
+            ).style.setProperty(
+                "--score",
+                score + "%"
+            );
+
+
+            let title = "";
+            let description = "";
+
+
+            if (score >= 80) {
+
+                title = "You Are Job Ready!";
+
+                description =
+                    "Your skills match the job well. Focus on improving your projects, interview answers and real work examples.";
+
+            } else if (score >= 60) {
+
+                title = "Good Starting Point";
+
+                description =
+                    "You already have some skills for this job. Improve the missing skills and add more project proof.";
+
+            } else {
+
+                title = "Needs Improvement";
+
+                description =
+                    "You have a clear plan to improve. Learn the missing skills, build projects and practice job-related questions.";
+
+            }
+
+
+            document.getElementById(
+                "readinessTitle"
+            ).innerText = title;
+
+
+            document.getElementById(
+                "readinessDescription"
+            ).innerText = description;
+
+
+            document.getElementById(
+                "skillScore"
+            ).innerText =
+                data.skillScore + "%";
+
+
+            document.getElementById(
+                "projectScore"
+            ).innerText =
+                data.projectScore + "%";
+
+
+            document.getElementById(
+                "interviewScore"
+            ).innerText =
+                data.interviewScore + "%";
+
+
+            document.getElementById(
+                "profileScore"
+            ).innerText =
+                data.profileScore + "%";
+
+
+            /* REQUIRED SKILLS */
+
+            const requiredContainer =
+                document.getElementById(
+                    "requiredSkills"
+                );
+
+
+            if (!data.requiredSkills.length) {
+
+                requiredContainer.innerHTML =
+                    `<span class="skill-chip">
+                        No recognized technical skills found
+                    </span>`;
+
+            } else {
+
+                requiredContainer.innerHTML =
+                    data.requiredSkills
+                        .map(
+                            skill =>
+                                `<span class="skill-chip">
+                                    ${escapeHTML(
+                                        displaySkill(skill)
+                                    )}
+                                </span>`
+                        )
+                        .join("");
+
+            }
+
+
+            /* EVIDENCE TABLE */
+
+            const evidenceBody =
+                document.getElementById(
+                    "evidenceBody"
+                );
+
+
+            evidenceBody.innerHTML =
+                data.evidence
+                    .map(item => {
+
+                        return `
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        ${escapeHTML(
+                                            displaySkill(item.skill)
+                                        )}
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    ${item.resume ? "✓" : "—"}
+                                </td>
+
+                                <td>
+                                    ${item.project ? "✓" : "—"}
+                                </td>
+
+                                <td>
+                                    ${item.github ? "✓" : "—"}
+                                </td>
+
+                                <td>
+                                    <span class="status ${item.status.className}">
+                                        ${item.status.name}
+                                    </span>
+                                </td>
+
+                            </tr>
+                        `;
+
+                    })
+                    .join("");
+
+
+            /* GAPS */
+
+            renderGaps(
+                data.missingSkills,
+                data.targetJob
+            );
+
+
+            /* ROADMAP */
+
+            renderRoadmap(
+                data.missingSkills,
+                data.targetJob
+            );
+
+
+            /* MINI PROJECT */
+
+            renderMiniProject(
+                data.missingSkills,
+                data.targetJob
+            );
+
+
+            /* DYNAMIC RESOURCES */
+
+            renderResources(data);
+
+
+            /* 50 INTERVIEW QUESTIONS */
+
+            renderInterview(data);
+
+
+            setTimeout(() => {
+
+                showDefaultResultSection();
+
+                results.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }, 150);
+
+        }
+
+
+        /* ==========================================
+           SKILL GAPS
+        ========================================== */
+
+        function renderGaps(
+            missingSkills,
+            targetJob
+        ) {
+
+            const container =
+                document.getElementById(
+                    "gapList"
+                );
+
+
+            if (!missingSkills.length) {
+
+                container.innerHTML = `
+                    <div class="gap-item"
+                         style="border-color:#d8f0e3;background:#f8fffb;">
+
+                        <h4 style="color:#178153;">
+                            No Major Skill Gap Detected
+                        </h4>
+
+                        <p>
+                            Your resume already shows the main skills
+                            needed for this job. Now focus on stronger
+                            projects and interview practice.
+                        </p>
+
+                        <div class="gap-action">
+                            Build stronger projects to show your skills.
+                        </div>
+
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                missingSkills
+                    .slice(0, 8)
+                    .map(skill => {
+
+                        const name =
+                            displaySkill(skill);
+
+
+                        return `
+                            <div class="gap-item">
+
+                                <h4>
+                                    ${escapeHTML(name)}
+                                </h4>
+
+                                <p>
+                                    The
+                                    <strong>
+                                        ${escapeHTML(targetJob)}
+                                    </strong>
+                                    job needs this skill, but
+                                    your resume does not show
+                                    strong proof of it.
+                                </p>
+
+                                <div class="gap-action">
+                                    Action:
+                                    Learn ${escapeHTML(name)},
+                                    use it in a project, publish
+                                    the project and add it to your resume.
+                                </div>
+
+                            </div>
+                        `;
+
+                    })
+                    .join("");
+
+        }
+
+
+        /* ==========================================
+           ROADMAP
+        ========================================== */
+
+        function renderRoadmap(
+            missingSkills,
+            targetJob
+        ) {
+
+            const roadmap =
+                document.getElementById(
+                    "roadmap"
+                );
+
+
+            const items = [];
+
+
+            if (missingSkills.length) {
+
+                missingSkills
+                    .slice(0, 4)
+                    .forEach(
+                        (skill, index) => {
+
+                            items.push({
+
+                                day:
+                                    `DAY ${index + 1}-${index + 2}`,
+
+                                title:
+                                    `${displaySkill(skill)} Basics`,
+
+                                description:
+                                    `Learn the basic ideas of ${displaySkill(skill)} and see how it is used in ${targetJob} jobs.`
+
+                            });
+
+                        }
+                    );
+
+            }
+
+
+            const start =
+                missingSkills.length + 1;
+
+
+            items.push({
+
+                day:
+                    `DAY ${start}-${start + 2}`,
+
+                title:
+                    "Build a Practical Project",
+
+                description:
+                    `Build a simple ${targetJob} project using your missing skills. Make sure it works and solves a real problem.`
+
+            });
+
+
+            items.push({
+
+                day:
+                    `DAY ${start + 3}-${start + 4}`,
+
+                title:
+                    "GitHub & Resume Proof",
+
+                description:
+                    "Put your project on GitHub, add a simple README and screenshots, then add the project to your resume."
+
+            });
+
+
+            items.push({
+
+                day:
+                    `DAY ${start + 5}-${start + 6}`,
+
+                title:
+                    "Interview Preparation",
+
+                description:
+                    "Practice technical, project, skill-gap, situation-based and HR questions based on your resume and target job."
+
+            });
+
+
+            items.push({
+
+                day:
+                    `DAY ${start + 7}`,
+
+                title:
+                    "Final Readiness Check",
+
+                description:
+                    "Improve your profile and analyze it again to see if your readiness score gets better."
+
+            });
+
+
+            roadmap.innerHTML =
+                items.map(item => {
+
+                    return `
+                        <div class="roadmap-item">
+
+                            <div class="day-box">
+                                ${escapeHTML(item.day)}
+                            </div>
+
+                            <div class="roadmap-content">
+
+                                <h4>
+                                    ${escapeHTML(item.title)}
+                                </h4>
+
+                                <p>
+                                    ${escapeHTML(item.description)}
+                                </p>
+
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        /* ==========================================
+           MINI PROJECT
+        ========================================== */
+
+        function renderMiniProject(
+            missingSkills,
+            targetJob
+        ) {
+
+            let projectName =
+                `${targetJob} Practical Project`;
+
+            let description =
+                `Build a simple ${targetJob} project that shows the skills needed for the job.`;
+
+            let steps = [
+                "Plan",
+                "Build",
+                "Test",
+                "GitHub",
+                "Resume",
+                "Interview"
+            ];
+
+
+            const first =
+                missingSkills[0];
+
+
+            if (first === "docker") {
+
+                projectName =
+                    "Dockerized FastAPI Job Tracker";
+
+                description =
+                    "Build a small FastAPI job tracker and run it using Docker. This can show your API, database and Docker skills.";
+
+                steps = [
+                    "Build API",
+                    "Dockerize",
+                    "Test",
+                    "GitHub",
+                    "Resume",
+                    "Interview"
+                ];
+
+            } else if (first === "aws") {
+
+                projectName =
+                    "Cloud-Deployed Job Application";
+
+                description =
+                    "Build a small web application and deploy it on AWS. Write down the main deployment steps and add the project to GitHub and your resume.";
+
+                steps = [
+                    "Build",
+                    "AWS",
+                    "Deploy",
+                    "GitHub",
+                    "Resume",
+                    "Interview"
+                ];
+
+            } else if (first === "sql") {
+
+                projectName =
+                    "SQL-Powered Job Management System";
+
+                description =
+                    "Create a simple job management system using SQL to store users, jobs, applications and application status.";
+
+                steps = [
+                    "Database",
+                    "Backend",
+                    "SQL",
+                    "GitHub",
+                    "Resume",
+                    "Interview"
+                ];
+
+            } else if (first === "fastapi") {
+
+                projectName =
+                    "FastAPI Career API";
+
+                description =
+                    "Build a simple API where students can store jobs, skills, applications and career progress.";
+
+                steps = [
+                    "Design API",
+                    "FastAPI",
+                    "Database",
+                    "GitHub",
+                    "Resume",
+                    "Interview"
+                ];
+
+            } else if (first) {
+
+                projectName =
+                    `${displaySkill(first)} ${targetJob} Project`;
+
+                description =
+                    `Build a simple ${targetJob} project that clearly shows your ${displaySkill(first)} skill.`;
+
+                steps = [
+                    "Plan",
+                    displaySkill(first),
+                    "Build",
+                    "GitHub",
+                    "Resume",
+                    "Interview"
+                ];
+
+            }
+
+
+            document.getElementById(
+                "miniProject"
+            ).innerHTML = `
+
+                <h3>
+                    ${escapeHTML(projectName)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(description)}
+                </p>
+
+                <div class="project-flow">
+
+                    ${steps.map(
+                        (step, index) => {
+
+                            return `
+                                <span class="project-step">
+                                    ${escapeHTML(step)}
+                                </span>
+
+                                ${
+                                    index <
+                                    steps.length - 1
+                                        ? `<span class="arrow">→</span>`
+                                        : ""
+                                }
+                            `;
+
+                        }
+                    ).join("")}
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* =====================================================
+           DYNAMIC RESOURCE SYSTEM
+        ===================================================== */
+
+        let currentResourceData = [];
+        let activeResourceCategory = "all";
+
+
+        function buildResourceCategories(data) {
+
+            const categories = [];
+
+            const addSkill = skill => {
+
+                if (!skill) {
+                    return;
+                }
+
+                if (!categories.some(
+                    item => item.type === "skill" &&
+                        item.value === skill
+                )) {
+
+                    categories.push({
+                        type: "skill",
+                        value: skill,
+                        label: displaySkill(skill)
+                    });
+
+                }
+
+            };
+
+
+            data.requiredSkills.forEach(addSkill);
+
+            data.missingSkills.forEach(addSkill);
+
+
+            data.resumeSkills.forEach(skill => {
+
+                if (data.requiredSkills.includes(skill)) {
+                    addSkill(skill);
+                }
+
+            });
+
+
+            categories.push({
+                type: "projects",
+                value: "projects",
+                label: "Projects"
+            });
+
+
+            categories.push({
+                type: "practice",
+                value: "practice",
+                label: "Practice"
+            });
+
+
+            return categories;
+
+        }
+
+
+        function createSearchURL(
+            platform,
+            query
+        ) {
+
+            const encoded =
+                encodeURIComponent(query);
+
+
+            if (platform === "youtube") {
+
+                return `https://www.youtube.com/results?search_query=${encoded}`;
+
+            }
+
+
+            if (platform === "google") {
+
+                return `https://www.google.com/search?q=${encoded}`;
+
+            }
+
+
+            if (platform === "github") {
+
+                return `https://github.com/search?q=${encoded}&type=repositories`;
+
+            }
+
+
+            return "#";
+
+        }
+
+
+        function getResourcesForCategory(
+            category,
+            data
+        ) {
+
+            const target =
+                data.targetJob;
+
+
+            if (category.type === "skill") {
+
+                const skill =
+                    displaySkill(category.value);
+
+
+                return [
+
+                    {
+                        type: "Learning",
+                        title: `${skill} Learning`,
+                        description:
+                            `Learn the basics of ${skill} that are useful for a ${target} job.`,
+                        url:
+                            createSearchURL(
+                                "youtube",
+                                `${skill} tutorial for ${target}`
+                            ),
+                        label: "Find Learning Videos →"
+                    },
+
+                    {
+                        type: "Documentation",
+                        title: `${skill} Documentation`,
+                        description:
+                            `Read simple and official information to understand ${skill}.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${skill} official documentation`
+                            ),
+                        label: "Open Documentation Search →"
+                    },
+
+                    {
+                        type: "Practice",
+                        title: `${skill} Practice`,
+                        description:
+                            `Practice ${skill} with coding tasks and job-related questions.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${skill} coding practice exercises`
+                            ),
+                        label: "Find Practice →"
+                    },
+
+                    {
+                        type: "Project",
+                        title: `${skill} Project Ideas`,
+                        description:
+                            `Find simple projects that can help you show your ${skill} skill.`,
+                        url:
+                            createSearchURL(
+                                "github",
+                                `${skill} ${target} project`
+                            ),
+                        label: "Explore GitHub Projects →"
+                    }
+
+                ];
+
+            }
+
+
+            if (category.type === "projects") {
+
+                const skillQuery =
+                    data.requiredSkills
+                        .slice(0, 5)
+                        .map(displaySkill)
+                        .join(" ");
+
+
+                return [
+
+                    {
+                        type: "Projects",
+                        title: `${target} Project Ideas`,
+                        description:
+                            `Find project ideas using the skills needed for a ${target} job.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} project ideas ${skillQuery}`
+                            ),
+                        label: "Find Project Ideas →"
+                    },
+
+                    {
+                        type: "GitHub",
+                        title: "Relevant GitHub Projects",
+                        description:
+                            `See GitHub projects related to ${target} and the skills found in the job.`,
+                        url:
+                            createSearchURL(
+                                "github",
+                                `${target} ${skillQuery}`
+                            ),
+                        label: "Explore GitHub →"
+                    },
+
+                    {
+                        type: "Portfolio",
+                        title: "Portfolio Project Examples",
+                        description:
+                            `See project examples that can help you build a stronger portfolio.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} portfolio project examples`
+                            ),
+                        label: "Find Examples →"
+                    },
+
+                    {
+                        type: "Practice",
+                        title: "Build Your Own Project",
+                        description:
+                            `Use your missing skills in one project and put the result on GitHub.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} project architecture tutorial`
+                            ),
+                        label: "Find Project Guidance →"
+                    }
+
+                ];
+
+            }
+
+
+            if (category.type === "practice") {
+
+                const skills =
+                    data.requiredSkills
+                        .slice(0, 5)
+                        .map(displaySkill)
+                        .join(", ");
+
+
+                return [
+
+                    {
+                        type: "Coding",
+                        title: `${target} Coding Practice`,
+                        description:
+                            `Practice coding problems for ${target} using skills such as ${skills}.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} coding interview practice ${skills}`
+                            ),
+                        label: "Find Coding Practice →"
+                    },
+
+                    {
+                        type: "Interview",
+                        title: `${target} Interview Practice`,
+                        description:
+                            `Practice common technical interview questions for this job.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} technical interview questions`
+                            ),
+                        label: "Find Interview Practice →"
+                    },
+
+                    {
+                        type: "Scenarios",
+                        title: "Real-World Scenarios",
+                        description:
+                            `Practice debugging and simple real-world job situations.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} real world technical interview scenarios`
+                            ),
+                        label: "Find Scenarios →"
+                    },
+
+                    {
+                        type: "Mock Interview",
+                        title: "Mock Interview Practice",
+                        description:
+                            `Practice answering questions using your own resume and project experience.`,
+                        url:
+                            createSearchURL(
+                                "google",
+                                `${target} mock interview questions`
+                            ),
+                        label: "Find Mock Interviews →"
+                    }
+
+                ];
+
+            }
+
+
+            return [];
+
+        }
+
+
+        function renderResourceTabs(
+            categories,
+            data
+        ) {
+
+            const container =
+                document.getElementById(
+                    "resourceTabs"
+                );
+
+
+            container.innerHTML = "";
+
+
+            const allButton =
+                document.createElement("button");
+
+
+            allButton.className =
+                "resource-tab active";
+
+
+            allButton.innerHTML =
+                "✨ All";
+
+
+            allButton.onclick = () => {
+
+                activeResourceCategory = "all";
+
+                document
+                    .querySelectorAll(".resource-tab")
+                    .forEach(button =>
+                        button.classList.remove("active")
+                    );
+
+                allButton.classList.add("active");
+
+                renderResourceCards(
+                    "all",
+                    categories,
+                    data
+                );
+
+            };
+
+
+            container.appendChild(allButton);
+
+
+            categories.forEach(category => {
+
+                const button =
+                    document.createElement("button");
+
+
+                button.className =
+                    "resource-tab";
+
+
+                button.innerHTML =
+                    getResourceCategoryIcon(category)
+                    + " "
+                    + escapeHTML(category.label);
+
+
+                button.onclick = () => {
+
+                    activeResourceCategory =
+                        category.value;
+
+                    document
+                        .querySelectorAll(".resource-tab")
+                        .forEach(button =>
+                            button.classList.remove("active")
+                        );
+
+                    button.classList.add("active");
+
+                    renderResourceCards(
+                        category.value,
+                        categories,
+                        data
+                    );
+
+                };
+
+
+                container.appendChild(button);
+
+            });
+
+        }
+
+
+        function getResourceCategoryIcon(
+            category
+        ) {
+
+            if (category.type === "projects") {
+                return "💻";
+            }
+
+            if (category.type === "practice") {
+                return "🧪";
+            }
+
+
+            const icons = {
+
+                "python": "🐍",
+                "java": "☕",
+                "javascript": "🟨",
+                "typescript": "🔷",
+                "c++": "⚙️",
+                "c": "⚙️",
+                "html": "🌐",
+                "css": "🎨",
+
+                "react": "⚛️",
+                "angular": "🅰️",
+                "vue": "💚",
+
+                "node.js": "🟢",
+                "node": "🟢",
+                "express": "🚂",
+
+                "fastapi": "⚡",
+                "django": "🎯",
+                "flask": "🧪",
+                "spring boot": "🌱",
+
+                "rest api": "🔌",
+                "rest apis": "🔌",
+                "api": "🔌",
+
+                "sql": "🗄️",
+                "mysql": "🐬",
+                "postgresql": "🐘",
+                "mongodb": "🍃",
+
+                "git": "🔀",
+                "github": "🐙",
+                "gitlab": "🦊",
+
+                "docker": "🐳",
+                "kubernetes": "☸️",
+
+                "aws": "☁️",
+                "azure": "☁️",
+                "gcp": "☁️",
+                "google cloud": "☁️",
+
+                "machine learning": "🤖",
+                "deep learning": "🧠",
+                "artificial intelligence": "🤖",
+                "ai": "🤖",
+
+                "tensorflow": "🧠",
+                "pytorch": "🔥",
+                "scikit-learn": "📊",
+
+                "pandas": "🐼",
+                "numpy": "🔢",
+
+                "data analysis": "📊",
+                "data visualization": "📈",
+
+                "excel": "📗",
+                "power bi": "📊",
+                "tableau": "📉",
+                "statistics": "📐",
+
+                "linux": "🐧",
+                "firebase": "🔥",
+
+                "communication": "💬",
+                "leadership": "👥",
+                "problem solving": "🧩"
+
+            };
+
+
+            return icons[category.value] || "📚";
+
+        }
+
+
+        function renderResourceCards(
+            selected,
+            categories,
+            data
+        ) {
+
+            const container =
+                document.getElementById(
+                    "resourceGrid"
+                );
+
+
+            let resources = [];
+
+
+            if (selected === "all") {
+
+                categories.forEach(category => {
+
+                    const categoryResources =
+                        getResourcesForCategory(
+                            category,
+                            data
+                        );
+
+
+                    resources.push(
+                        ...categoryResources.slice(0, 2)
+                    );
+
+                });
+
+            } else {
+
+                const category =
+                    categories.find(
+                        item =>
+                            item.value === selected
+                    );
+
+
+                if (category) {
+
+                    resources =
+                        getResourcesForCategory(
+                            category,
+                            data
+                        );
+
+                }
+
+            }
+
+
+            if (!resources.length) {
+
+                container.innerHTML = `
+                    <div class="resource-card">
+
+                        <h4>
+                            No resources generated
+                        </h4>
+
+                        <p>
+                            Add more details to the job
+                            description so useful resources
+                            can be created.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                resources
+                    .map(resource => {
+
+                        return `
+                            <div class="resource-card">
+
+                                <span class="resource-type">
+                                    ${escapeHTML(resource.type)}
+                                </span>
+
+                                <h4>
+                                    ${escapeHTML(resource.title)}
+                                </h4>
+
+                                <p>
+                                    ${escapeHTML(resource.description)}
+                                </p>
+
+                                <a
+                                    class="resource-link"
+                                    href="${escapeHTML(resource.url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+
+                                    ${escapeHTML(resource.label)}
+
+                                </a>
+
+                            </div>
+                        `;
+
+                    })
+                    .join("");
+
+        }
+
+
+        function renderResources(data) {
+
+            const categories =
+                buildResourceCategories(data);
+
+
+            currentResourceData =
+                categories;
+
+
+            activeResourceCategory =
+                "all";
+
+
+            renderResourceTabs(
+                categories,
+                data
+            );
+
+
+            renderResourceCards(
+                "all",
+                categories,
+                data
+            );
+
+        }
+
+
+        /* =====================================================
+           DYNAMIC INTERVIEW QUESTION ENGINE
+        ===================================================== */
+
+        function renderInterview(data) {
+
+            const container =
+                document.getElementById(
+                    "interviewList"
+                );
+
+
+            const questionsByCategory =
+                generateInterviewQuestions(data);
+
+
+            let html = "";
+
+            let categoryNumber = 1;
+
+
+            Object.keys(
+                questionsByCategory
+            ).forEach(category => {
+
+                const questions =
+                    questionsByCategory[category];
+
+
+                html += `
+
+                    <div class="interview-category">
+
+                        <div class="interview-category-heading">
+
+                            <div class="interview-category-number">
+                                ${String(categoryNumber).padStart(2, "0")}
+                            </div>
+
+                            <h3>
+                                ${escapeHTML(category)}
+                            </h3>
+
+                            <span>
+                                5 Questions
+                            </span>
+
+                        </div>
+
+                        <div class="interview-list">
+
+                            ${questions.map(
+                                (question, index) => {
+
+                                    return `
+
+                                        <div class="question-card">
+
+                                            <div class="question-number">
+                                                QUESTION ${index + 1}
+                                            </div>
+
+                                            <span class="question-category">
+                                                ${escapeHTML(category)}
+                                            </span>
+
+                                            <p>
+                                                ${escapeHTML(question)}
+                                            </p>
+
+                                        </div>
+
+                                    `;
+
+                                }
+                            ).join("")}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                categoryNumber++;
+
+            });
+
+
+            container.innerHTML = html;
+
+        }
+
+
+        function getProjectReference(
+            resumeText,
+            targetJob
+        ) {
+
+            const lower =
+                resumeText.toLowerCase();
+
+
+            const projectPatterns = [
+                "project",
+                "projects",
+                "developed",
+                "built",
+                "implemented",
+                "application",
+                "system"
+            ];
+
+
+            for (const word of projectPatterns) {
+
+                const index =
+                    lower.indexOf(word);
+
+
+                if (index !== -1) {
+
+                    const start =
+                        Math.max(
+                            0,
+                            index - 80
+                        );
+
+
+                    const end =
+                        Math.min(
+                            resumeText.length,
+                            index + 180
+                        );
+
+
+                    let snippet =
+                        resumeText
+                            .substring(start, end)
+                            .replace(/\s+/g, " ")
+                            .trim();
+
+
+                    if (snippet.length > 160) {
+
+                        snippet =
+                            snippet.substring(
+                                0,
+                                160
+                            ) + "...";
+
+                    }
+
+
+                    return snippet;
+
+                }
+
+            }
+
+
+            return `a project related to ${targetJob}`;
+
+        }
+
+
+        function generateInterviewQuestions(data) {
+
+            const target =
+                data.targetJob ||
+                "this job";
+
+
+            const required =
+                data.requiredSkills.length
+                    ? data.requiredSkills
+                        .slice(0, 8)
+                        .map(displaySkill)
+                    : ["the required technologies"];
+
+
+            const resumeSkills =
+                data.resumeSkills.length
+                    ? data.resumeSkills
+                        .slice(0, 8)
+                        .map(displaySkill)
+                    : ["your technical skills"];
+
+
+            const missing =
+                data.missingSkills.length
+                    ? data.missingSkills
+                        .slice(0, 6)
+                        .map(displaySkill)
+                    : ["the main required skills"];
+
+
+            const primarySkill =
+                required[0];
+
+
+            const secondSkill =
+                required[1] ||
+                primarySkill;
+
+
+            const resumeSkill =
+                resumeSkills[0];
+
+
+            const resumeSkillTwo =
+                resumeSkills[1] ||
+                resumeSkill;
+
+
+            const gapSkill =
+                missing[0];
+
+
+            const gapSkillTwo =
+                missing[1] ||
+                gapSkill;
+
+
+            const project =
+                getProjectReference(
+                    data.resumeText,
+                    target
+                );
+
+
+            const company =
+                data.company ||
+                "the company";
+
+
+            const fundamentals = [
+
+                `What are the basic things a ${target} should know about ${primarySkill}?`,
+
+                `Explain ${primarySkill} in simple words. Where would you use it in a ${target} job?`,
+
+                `What ${primarySkill} topics would you study before starting a ${target} job?`,
+
+                `What is the difference between basic use of ${primarySkill} and using it in a real project?`,
+
+                `What common mistakes should a beginner avoid when using ${primarySkill}?`
+
+            ];
+
+
+            const technical = [
+
+                `How would you use ${primarySkill} and ${secondSkill} together in a ${target} project?`,
+
+                `If you had to add a new feature using ${primarySkill}, how would you build and test it?`,
+
+                `If something goes wrong with ${primarySkill}, how would you find and fix the problem?`,
+
+                `Why would you choose ${primarySkill} for a ${target} project?`,
+
+                `How would you make a ${primarySkill} solution faster, safer or easier to maintain?`
+
+            ];
+
+
+            const advanced = [
+
+                `What advanced ${primarySkill} topics are useful when building a large ${target} system?`,
+
+                `If a ${primarySkill} application becomes slow, how would you find the problem?`,
+
+                `What should you think about when using ${primarySkill} and ${secondSkill} together?`,
+
+                `How would you make a ${primarySkill} project work well when many users use it?`,
+
+                `If your first ${primarySkill} solution does not work well in a real project, what would you change?`
+
+            ];
+
+
+            const jobSpecific = [
+
+                `What do you think is the main responsibility of a ${target} at ${company}?`,
+
+                `Which part of this job description would you focus on during your first 30 days?`,
+
+                `If you joined as a ${target} and got a task using ${primarySkill}, how would you start?`,
+
+                `Which technologies in this job description work together, and how would you use them?`,
+
+                `What would you do in your first week to understand the team, project and work?`
+
+            ];
+
+
+            const resumeBased = [
+
+                `Your resume shows ${resumeSkill}. How have you used ${resumeSkill}, and what did you learn?`,
+
+                `Your resume mentions ${resumeSkillTwo}. Tell me about one problem you solved using ${resumeSkillTwo}.`,
+
+                `Which skill on your resume best shows that you are ready for the ${target} job? Why?`,
+
+                `Which experience from your resume would you talk about first in a ${target} interview?`,
+
+                `Is there a skill on your resume that you only know at a basic level? How will you improve it?`
+
+            ];
+
+
+            const projectBased = [
+
+                `Explain the project on your resume that is most useful for the ${target} job.`,
+
+                `What problem did you solve in ${project}, and why did you choose those technologies?`,
+
+                `What was the hardest part of your project, and how did you solve it?`,
+
+                `If you had two more weeks, what would you improve in your project?`,
+
+                `How would you explain your project to an interviewer in simple steps?`
+
+            ];
+
+
+            const skillGap = [
+
+                `The job needs ${gapSkill}, but your resume does not show much proof. How would you learn it?`,
+
+                `How could you add ${gapSkill} to one of your projects to show your skill?`,
+
+                `If you had to use ${gapSkill} in your first month, how would you learn and use it?`,
+
+                `The job needs ${gapSkill}, but your stronger skill is ${resumeSkill}. How would you improve this gap?`,
+
+                `After learning ${gapSkill}, how would you show it on GitHub and your resume?`
+
+            ];
+
+
+            const crossQuestions = [
+
+                `Your resume shows ${resumeSkill}, but the job needs ${gapSkill}. How could you use both in one project?`,
+
+                `How can your ${resumeSkillTwo} experience help you learn ${gapSkill}?`,
+
+                `If you had to build a ${target} project using ${resumeSkill} and ${primarySkill}, how would you divide the work?`,
+
+                `The job focuses on ${primarySkill}, while your resume focuses on ${resumeSkill}. How would you connect them in an interview?`,
+
+                `If ${secondSkill} and ${gapSkill} were needed in the same project, how would they work together?`
+
+            ];
+
+
+            const scenarioBased = [
+
+                `A ${primarySkill} feature works on your computer but fails after deployment. What would you check first?`,
+
+                `You find a problem with ${secondSkill} in a live application. How would you find and fix it?`,
+
+                `You need to finish a ${target} task quickly, but you are not comfortable with ${gapSkill}. What would you do?`,
+
+                `Your project becomes slow when more users start using it. How would you find the reason?`,
+
+                `You and a teammate have different ideas for a ${target} task. How would you choose the better approach?`
+
+            ];
+
+
+            const hr = [
+
+                `Why do you want to become a ${target}?`,
+
+                `Why should ${company} choose you for this ${target} job?`,
+
+                `Tell me about a time when you had a difficult technical problem. How did you solve it?`,
+
+                `What technical skill do you need to improve, and how are you improving it?`,
+
+                `Where do you want your skills and career to be in the next two years?`
+
+            ];
+
+
+            return {
+
+                "Fundamentals": fundamentals,
+                "Technical": technical,
+                "Advanced": advanced,
+                "Job-Specific": jobSpecific,
+                "Resume-Based": resumeBased,
+                "Project-Based": projectBased,
+                "Skill-Gap": skillGap,
+                "Cross Questions": crossQuestions,
+                "Scenario-Based": scenarioBased,
+                "HR / Behavioral": hr
+
+            };
+
+        }
+
+
+        /* ==========================================
+           LOADING
+        ========================================== */
+
+        function showLoading(message) {
+
+            const box =
+                document.getElementById(
+                    "loadingBox"
+                );
+
+
+            box.style.display = "block";
+
+
+            document.getElementById(
+                "loadingText"
+            ).innerText = message;
+
+        }
+
+
+        function hideLoading() {
+
+            document.getElementById(
+                "loadingBox"
+            ).style.display = "none";
+
+        }
+
+
+        /* ==========================================
+           ERROR
+        ========================================== */
+
+        function showError(message) {
+
+            const box =
+                document.getElementById(
+                    "errorBox"
+                );
+
+
+            box.innerText = message;
+
+
+            box.style.display = "block";
+
+
+            box.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+
+        function hideError() {
+
+            document.getElementById(
+                "errorBox"
+            ).style.display = "none";
+
+        }
+
+
+        /* =====================================================
+           LOAD PROFILE ANALYSIS DATA
+        ====================================================== */
+
+        function loadProfileAnalysisData() {
+
+            const savedProfile =
+                sessionStorage.getItem("nextHorizonCandidateProfile");
+
+            if (!savedProfile) return;
+
+            try {
+
+                const profile = JSON.parse(savedProfile);
+
+                const targetJob = document.getElementById("targetJob");
+                const github = document.getElementById("github");
+                const linkedin = document.getElementById("linkedin");
+                const notice = document.getElementById("profileSourceNotice");
+
+                if (profile.targetRole && targetJob) targetJob.value = profile.targetRole;
+                if (profile.githubUrl && github) github.value = profile.githubUrl;
+                if (profile.linkedinUrl && linkedin) linkedin.value = profile.linkedinUrl;
+                if (notice) notice.style.display = "block";
+
+                const resumeGroup = document.getElementById("resumeInputGroup");
+                const githubGroup = document.getElementById("githubInputGroup");
+                const linkedinGroup = document.getElementById("linkedinInputGroup");
+
+                if (resumeGroup) resumeGroup.style.display = "none";
+                if (githubGroup) githubGroup.style.display = "none";
+                if (linkedinGroup) linkedinGroup.style.display = "none";
+
+            } catch (error) {
+                console.warn("Could not load Profile Analysis data.", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadProfileAnalysisData);
+
+
+        /* ==========================================
+           RESET
+        ========================================== */
+
+        function resetAnalysis() {
+
+            document.getElementById(
+                "results"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "targetJob"
+            ).focus();
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* ==========================================
+           HTML ESCAPE
+        ========================================== */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

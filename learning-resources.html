@@ -1,0 +1,3990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Resources | Career Guide</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../header.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.07), transparent 30%),
+                radial-gradient(circle at 90% 10%, rgba(124, 58, 237, 0.06), transparent 28%),
+                #f6f8fc;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1220px;
+            margin: auto;
+            padding: 55px 0 75px;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .page-header {
+            position: relative;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 42px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+        }
+
+        .page-header h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(36px, 5vw, 54px);
+            line-height: 1.05;
+            color: #111827;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .page-header h1 span {
+            color: #2563eb;
+        }
+
+        .page-header p {
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        /* =====================================================
+           UPLOAD CARD
+        ===================================================== */
+
+        .upload-card {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid #e2e8f0;
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.07);
+            margin-bottom: 30px;
+        }
+
+        .upload-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #06b6d4);
+        }
+
+        .upload-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+            margin-bottom: 25px;
+        }
+
+        .upload-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eff6ff, #eef2ff);
+            border: 1px solid #dbeafe;
+            border-radius: 15px;
+            font-size: 25px;
+        }
+
+        .upload-top h2 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 23px;
+            color: #111827;
+            margin-bottom: 7px;
+        }
+
+        .upload-top p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .upload-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 245px;
+            padding: 30px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 17px;
+            background:
+                linear-gradient(180deg, #f8fbff, #f8fafc);
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #60a5fa;
+            background: #eff6ff;
+            transform: translateY(-1px);
+        }
+
+        .upload-area.drag-over {
+            border-color: #2563eb;
+            background: #eff6ff;
+            transform: scale(1.01);
+        }
+
+        .upload-cloud {
+            width: 68px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #dbeafe;
+            color: #2563eb;
+            font-size: 30px;
+            margin-bottom: 17px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.10);
+        }
+
+        .upload-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 7px;
+        }
+
+        .upload-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .upload-format {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-top: 15px;
+            padding: 13px 15px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            color: #4b5563;
+            font-size: 13px;
+        }
+
+        .file-status-icon {
+            font-size: 18px;
+        }
+
+        .primary-btn {
+            width: 100%;
+            border: none;
+            margin-top: 15px;
+            padding: 15px 21px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.20);
+        }
+
+        .primary-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.28);
+        }
+
+        .primary-btn:disabled {
+            background: #cbd5e1;
+            color: #ffffff;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .status.show {
+            display: block;
+        }
+
+        .status.success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #047857;
+        }
+
+        .status.error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+            display: none;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 43px;
+            height: 43px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .loading p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           RESULTS
+        ===================================================== */
+
+        #results {
+            display: none;
+        }
+
+        #results.show {
+            display: block;
+        }
+
+        .result-heading {
+            margin: 48px 0 22px;
+        }
+
+        .result-heading h2 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 7px;
+        }
+
+        .result-heading p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           CAREER RESULT
+        ===================================================== */
+
+        .career-box {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff, #f8fbff);
+            border: 1px solid #dbeafe;
+            border-radius: 18px;
+            padding: 29px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.07);
+        }
+
+        .career-box::after {
+            content: "AI ANALYSIS";
+            position: absolute;
+            right: 22px;
+            top: 22px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: #2563eb;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            padding: 6px 9px;
+            border-radius: 7px;
+            letter-spacing: 0.5px;
+        }
+
+        .label {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #6b7280;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            margin-bottom: 8px;
+        }
+
+        .career-box h3 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 12px;
+            padding-right: 130px;
+        }
+
+        .career-summary {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.75;
+            max-width: 900px;
+        }
+
+        /* =====================================================
+           RESOURCE FILTER
+        ===================================================== */
+
+        .filter-section {
+            background: rgba(255, 255, 255, 0.97);
+            border: 1px solid #e2e8f0;
+            border-radius: 17px;
+            padding: 18px;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+        }
+
+        .filter-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #374151;
+            margin-right: 4px;
+        }
+
+        .filter-btn {
+            position: relative;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #4b5563;
+            padding: 9px 14px;
+            border-radius: 22px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.22s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #93c5fd;
+            color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.22);
+        }
+
+        /* =====================================================
+           SECTION TITLES
+        ===================================================== */
+
+        .section-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 17px;
+        }
+
+        .section-title {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 24px;
+            color: #111827;
+        }
+
+        .section-tag {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: #2563eb;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            padding: 6px 9px;
+            border-radius: 7px;
+            white-space: nowrap;
+        }
+
+        /* =====================================================
+           RECOMMENDATIONS
+        ===================================================== */
+
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 38px;
+        }
+
+        .recommendation-card {
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 21px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.035);
+            transition: 0.22s ease;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-3px);
+            border-color: #bfdbfe;
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+        }
+
+        .recommendation-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #2563eb;
+        }
+
+        .recommendation-number {
+            font-family: "IBM Plex Mono", monospace;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-card h3 {
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-card p {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           RESOURCES
+        ===================================================== */
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+            margin-bottom: 35px;
+        }
+
+        /* Separator after each resource title */
+        .resource-category {
+        border: none;
+}
+
+.resource-category .section-heading-row {
+    border-bottom: 1px solid rgba(30, 50, 80, 0.15);
+    padding-bottom: 12px;
+}
+
+        .resource {
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            min-height: 205px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.25s ease;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.035);
+        }
+
+        .resource::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #2563eb;
+        }
+
+        .resource:hover {
+            transform: translateY(-5px);
+            border-color: #bfdbfe;
+            box-shadow: 0 15px 32px rgba(37, 99, 235, 0.10);
+        }
+
+        .resource-type {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 9px;
+            font-weight: 800;
+            color: #2563eb;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            padding: 6px 9px;
+            border-radius: 7px;
+            margin-bottom: 12px;
+            letter-spacing: 0.35px;
+        }
+
+        .resource h4 {
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .resource p {
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.55;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .resource a {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            text-decoration: none;
+            color: #2563eb;
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            transition: 0.2s;
+        }
+
+        .resource a:hover {
+            color: white;
+            background: #2563eb;
+            border-color: #2563eb;
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           CATEGORY-SPECIFIC RESOURCE COLORS
+        ===================================================== */
+
+        .resource[data-type="youtube"]::before {
+            background: #ef4444;
+        }
+
+        .resource[data-type="youtube"] .resource-type {
+            color: #dc2626;
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .resource[data-type="book"]::before {
+            background: #7c3aed;
+        }
+
+        .resource[data-type="book"] .resource-type {
+            color: #7c3aed;
+            background: #f5f3ff;
+            border-color: #ddd6fe;
+        }
+
+        .resource[data-type="notes"]::before {
+            background: #0891b2;
+        }
+
+        .resource[data-type="notes"] .resource-type {
+            color: #0891b2;
+            background: #ecfeff;
+            border-color: #a5f3fc;
+        }
+
+        .resource[data-type="course"]::before {
+            background: #2563eb;
+        }
+
+        .resource[data-type="course"] .resource-type {
+            color: #2563eb;
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .resource[data-type="project"]::before {
+            background: #059669;
+        }
+
+        .resource[data-type="project"] .resource-type {
+            color: #047857;
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+        }
+
+        .resource[data-type="documentation"]::before {
+            background: #d97706;
+        }
+
+        .resource[data-type="documentation"] .resource-type {
+            color: #b45309;
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+
+        .resource[data-type="practice"]::before {
+            background: #db2777;
+        }
+
+        .resource[data-type="practice"] .resource-type {
+            color: #be185d;
+            background: #fdf2f8;
+            border-color: #fbcfe8;
+        }
+
+        /* =====================================================
+           SOURCES
+        ===================================================== */
+
+        .sources {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 17px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 7px 23px rgba(15, 23, 42, 0.035);
+        }
+
+        .sources h3 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .source-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .source {
+            text-decoration: none;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            padding: 8px 13px;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .source:hover {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #2563eb;
+        }
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty-resources {
+            display: none;
+            background: white;
+            border: 1px dashed #cbd5e1;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .resource-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .recommendations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 800px) {
+
+            .container {
+                width: 92%;
+                padding-top: 35px;
+            }
+
+            .resource-grid,
+            .recommendations {
+                grid-template-columns: 1fr;
+            }
+
+            .career-box::after {
+                position: static;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            .career-box h3 {
+                padding-right: 0;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 94%;
+                padding-top: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 35px;
+            }
+
+            .upload-card {
+                padding: 20px;
+            }
+
+            .upload-top {
+                gap: 12px;
+            }
+
+            .upload-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+            }
+
+            .filter-section {
+                align-items: flex-start;
+            }
+
+            .filter-btn {
+                padding: 8px 11px;
+            }
+
+            .section-heading-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+</head>
+
+<link rel="stylesheet" href="header.css?v=4">
+<script src="header.js?v=4" defer></script>
+</head>
+
+<body>
+
+<nav class="cg-navbar">
+        <div class="cg-nav-container">
+            <a class="cg-logo" href="index.jsp">
+                <img class="cg-logo-img" src="images/nexthorizon-logo.png" alt="NextHorizon">
+            </a>
+            <div class="cg-nav-links">
+                <a href="index.jsp" class="cg-nav-link">Home</a>
+                <a href="assessment/index.jsp" class="cg-nav-link">Career Assessment</a>
+                <a href="learning-resources.html" class="cg-nav-link">Resource</a>
+                <a href="resume.html" class="cg-nav-link active">Resume</a>
+                <a href="job-profile.html" class="cg-nav-link active">Job Profile</a>
+                <a href="feedback.html" class="cg-nav-link">Feedback</a>
+            </div>
+        </div>
+    </nav>
+
+<div class="cg-nav-spacer"></div>
+
+
+<main class="container">
+
+    <section class="page-header">
+
+        <h1>
+            Learning <span>Resources</span>
+        </h1>
+
+        <p>
+            Upload your career assessment report and let AI
+            analyze your actual results to discover useful,
+            personalized learning resources.
+        </p>
+
+    </section>
+
+
+    <section class="upload-card">
+
+        <div class="upload-top">
+
+            <div class="upload-icon">
+                📄
+            </div>
+
+            <div>
+
+                <h2>
+                    Upload Your Career Report
+                </h2>
+
+                <p>
+                    Upload your PDF report and Gemini AI will
+                    analyze the actual report to generate
+                    personalized learning resources.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <label
+            for="pdfInput"
+            class="upload-area"
+            id="uploadArea">
+
+            <div class="upload-cloud">
+                ↑
+            </div>
+
+            <div class="upload-title">
+                Choose your PDF report
+            </div>
+
+            <div class="upload-subtitle">
+                Click to browse or drag & drop your PDF here
+            </div>
+
+            <div class="upload-format">
+                PDF files only • Maximum recommended size: 10 MB
+            </div>
+
+        </label>
+
+
+        <input
+            type="file"
+            id="pdfInput"
+            class="file-input"
+            accept="application/pdf,.pdf">
+
+
+        <div id="fileName" class="file-name">
+
+            <span class="file-status-icon">
+                📄
+            </span>
+
+            <span id="fileNameText">
+                No PDF selected
+            </span>
+
+        </div>
+
+
+        <button
+            id="generateBtn"
+            class="primary-btn"
+            disabled>
+
+            ✨ Analyze Report & Generate Resources
+
+        </button>
+
+
+        <div id="errorBox" class="status error"></div>
+
+        <div id="successBox" class="status success"></div>
+
+    </section>
+
+
+    <section id="loading" class="loading">
+
+        <div class="spinner"></div>
+
+        <h3>
+            Analyzing your career report...
+        </h3>
+
+        <p>
+            Gemini AI is reading your PDF and finding
+            personalized learning resources.
+        </p>
+
+    </section>
+
+
+    <section id="results">
+
+        <div class="result-heading">
+
+            <h2>
+                Your Personalized Learning Resources
+            </h2>
+
+            <p>
+                Resources and recommendations are generated
+                from your uploaded career assessment report.
+            </p>
+
+        </div>
+
+
+        <div class="career-box">
+
+            <div class="label">
+                Target Career
+            </div>
+
+            <h3 id="targetCareer">
+                —
+            </h3>
+
+            <p
+                class="career-summary"
+                id="careerSummary">
+
+                —
+
+            </p>
+
+        </div>
+
+
+        <div class="filter-section">
+
+            <span class="filter-label">
+                Explore:
+            </span>
+
+            <button
+                class="filter-btn active"
+                data-filter="all"
+                onclick="filterResources('all', this)">
+                ✨ All
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="youtube"
+                onclick="filterResources('youtube', this)">
+                🎥 YouTube
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="book"
+                onclick="filterResources('book', this)">
+                📚 Books
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="notes"
+                onclick="filterResources('notes', this)">
+                📝 Notes
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="course"
+                onclick="filterResources('course', this)">
+                🎓 Courses
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="project"
+                onclick="filterResources('project', this)">
+                💻 Projects
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="documentation"
+                onclick="filterResources('documentation', this)">
+                📖 Documentation
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="practice"
+                onclick="filterResources('practice', this)">
+                🧪 Practice
+            </button>
+
+        </div>
+
+
+        <div class="section-heading-row">
+
+            <h2 class="section-title">
+                Strategic Priorities
+            </h2>
+
+            <span class="section-tag">
+                PERSONALIZED
+            </span>
+
+        </div>
+
+
+        <div
+            id="recommendations"
+            class="recommendations">
+        </div>
+
+
+        <div class="section-heading-row">
+
+            <h2 class="section-title">
+                Learning Resources
+            </h2>
+
+            <span class="section-tag">
+                LEARN • BUILD • PRACTICE
+            </span>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    🎥 YouTube Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="youtubeResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    📚 Book Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="bookResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    📝 Notes & Study Material Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="notesResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    🎓 Course Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="courseResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    💻 Project Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="projectResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    📖 Documentation Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="documentationResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div class="resource-category">
+
+            <div class="section-heading-row">
+
+                <h2 class="section-title">
+                    🧪 Practice Resources
+                </h2>
+
+            </div>
+
+            <div
+                id="practiceResources"
+                class="resource-grid">
+            </div>
+
+        </div>
+
+
+        <div
+            id="emptyResources"
+            class="empty-resources">
+
+            No resources found for this category.
+
+        </div>
+
+
+        <div class="sources">
+
+            <h3>
+                🔎 External Learning Sources
+            </h3>
+
+            <div
+                id="sourcesList"
+                class="source-list">
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+    /* =====================================================
+       GEMINI CONFIGURATION
+    ===================================================== */
+
+    const GEMINI_API_KEY = "";
+
+    const GEMINI_MODEL = "gemini-3.5-flash-lite";
+
+    const GEMINI_URL =
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        + GEMINI_MODEL
+        + ":generateContent";
+
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    let selectedFile = null;
+    let dragCounter = 0;
+
+
+    /* =====================================================
+       DOM ELEMENTS
+    ===================================================== */
+
+    const pdfInput =
+        document.getElementById("pdfInput");
+
+    const uploadArea =
+        document.getElementById("uploadArea");
+
+    const generateBtn =
+        document.getElementById("generateBtn");
+
+    const fileNameText =
+        document.getElementById("fileNameText");
+
+
+    /* =====================================================
+       FILE PICKER
+    ===================================================== */
+
+    pdfInput.addEventListener(
+        "change",
+        handleFileSelect
+    );
+
+
+    function handleFileSelect(event) {
+
+        const file =
+            event.target.files[0];
+
+        selectPDFFile(file);
+    }
+
+
+    /* =====================================================
+       SELECT PDF
+    ===================================================== */
+
+    function selectPDFFile(file) {
+
+        selectedFile = null;
+
+        generateBtn.disabled = true;
+
+        hideError();
+        hideSuccess();
+
+        if (!file) {
+
+            fileNameText.textContent =
+                "No PDF selected";
+
+            return;
+        }
+
+        const isPDF =
+            file.type === "application/pdf" ||
+            file.name.toLowerCase().endsWith(".pdf");
+
+        if (!isPDF) {
+
+            showError(
+                "Please select a PDF file only."
+            );
+
+            pdfInput.value = "";
+
+            fileNameText.textContent =
+                "No PDF selected";
+
+            return;
+        }
+
+        const maxSize =
+            10 * 1024 * 1024;
+
+        if (file.size > maxSize) {
+
+            showError(
+                "The PDF is larger than 10 MB. Please upload a smaller PDF."
+            );
+
+            pdfInput.value = "";
+
+            fileNameText.textContent =
+                "No PDF selected";
+
+            return;
+        }
+
+        selectedFile = file;
+
+        fileNameText.textContent =
+            file.name;
+
+        generateBtn.disabled = false;
+    }
+
+
+    /* =====================================================
+       DRAG ENTER
+    ===================================================== */
+
+    uploadArea.addEventListener(
+        "dragenter",
+        function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            dragCounter++;
+
+            uploadArea.classList.add(
+                "drag-over"
+            );
+        }
+    );
+
+
+    /* =====================================================
+       DRAG OVER
+    ===================================================== */
+
+    uploadArea.addEventListener(
+        "dragover",
+        function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    );
+
+
+    /* =====================================================
+       DRAG LEAVE
+    ===================================================== */
+
+    uploadArea.addEventListener(
+        "dragleave",
+        function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            dragCounter--;
+
+            if (dragCounter <= 0) {
+
+                dragCounter = 0;
+
+                uploadArea.classList.remove(
+                    "drag-over"
+                );
+            }
+        }
+    );
+
+
+    /* =====================================================
+       DROP PDF
+    ===================================================== */
+
+    uploadArea.addEventListener(
+        "drop",
+        function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            dragCounter = 0;
+
+            uploadArea.classList.remove(
+                "drag-over"
+            );
+
+            const files =
+                event.dataTransfer.files;
+
+            if (!files || !files.length) {
+                return;
+            }
+
+            const file =
+                files[0];
+
+            selectPDFFile(file);
+
+            try {
+
+                const dataTransfer =
+                    new DataTransfer();
+
+                dataTransfer.items.add(file);
+
+                pdfInput.files =
+                    dataTransfer.files;
+
+            } catch (error) {
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       PREVENT BROWSER PDF OPENING
+    ===================================================== */
+
+    document.addEventListener(
+        "dragover",
+        function(event) {
+
+            event.preventDefault();
+        }
+    );
+
+
+    document.addEventListener(
+        "drop",
+        function(event) {
+
+            if (
+                !uploadArea.contains(
+                    event.target
+                )
+            ) {
+
+                event.preventDefault();
+            }
+        }
+    );
+
+
+    /* =====================================================
+       GENERATE BUTTON
+    ===================================================== */
+
+    generateBtn.addEventListener(
+        "click",
+        uploadAndGenerate
+    );
+
+
+    /* =====================================================
+       UPLOAD + GEMINI
+    ===================================================== */
+
+    async function uploadAndGenerate() {
+
+        if (!selectedFile) {
+
+            showError(
+                "Please select a PDF report first."
+            );
+
+            return;
+        }
+
+        if (
+            !GEMINI_API_KEY ||
+            GEMINI_API_KEY === "YOUR_GEMINI_API_KEY"
+        ) {
+
+            showError(
+                "Please add your Gemini API key in the code first."
+            );
+
+            return;
+        }
+
+        hideError();
+        hideSuccess();
+
+        document
+            .getElementById("results")
+            .classList.remove("show");
+
+        showLoading();
+
+        generateBtn.disabled = true;
+
+        try {
+
+            const base64PDF =
+                await fileToBase64(
+                    selectedFile
+                );
+
+
+            const prompt = `
+
+Analyze the ACTUAL uploaded career assessment PDF carefully.
+
+The uploaded PDF is the ONLY source of truth for personalization.
+
+Read and understand the PDF before generating resources.
+
+Do NOT ask the user to manually enter:
+- skills
+- career goals
+- interests
+- strengths
+- weaknesses
+- career information
+- skill gaps
+
+Do NOT use hardcoded career information.
+
+Do NOT use predefined resources unrelated to the uploaded PDF.
+
+First identify from the PDF:
+
+- target career
+- recommended career paths
+- interests
+- strengths
+- weaknesses
+- existing skills
+- relevant technologies
+- relevant subjects
+- learning needs
+- areas requiring improvement
+
+Then generate IMPORTANT learning resources specifically related to those findings.
+
+
+=====================================================
+IMPORTANT: RESOURCE QUANTITY
+=====================================================
+
+I NEED MULTIPLE HIGH-QUALITY RESOURCES.
+
+Do NOT return only 1, 2, 3, 4 or 5 resources when more relevant resources are available.
+
+TARGET:
+
+Generate AT LEAST 10 IMPORTANT resources for EACH category whenever enough genuine resources are available.
+
+Preferred target:
+
+10 to 15 resources per category.
+
+There are 7 categories:
+
+1. youtube
+2. book
+3. notes
+4. course
+5. project
+6. documentation
+7. practice
+
+Target total:
+
+70 to 105 resources.
+
+IMPORTANT:
+
+The goal is NOT to fill the number blindly.
+
+The goal is to find MANY genuinely useful and relevant resources.
+
+If 15 genuine resources are available for a category, return 15.
+
+If 12 genuine resources are available, return 12.
+
+If 10 genuine resources are available, return 10.
+
+If fewer than 10 genuinely suitable resources can be confidently identified, return the maximum number of REAL resources you can confidently identify.
+
+NEVER invent a resource.
+
+NEVER invent a URL.
+
+NEVER create fake URLs just to reach 10.
+
+But DO NOT unnecessarily stop at 1 or 2 resources if many relevant resources are available.
+
+Search your knowledge for MULTIPLE well-known and established resources relevant to the detected career.
+
+
+=====================================================
+RESOURCE IMPORTANCE
+=====================================================
+
+Only include resources that are genuinely useful.
+
+Prioritize:
+
+1. Official documentation
+2. High-quality educational platforms
+3. Well-known books
+4. Established YouTube educational channels/videos
+5. Trusted GitHub repositories
+6. Recognized coding/practice platforms
+7. University or professional learning material
+8. Practical project tutorials
+9. Industry-standard tools and technologies
+
+Do NOT include random websites simply to increase the resource count.
+
+
+=====================================================
+YOUTUBE
+=====================================================
+
+IMPORTANT:
+
+Generate BETWEEN 8 AND 10 IMPORTANT YouTube resources whenever possible.
+
+The final website should receive real, usable, currently available YouTube video links.
+
+ONLY return direct YouTube VIDEO URLs.
+
+Allowed formats:
+
+https://www.youtube.com/watch?v=VIDEO_ID
+
+or
+
+https://youtu.be/VIDEO_ID
+
+DO NOT return:
+
+- YouTube search URLs
+- YouTube channel URLs
+- YouTube homepage URLs
+- fake video IDs
+- invented video IDs
+- made-up playlist URLs
+
+Every YouTube URL must point to a real existing public video.
+
+Before returning each YouTube resource, verify from your knowledge that the video URL is a real YouTube video.
+
+Prefer established educational channels such as:
+
+- freeCodeCamp.org
+- Google for Developers
+- Microsoft Developer
+- AWS
+- IBM Technology
+- NVIDIA
+- Stanford Online
+- MIT OpenCourseWare
+- Corey Schafer
+- Programming with Mosh
+- Traversy Media
+
+Only use channels/videos relevant to the career identified in the PDF.
+
+Use DIFFERENT videos.
+
+Do NOT repeat the same video.
+
+Do NOT repeat the same URL.
+
+IMPORTANT:
+
+If you are not confident that a specific YouTube video ID exists, DO NOT use it.
+
+It is better to return fewer than 8 than to invent a YouTube video.
+
+However, actively try to identify 8 to 10 genuine, relevant and established YouTube videos.
+
+The application will additionally validate YouTube URLs before displaying them.
+
+
+=====================================================
+BOOKS
+=====================================================
+
+Generate 10 to 15 IMPORTANT books whenever possible.
+
+Books must be:
+
+- real
+- well-known
+- relevant
+- useful for the identified career
+- useful for the skills and technologies found in the PDF
+
+Use real:
+
+- authors
+- publishers
+- book pages
+- publisher pages
+- reliable book information pages
+
+Do NOT invent books.
+
+Do NOT repeat books.
+
+Do NOT repeat URLs.
+
+
+=====================================================
+NOTES / STUDY MATERIAL
+=====================================================
+
+Generate 10 to 15 useful study resources whenever possible.
+
+Include:
+
+- official tutorials
+- university notes
+- lecture material
+- cheat sheets
+- technical guides
+- reference material
+- learning guides
+- tutorials
+- study documentation
+
+Prefer established sources such as:
+
+- GeeksforGeeks
+- W3Schools
+- MDN
+- freeCodeCamp
+- official technology learning pages
+- university resources
+- reputable technical education websites
+
+Every resource must be directly relevant to the career identified from the PDF.
+
+
+=====================================================
+COURSES
+=====================================================
+
+Generate 10 to 15 IMPORTANT courses whenever possible.
+
+Prefer recognized platforms such as:
+
+- Coursera
+- edX
+- Udemy
+- Google
+- Microsoft Learn
+- AWS Skill Builder
+- IBM SkillsBuild
+- freeCodeCamp
+- NVIDIA
+- Stanford Online
+- MIT OpenCourseWare
+
+Courses must match the actual career direction and learning needs from the uploaded PDF.
+
+Use different courses.
+
+Do NOT repeat URLs.
+
+Do NOT invent course pages.
+
+
+=====================================================
+PROJECTS
+=====================================================
+
+Generate 10 to 15 IMPORTANT practical project resources whenever possible.
+
+Projects should help the candidate build real practical skills.
+
+Use:
+
+- GitHub repositories
+- official project examples
+- project tutorials
+- documentation examples
+- practical implementation guides
+- real datasets
+- recognized project resources
+
+Projects must match the career and skills identified in the PDF.
+
+Do NOT invent GitHub repositories.
+
+Do NOT invent repository URLs.
+
+Do NOT repeat projects.
+
+Do NOT repeat URLs.
+
+
+=====================================================
+DOCUMENTATION
+=====================================================
+
+Generate 10 to 15 IMPORTANT documentation resources whenever possible.
+
+Prioritize OFFICIAL documentation.
+
+Examples:
+
+Python:
+https://docs.python.org/
+
+Java:
+https://docs.oracle.com/en/java/
+
+JavaScript:
+https://developer.mozilla.org/
+
+React:
+https://react.dev/
+
+Node.js:
+https://nodejs.org/docs/
+
+SQL:
+https://dev.mysql.com/doc/
+
+Git:
+https://git-scm.com/doc
+
+AWS:
+https://docs.aws.amazon.com/
+
+Google Cloud:
+https://cloud.google.com/docs
+
+Microsoft:
+https://learn.microsoft.com/
+
+Only include technologies relevant to the uploaded PDF.
+
+Do NOT include unrelated documentation.
+
+Do NOT invent documentation URLs.
+
+
+=====================================================
+PRACTICE
+=====================================================
+
+Generate 10 to 15 IMPORTANT practice resources whenever possible.
+
+Include:
+
+- coding practice
+- problem solving
+- coding challenges
+- quizzes
+- exercises
+- labs
+- datasets
+- simulations
+- technical practice
+- project-based practice
+
+Prefer established platforms such as:
+
+- LeetCode
+- HackerRank
+- CodeChef
+- Codeforces
+- Kaggle
+- Exercism
+- SQLZoo
+- W3Schools exercises
+- freeCodeCamp
+- official cloud labs
+
+Only include resources relevant to the candidate's career.
+
+Do NOT repeat the same platform unnecessarily.
+
+
+=====================================================
+RESOURCE DIVERSITY
+=====================================================
+
+Do NOT generate 10 links that all teach exactly the same thing.
+
+For every category, distribute resources across different important skills.
+
+The exact topics MUST depend on the uploaded PDF.
+
+
+=====================================================
+URL RULE
+=====================================================
+
+Every resource MUST contain:
+
+"url": "https://..."
+
+Only use HTTP or HTTPS URLs.
+
+NEVER use fake URLs.
+
+If you cannot confidently identify a real URL, DO NOT include that resource.
+
+
+=====================================================
+NO DUPLICATES
+=====================================================
+
+Before returning the final JSON:
+
+Check every resource.
+
+Make sure:
+
+- no duplicate URL exists
+- no duplicate resource exists
+- no duplicate book exists
+- no duplicate course exists
+- no duplicate project exists
+- no duplicate documentation exists
+- no duplicate practice resource exists
+- no duplicate YouTube resource exists
+
+Every URL must be unique.
+
+
+=====================================================
+PERSONALIZATION
+=====================================================
+
+Resources MUST change according to the uploaded PDF.
+
+Do NOT give the same resource list to every user.
+
+ONLY use topics supported by the uploaded PDF.
+
+
+=====================================================
+RECOMMENDATIONS
+=====================================================
+
+Generate 5 to 8 important AI recommendations.
+
+Each recommendation must explain WHY it is useful based on the uploaded PDF.
+
+Do NOT create:
+
+- roadmap
+- phases
+- timeline
+- monthly plan
+- weekly plan
+- "Skills to Develop" section
+
+
+=====================================================
+SOURCES
+=====================================================
+
+Include important external learning sources used for the recommendations.
+
+Use real URLs only.
+
+Do not invent source URLs.
+
+Avoid unnecessary duplicate sources.
+
+
+=====================================================
+FINAL VALIDATION
+=====================================================
+
+Before returning the answer, perform this validation internally:
+
+1. Did you actually analyze the uploaded PDF?
+2. Is the target career supported by the PDF?
+3. Are resources personalized to the PDF?
+4. Are there MANY resources?
+5. Did each category receive as many relevant resources as reasonably possible?
+6. Did you aim for at least 10 per category?
+7. Are URLs real and usable?
+8. Are URLs HTTP/HTTPS?
+9. Are URLs unique?
+10. Are resources unique?
+11. Are resources genuinely important?
+12. Are resources relevant?
+13. Are there no fake URLs?
+14. Are there no invented books?
+15. Are there no invented courses?
+16. Are there no invented GitHub repositories?
+17. Are there no invented YouTube videos?
+18. Is there no roadmap?
+19. Is there no timeline?
+20. Is there no Skills to Develop section?
+21. Is the response valid JSON?
+22. Is there ONLY JSON?
+23. Are there 8 to 10 genuine YouTube video URLs whenever enough genuine videos exist?
+24. Does every YouTube URL point directly to a video rather than a search/channel page?
+
+
+=====================================================
+ALLOWED RESOURCE TYPES
+=====================================================
+
+Every resource MUST use exactly one of:
+
+youtube
+book
+notes
+course
+project
+documentation
+practice
+
+
+=====================================================
+JSON FORMAT
+=====================================================
+
+Return EXACTLY this structure:
+
+{
+  "targetCareer": "string",
+  "summary": "string",
+  "recommendations": [
+    {
+      "title": "string",
+      "description": "string"
+    }
+  ],
+  "resources": [
+    {
+      "type": "youtube",
+      "title": "string",
+      "description": "string",
+      "url": "https://..."
+    }
+  ],
+  "sources": [
+    {
+      "name": "string",
+      "url": "https://..."
+    }
+  ]
+}
+
+IMPORTANT:
+
+The resources array SHOULD contain approximately 70 to 105 resources when enough genuine resources are available.
+
+Target:
+
+10 to 15 resources per category.
+
+For YouTube specifically:
+
+8 to 10 real, unique and relevant videos.
+
+The seven categories are:
+
+youtube
+book
+notes
+course
+project
+documentation
+practice
+
+DO NOT stop after only 1 or 2 resources if many relevant resources are available.
+
+Generate a LARGE collection of IMPORTANT, REAL, UNIQUE and RELEVANT resources.
+
+NEVER invent resources or URLs.
+
+Return ONLY valid JSON.
+
+`;
+
+
+            const result =
+                await callGeminiWithRetry(
+                    prompt,
+                    base64PDF
+                );
+
+
+            const data =
+                parseGeminiJSON(result);
+
+
+            await displayGeminiResults(data);
+
+
+            hideLoading();
+
+
+            showSuccess(
+                "Your report was analyzed successfully and personalized resources were generated."
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Gemini Error:",
+                error
+            );
+
+            hideLoading();
+
+            showError(
+                error.message ||
+                "Something went wrong while analyzing your PDF."
+            );
+
+        } finally {
+
+            generateBtn.disabled =
+                !selectedFile;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       FILE TO BASE64
+    ===================================================== */
+
+    function fileToBase64(file) {
+
+        return new Promise(
+            function(resolve, reject) {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function() {
+
+                        const result =
+                            reader.result;
+
+                        const base64 =
+                            result.split(",")[1];
+
+                        resolve(base64);
+
+                    };
+
+
+                reader.onerror =
+                    function() {
+
+                        reject(
+                            new Error(
+                                "Unable to read the PDF file."
+                            )
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+    }
+
+
+    /* =====================================================
+       GEMINI REQUEST WITH RETRY
+    ===================================================== */
+
+    async function callGeminiWithRetry(
+        prompt,
+        base64PDF,
+        maxRetries = 3
+    ) {
+
+        let lastError = null;
+
+
+        for (
+            let attempt = 0;
+            attempt <= maxRetries;
+            attempt++
+        ) {
+
+            try {
+
+                const response =
+                    await fetch(
+                        GEMINI_URL,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json",
+
+                                "x-goog-api-key":
+                                    GEMINI_API_KEY
+                            },
+
+                            body: JSON.stringify({
+
+                                contents: [
+
+                                    {
+
+                                        parts: [
+
+                                            {
+                                                text: prompt
+                                            },
+
+                                            {
+                                                inlineData: {
+
+                                                    mimeType:
+                                                        "application/pdf",
+
+                                                    data:
+                                                        base64PDF
+                                                }
+                                            }
+
+                                        ]
+
+                                    }
+
+                                ],
+
+                                generationConfig: {
+
+                                    temperature: 0.2,
+
+                                    responseMimeType:
+                                        "application/json"
+
+                                }
+
+                            })
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    const errorText =
+                        await response.text();
+
+                    throw new Error(
+                        "Gemini API error (" +
+                        response.status +
+                        "): " +
+                        errorText
+                    );
+
+                }
+
+
+                const json =
+                    await response.json();
+
+
+                return json;
+
+            } catch (error) {
+
+                lastError =
+                    error;
+
+
+                if (
+                    attempt <
+                    maxRetries
+                ) {
+
+                    await sleep(
+                        1500 *
+                        (attempt + 1)
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        throw lastError ||
+            new Error(
+                "Gemini request failed."
+            );
+
+    }
+
+
+    /* =====================================================
+       SLEEP
+    ===================================================== */
+
+    function sleep(ms) {
+
+        return new Promise(
+            function(resolve) {
+
+                setTimeout(
+                    resolve,
+                    ms
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       PARSE GEMINI JSON
+    ===================================================== */
+
+    function parseGeminiJSON(response) {
+
+        try {
+
+            const text =
+                response
+                    ?.candidates?.[0]
+                    ?.content?.parts?.[0]
+                    ?.text;
+
+
+            if (!text) {
+
+                throw new Error(
+                    "Gemini returned an empty response."
+                );
+
+            }
+
+
+            let cleaned =
+                text.trim();
+
+
+            cleaned =
+                cleaned
+                    .replace(
+                        /^```json\s*/i,
+                        ""
+                    )
+                    .replace(
+                        /^```\s*/i,
+                        ""
+                    )
+                    .replace(
+                        /\s*```$/i,
+                        ""
+                    )
+                    .trim();
+
+
+            const firstBrace =
+                cleaned.indexOf("{");
+
+
+            const lastBrace =
+                cleaned.lastIndexOf("}");
+
+
+            if (
+                firstBrace === -1 ||
+                lastBrace === -1
+            ) {
+
+                throw new Error(
+                    "Gemini did not return valid JSON."
+                );
+
+            }
+
+
+            cleaned =
+                cleaned.substring(
+                    firstBrace,
+                    lastBrace + 1
+                );
+
+
+            const data =
+                JSON.parse(cleaned);
+
+
+            if (
+                !data ||
+                typeof data !== "object"
+            ) {
+
+                throw new Error(
+                    "Invalid Gemini response."
+                );
+
+            }
+
+
+            return data;
+
+        } catch (error) {
+
+            console.error(
+                "JSON Parse Error:",
+                error
+            );
+
+            throw new Error(
+                "Could not understand Gemini's response. Please try again."
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DISPLAY GEMINI RESULTS
+    ===================================================== */
+
+    async function displayGeminiResults(data) {
+
+        const targetCareer =
+            data.targetCareer ||
+            "Career Recommendation";
+
+
+        const summary =
+            data.summary ||
+            "Gemini analyzed your uploaded report and generated personalized learning resources.";
+
+
+        document.getElementById(
+            "targetCareer"
+        ).textContent =
+            targetCareer;
+
+
+        document.getElementById(
+            "careerSummary"
+        ).textContent =
+            summary;
+
+
+        renderRecommendations(
+            data.recommendations
+        );
+
+
+        await renderGlobalResources(
+            data.resources
+        );
+
+
+        renderSources(
+            data.sources
+        );
+
+
+        const results =
+            document.getElementById(
+                "results"
+            );
+
+
+        results.classList.add(
+            "show"
+        );
+
+
+        setTimeout(
+            function() {
+
+                results.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            },
+            100
+        );
+
+    }
+
+
+    /* =====================================================
+       RECOMMENDATIONS
+    ===================================================== */
+
+    function renderRecommendations(
+        recommendations
+    ) {
+
+        const container =
+            document.getElementById(
+                "recommendations"
+            );
+
+
+        container.innerHTML = "";
+
+
+        if (
+            !Array.isArray(
+                recommendations
+            ) ||
+            recommendations.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-number">
+                        AI
+                    </div>
+
+                    <h3>
+                        Personalized Recommendation
+                    </h3>
+
+                    <p>
+                        Continue learning according to
+                        the career direction identified
+                        in your assessment report.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        recommendations.forEach(
+            function(item, index) {
+
+                if (
+                    !item ||
+                    typeof item !== "object"
+                ) {
+                    return;
+                }
+
+
+                const title =
+                    escapeHTML(
+                        item.title ||
+                        "Recommendation"
+                    );
+
+
+                const description =
+                    escapeHTML(
+                        item.description ||
+                        ""
+                    );
+
+
+                container.innerHTML += `
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-number">
+                            ${String(index + 1).padStart(2, "0")}
+                        </div>
+
+                        <h3>
+                            ${title}
+                        </h3>
+
+                        <p>
+                            ${description}
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       YOUTUBE URL VALIDATION
+       
+       This checks whether the returned YouTube video
+       URL can be resolved through YouTube's oEmbed
+       endpoint before the resource is displayed.
+    ===================================================== */
+
+    async function isAvailableYouTubeVideo(url) {
+
+        try {
+
+            const parsed =
+                new URL(url);
+
+
+            if (
+                parsed.protocol !== "https:" &&
+                parsed.protocol !== "http:"
+            ) {
+
+                return false;
+
+            }
+
+
+            let videoURL = "";
+
+
+            if (
+                parsed.hostname === "www.youtube.com" ||
+                parsed.hostname === "youtube.com"
+            ) {
+
+                const videoID =
+                    parsed.searchParams.get("v");
+
+
+                if (!videoID) {
+                    return false;
+                }
+
+
+                videoURL =
+                    "https://www.youtube.com/watch?v=" +
+                    encodeURIComponent(videoID);
+
+            }
+
+
+            else if (
+                parsed.hostname === "youtu.be"
+            ) {
+
+                const videoID =
+                    parsed.pathname
+                        .replace(/^\/+/, "")
+                        .split("/")[0];
+
+
+                if (!videoID) {
+                    return false;
+                }
+
+
+                videoURL =
+                    "https://www.youtube.com/watch?v=" +
+                    encodeURIComponent(videoID);
+
+            }
+
+
+            else {
+
+                return false;
+
+            }
+
+
+            const oEmbedURL =
+                "https://www.youtube.com/oembed?url=" +
+                encodeURIComponent(videoURL) +
+                "&format=json";
+
+
+            const response =
+                await fetch(
+                    oEmbedURL,
+                    {
+                        method: "GET"
+                    }
+                );
+
+
+            if (!response.ok) {
+                return false;
+            }
+
+
+            const result =
+                await response.json();
+
+
+            return !!(
+                result &&
+                result.title
+            );
+
+        } catch (error) {
+
+            return false;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       VALIDATE YOUTUBE RESOURCES
+       
+       Keeps only the first 10 real/available YouTube
+       videos returned by Gemini.
+    ===================================================== */
+
+    async function validateYouTubeResources(
+        resources
+    ) {
+
+        if (
+            !Array.isArray(resources)
+        ) {
+
+            return [];
+
+        }
+
+
+        const youtubeResources =
+            resources.filter(
+                function(resource) {
+
+                    return (
+                        resource &&
+                        normalizeResourceType(
+                            resource.type
+                        ) === "youtube" &&
+                        resource.title &&
+                        resource.url
+                    );
+
+                }
+            );
+
+
+        const validResources = [];
+
+
+        const seenURLs =
+            new Set();
+
+
+        for (
+            const resource
+            of youtubeResources
+        ) {
+
+            if (
+                validResources.length >= 10
+            ) {
+
+                break;
+
+            }
+
+
+            const url =
+                safeURL(
+                    resource.url
+                );
+
+
+            if (!url) {
+                continue;
+            }
+
+
+            const parsed =
+                new URL(url);
+
+
+            let normalizedVideoURL =
+                "";
+
+
+            if (
+                parsed.hostname === "www.youtube.com" ||
+                parsed.hostname === "youtube.com"
+            ) {
+
+                const videoID =
+                    parsed.searchParams.get("v");
+
+
+                if (!videoID) {
+                    continue;
+                }
+
+
+                normalizedVideoURL =
+                    "https://www.youtube.com/watch?v=" +
+                    videoID;
+
+            }
+
+
+            else if (
+                parsed.hostname === "youtu.be"
+            ) {
+
+                const videoID =
+                    parsed.pathname
+                        .replace(/^\/+/, "")
+                        .split("/")[0];
+
+
+                if (!videoID) {
+                    continue;
+                }
+
+
+                normalizedVideoURL =
+                    "https://www.youtube.com/watch?v=" +
+                    videoID;
+
+            }
+
+
+            else {
+
+                continue;
+
+            }
+
+
+            const key =
+                normalizedVideoURL
+                    .toLowerCase();
+
+
+            if (
+                seenURLs.has(key)
+            ) {
+
+                continue;
+
+            }
+
+
+            const available =
+                await isAvailableYouTubeVideo(
+                    normalizedVideoURL
+                );
+
+
+            if (!available) {
+
+                continue;
+
+            }
+
+
+            seenURLs.add(key);
+
+
+            validResources.push({
+
+                ...resource,
+
+                type: "youtube",
+
+                url: normalizedVideoURL
+
+            });
+
+        }
+
+
+        return validResources;
+
+    }
+
+
+    /* =====================================================
+       RENDER RESOURCES
+
+       IMPORTANT:
+       Resources are automatically separated into:
+       YouTube
+       Books
+       Notes
+       Courses
+       Projects
+       Documentation
+       Practice
+    ===================================================== */
+
+    async function renderGlobalResources(
+        resources
+    ) {
+
+        const containers = {
+
+            youtube:
+                document.getElementById(
+                    "youtubeResources"
+                ),
+
+            book:
+                document.getElementById(
+                    "bookResources"
+                ),
+
+            notes:
+                document.getElementById(
+                    "notesResources"
+                ),
+
+            course:
+                document.getElementById(
+                    "courseResources"
+                ),
+
+            project:
+                document.getElementById(
+                    "projectResources"
+                ),
+
+            documentation:
+                document.getElementById(
+                    "documentationResources"
+                ),
+
+            practice:
+                document.getElementById(
+                    "practiceResources"
+                )
+
+        };
+
+
+        const empty =
+            document.getElementById(
+                "emptyResources"
+            );
+
+
+        Object.values(
+            containers
+        ).forEach(
+            function(container) {
+
+                if (container) {
+                    container.innerHTML = "";
+                }
+
+            }
+        );
+
+
+        empty.style.display =
+            "none";
+
+
+        if (
+            !Array.isArray(resources) ||
+            resources.length === 0
+        ) {
+
+            empty.textContent =
+                "No resources were generated from this report.";
+
+            empty.style.display =
+                "block";
+
+            return;
+        }
+
+
+        /*
+         * ONLY YOUTUBE RESOURCES ARE VALIDATED.
+         *
+         * Other six categories continue to work
+         * exactly as before.
+         */
+
+        const validYouTubeResources =
+            await validateYouTubeResources(
+                resources
+            );
+
+
+        let validCount = 0;
+
+
+        const seenURLs =
+            new Set();
+
+
+        resources.forEach(
+            function(resource) {
+
+                if (
+                    !resource ||
+                    !resource.title ||
+                    !resource.url
+                ) {
+
+                    return;
+
+                }
+
+
+                const type =
+                    normalizeResourceType(
+                        resource.type
+                    );
+
+
+                /*
+                 * YouTube resources have already
+                 * been checked separately.
+                 */
+
+                if (
+                    type === "youtube"
+                ) {
+
+                    return;
+
+                }
+
+
+                const normalizedURL =
+                    safeURL(
+                        resource.url
+                    );
+
+
+                if (!normalizedURL) {
+                    return;
+                }
+
+
+                const urlKey =
+                    normalizedURL
+                        .replace(/\/+$/, "")
+                        .toLowerCase();
+
+
+                if (
+                    seenURLs.has(
+                        urlKey
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                seenURLs.add(
+                    urlKey
+                );
+
+
+                if (
+                    !type ||
+                    !containers[type]
+                ) {
+
+                    return;
+
+                }
+
+
+                const card =
+                    createResourceCard(
+                        resource
+                    );
+
+
+                if (!card) {
+                    return;
+                }
+
+
+                containers[type].innerHTML +=
+                    card;
+
+
+                validCount++;
+
+            }
+        );
+
+
+        /*
+         * Add only verified YouTube videos.
+         */
+
+        validYouTubeResources.forEach(
+            function(resource) {
+
+                const normalizedURL =
+                    safeURL(
+                        resource.url
+                    );
+
+
+                if (!normalizedURL) {
+                    return;
+                }
+
+
+                const urlKey =
+                    normalizedURL
+                        .replace(/\/+$/, "")
+                        .toLowerCase();
+
+
+                if (
+                    seenURLs.has(
+                        urlKey
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                seenURLs.add(
+                    urlKey
+                );
+
+
+                const card =
+                    createResourceCard(
+                        resource
+                    );
+
+
+                if (!card) {
+                    return;
+                }
+
+
+                containers.youtube.innerHTML +=
+                    card;
+
+
+                validCount++;
+
+            }
+        );
+
+
+        if (validCount === 0) {
+
+            empty.textContent =
+                "No valid resources were returned by Gemini.";
+
+            empty.style.display =
+                "block";
+
+        } else {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       RESOURCE CARD
+    ===================================================== */
+
+    function createResourceCard(
+        resource
+    ) {
+
+        const type =
+            normalizeResourceType(
+                resource.type
+            );
+
+
+        if (!type) {
+            return "";
+        }
+
+
+        const label =
+            getResourceLabel(
+                type
+            );
+
+
+        const buttonText =
+            getResourceButtonText(
+                type
+            );
+
+
+        const title =
+            escapeHTML(
+                resource.title ||
+                "Learning Resource"
+            );
+
+
+        const description =
+            escapeHTML(
+                resource.description ||
+                "Personalized resource based on your assessment."
+            );
+
+
+        const url =
+            safeURL(
+                resource.url
+            );
+
+
+        if (!url) {
+            return "";
+        }
+
+
+        return `
+
+            <div
+                class="resource"
+                data-type="${escapeAttribute(type)}">
+
+                <div class="resource-type">
+                    ${label}
+                </div>
+
+                <h4>
+                    ${title}
+                </h4>
+
+                <p>
+                    ${description}
+                </p>
+
+                <a
+                    href="${escapeAttribute(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    ${buttonText}
+
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       NORMALIZE RESOURCE TYPE
+    ===================================================== */
+
+    function normalizeResourceType(
+        type
+    ) {
+
+        const value =
+            String(
+                type || ""
+            )
+                .toLowerCase()
+                .trim();
+
+
+        const allowed = [
+
+            "youtube",
+            "book",
+            "notes",
+            "course",
+            "project",
+            "documentation",
+            "practice"
+
+        ];
+
+
+        if (
+            allowed.includes(
+                value
+            )
+        ) {
+
+            return value;
+
+        }
+
+
+        return "";
+
+    }
+
+
+    /* =====================================================
+       RESOURCE LABEL
+    ===================================================== */
+
+    function getResourceLabel(
+        type
+    ) {
+
+        const labels = {
+
+            youtube:
+                "🎥 YOUTUBE",
+
+            book:
+                "📚 BOOK",
+
+            notes:
+                "📝 NOTES / STUDY MATERIAL",
+
+            course:
+                "🎓 COURSE",
+
+            project:
+                "💻 PROJECT",
+
+            documentation:
+                "📖 DOCUMENTATION",
+
+            practice:
+                "🧪 PRACTICE"
+
+        };
+
+
+        return labels[type] ||
+            "📘 RESOURCE";
+
+    }
+
+
+    /* =====================================================
+       RESOURCE BUTTON
+    ===================================================== */
+
+    function getResourceButtonText(
+        type
+    ) {
+
+        const buttons = {
+
+            youtube:
+                "Watch / Open →",
+
+            book:
+                "View Book →",
+
+            notes:
+                "Open Notes →",
+
+            course:
+                "View Course →",
+
+            project:
+                "View Project →",
+
+            documentation:
+                "Open Documentation →",
+
+            practice:
+                "Start Practice →"
+
+        };
+
+
+        return buttons[type] ||
+            "Open Resource →";
+
+    }
+
+
+    /* =====================================================
+       FILTER RESOURCES
+    ===================================================== */
+
+    function filterResources(
+        type,
+        clickedButton
+    ) {
+
+        document
+            .querySelectorAll(
+                ".filter-btn"
+            )
+            .forEach(
+                function(button) {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        clickedButton.classList.add(
+            "active"
+        );
+
+
+        const categories =
+            document.querySelectorAll(
+                ".resource-category"
+            );
+
+
+        let visibleCount = 0;
+
+
+        categories.forEach(
+            function(category) {
+
+                const grid =
+                    category.querySelector(
+                        ".resource-grid"
+                    );
+
+
+                if (!grid) {
+
+                    category.style.display =
+                        "none";
+
+                    return;
+
+                }
+
+
+                const resourcesInCategory =
+                    grid.querySelectorAll(
+                        ".resource"
+                    );
+
+
+                let categoryHasVisibleResource =
+                    false;
+
+
+                resourcesInCategory.forEach(
+                    function(resource) {
+
+                        const resourceType =
+                            resource.getAttribute(
+                                "data-type"
+                            );
+
+
+                        if (
+                            type === "all" ||
+                            resourceType === type
+                        ) {
+
+                            resource.style.display =
+                                "flex";
+
+                            categoryHasVisibleResource =
+                                true;
+
+                            visibleCount++;
+
+                        } else {
+
+                            resource.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+
+                if (type === "all") {
+
+                    category.style.display =
+                        "";
+
+                } else {
+
+                    category.style.display =
+                        categoryHasVisibleResource
+                            ? ""
+                            : "none";
+
+                }
+
+            }
+        );
+
+
+        const empty =
+            document.getElementById(
+                "emptyResources"
+            );
+
+
+        if (visibleCount === 0) {
+
+            empty.textContent =
+                "No resources found for this category.";
+
+            empty.style.display =
+                "block";
+
+        } else {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SOURCES
+    ===================================================== */
+
+    function renderSources(
+        sources
+    ) {
+
+        const container =
+            document.getElementById(
+                "sourcesList"
+            );
+
+
+        container.innerHTML = "";
+
+
+        if (
+            !Array.isArray(sources) ||
+            sources.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <span class="source">
+                    Sources generated from AI analysis
+                </span>
+
+            `;
+
+            return;
+
+        }
+
+
+        const seen =
+            new Set();
+
+
+        sources.forEach(
+            function(source) {
+
+                if (
+                    !source ||
+                    !source.name ||
+                    !source.url
+                ) {
+
+                    return;
+
+                }
+
+
+                const url =
+                    safeURL(
+                        source.url
+                    );
+
+
+                if (!url) {
+                    return;
+                }
+
+
+                const key =
+                    url
+                        .replace(/\/+$/, "")
+                        .toLowerCase();
+
+
+                if (seen.has(key)) {
+                    return;
+                }
+
+
+                seen.add(key);
+
+
+                container.innerHTML += `
+
+                    <a
+                        class="source"
+                        href="${escapeAttribute(url)}"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        ${escapeHTML(source.name)}
+
+                    </a>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       SAFE URL
+    ===================================================== */
+
+    function safeURL(
+        value
+    ) {
+
+        try {
+
+            const url =
+                new URL(
+                    String(value || "")
+                );
+
+
+            if (
+                url.protocol !== "http:" &&
+                url.protocol !== "https:"
+            ) {
+
+                return "";
+
+            }
+
+
+            return url.href;
+
+        } catch (error) {
+
+            return "";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHTML(
+        value
+    ) {
+
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE ATTRIBUTE
+    ===================================================== */
+
+    function escapeAttribute(
+        value
+    ) {
+
+        return escapeHTML(
+            value
+        );
+
+    }
+
+
+    /* =====================================================
+       SHOW LOADING
+    ===================================================== */
+
+    function showLoading() {
+
+        document
+            .getElementById(
+                "loading"
+            )
+            .classList.add(
+                "show"
+            );
+
+
+        window.scrollTo({
+
+            top: 300,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    /* =====================================================
+       HIDE LOADING
+    ===================================================== */
+
+    function hideLoading() {
+
+        document
+            .getElementById(
+                "loading"
+            )
+            .classList.remove(
+                "show"
+            );
+
+    }
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    function showError(
+        message
+    ) {
+
+        const errorBox =
+            document.getElementById(
+                "errorBox"
+            );
+
+
+        errorBox.textContent =
+            message;
+
+
+        errorBox.classList.add(
+            "show"
+        );
+
+    }
+
+
+    function hideError() {
+
+        document
+            .getElementById(
+                "errorBox"
+            )
+            .classList.remove(
+                "show"
+            );
+
+    }
+
+
+    /* =====================================================
+       SUCCESS
+    ===================================================== */
+
+    function showSuccess(
+        message
+    ) {
+
+        const successBox =
+            document.getElementById(
+                "successBox"
+            );
+
+
+        successBox.textContent =
+            message;
+
+
+        successBox.classList.add(
+            "show"
+        );
+
+    }
+
+
+    function hideSuccess() {
+
+        document
+            .getElementById(
+                "successBox"
+            )
+            .classList.remove(
+                "show"
+            );
+
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,3818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume | NextHorizon</title>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Existing Header Files -->
+    <link rel="stylesheet" href="header.css?v=4">
+    <script src="header.js?v=4" defer></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(87, 174, 255, 0.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(151, 112, 255, 0.12), transparent 30%),
+                #f5f9ff;
+            color: #172033;
+            min-height: 100vh;
+        }
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(37,99,235,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 95% 15%,
+            rgba(56,189,248,.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #eef5ff 50%,
+            #f8fbff 100%
+        );
+
+    color:#172033;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.cg-navbar{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(148,163,184,.20);
+
+    box-shadow:
+        0 4px 22px rgba(15,23,42,.06);
+}
+
+.cg-nav-container{
+    max-width:1250px;
+    margin:auto;
+
+    min-height:76px;
+
+    padding:0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.cg-logo{
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+
+    flex-shrink:0;
+}
+
+.cg-logo-img{
+    width:150px;
+    height:auto;
+
+    display:block;
+}
+
+.cg-nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
+    padding:5px;
+
+    border-radius:15px;
+
+    background:rgba(248,250,252,.85);
+
+    border:1px solid rgba(226,232,240,.75);
+}
+
+.cg-nav-link{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:#475569;
+
+    font-size:13px;
+    font-weight:600;
+
+    padding:10px 13px;
+
+    border-radius:10px;
+
+    white-space:nowrap;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.cg-nav-link:hover{
+    color:#2563eb;
+
+    background:#eff6ff;
+}
+
+.cg-nav-link.active{
+    color:#2563eb;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 3px 10px rgba(37,99,235,.10);
+}
+
+.cg-nav-link.active::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    bottom:3px;
+
+    width:18px;
+    height:2px;
+
+    transform:translateX(-50%);
+
+    background:#2563eb;
+
+    border-radius:10px;
+}
+
+
+/* TABLET */
+
+@media(max-width:1000px){
+
+    .cg-nav-container{
+        padding:0 18px;
+    }
+
+    .cg-logo-img{
+        width:135px;
+    }
+
+    .cg-nav-links{
+        gap:2px;
+    }
+
+    .cg-nav-link{
+        font-size:12px;
+        padding:9px 10px;
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .cg-nav-container{
+        min-height:68px;
+        padding:0 15px;
+    }
+
+    .cg-logo-img{
+        width:125px;
+    }
+
+    .cg-nav-links{
+        display:none;
+    }
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page-wrapper{
+    width:100%;
+    max-width:1180px;
+
+    margin:auto;
+
+    padding:
+        125px
+        25px
+        80px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    text-align:center;
+
+    max-width:850px;
+
+    margin:0 auto 45px;
+}
+
+.hero-tag{
+    display:inline-flex;
+
+    align-items:center;
+    gap:8px;
+
+    padding:8px 15px;
+
+    background:#eff6ff;
+
+    border:1px solid #dbeafe;
+
+    color:#2563eb;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:800;
+
+    margin-bottom:18px;
+}
+
+.hero-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(37,99,235,.10);
+}
+
+.hero h1{
+    font-size:clamp(35px,5vw,56px);
+
+    line-height:1.08;
+
+    letter-spacing:-2px;
+
+    font-weight:800;
+
+    color:#172033;
+
+    margin-bottom:17px;
+}
+
+.hero h1 span{
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #38bdf8
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+}
+
+.hero p{
+    max-width:690px;
+
+    margin:auto;
+
+    color:#64748b;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.analyzer-card{
+
+    background:
+        rgba(255,255,255,.91);
+
+    backdrop-filter:blur(20px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.85);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 30px 80px
+        rgba(37,99,235,.09),
+
+        0 5px 20px
+        rgba(15,23,42,.04);
+}
+
+
+/* =========================================================
+   STEP HEADER
+========================================================= */
+
+.step-header{
+
+    padding:
+        30px
+        38px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+.step-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:7px;
+}
+
+.step-number{
+
+    width:36px;
+    height:36px;
+
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #38bdf8
+        );
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    box-shadow:
+        0 8px 18px
+        rgba(37,99,235,.18);
+}
+
+.step-title h2{
+
+    font-size:20px;
+
+    color:#172033;
+
+    font-weight:800;
+}
+
+.step-description{
+
+    margin-left:48px;
+
+    color:#64748b;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   RESUME UPLOAD
+========================================================= */
+
+.upload-section{
+
+    padding:
+        32px
+        38px
+        36px;
+}
+
+
+/* MAIN DROP STYLE */
+
+.resume-drop-area{
+
+    position:relative;
+
+    border:
+        2px dashed
+        #cbd5e1;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fbff,
+            #f1f6ff
+        );
+
+    border-radius:24px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    transition:.3s ease;
+}
+
+.resume-drop-area:hover{
+
+    border-color:#60a5fa;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f5f9ff,
+            #eaf3ff
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(37,99,235,.07);
+}
+
+
+/* UPLOAD ICON */
+
+.big-upload-icon{
+
+    width:65px;
+    height:65px;
+
+    margin:0 auto 15px;
+
+    border-radius:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0f2fe
+        );
+
+    font-size:28px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.10);
+}
+
+.resume-drop-area h3{
+
+    font-size:18px;
+
+    color:#1e293b;
+
+    margin-bottom:7px;
+}
+
+.resume-drop-area p{
+
+    color:#64748b;
+
+    font-size:13px;
+
+    margin-bottom:22px;
+}
+
+
+/* UPLOAD OPTIONS */
+
+.upload-options{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.upload-option{
+
+    min-width:145px;
+
+    padding:13px 17px;
+
+    border-radius:13px;
+
+    border:1px solid #dbe3ef;
+
+    background:white;
+
+    color:#334155;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.upload-option:hover{
+
+    border-color:#93c5fd;
+
+    color:#2563eb;
+
+    background:#eff6ff;
+
+    transform:translateY(-2px);
+}
+
+input[type="file"]{
+    display:none;
+}
+
+
+/* =========================================================
+   SELECTED FILE
+========================================================= */
+
+.file-status{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:13px 16px;
+
+    background:#f0fdf4;
+
+    border:
+        1px solid
+        #bbf7d0;
+
+    color:#166534;
+
+    border-radius:13px;
+
+    font-size:13px;
+
+    text-align:left;
+}
+
+
+/* =========================================================
+   WRITE RESUME
+========================================================= */
+
+.text-wrapper{
+
+    margin-top:18px;
+
+    display:none;
+}
+
+textarea{
+
+    width:100%;
+
+    min-height:170px;
+
+    padding:18px;
+
+    resize:vertical;
+
+    outline:none;
+
+    border:
+        1px solid
+        #dbe3ef;
+
+    border-radius:17px;
+
+    background:#f8fafc;
+
+    color:#1e293b;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    transition:.2s;
+}
+
+textarea:focus{
+
+    background:white;
+
+    border-color:#60a5fa;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37,99,235,.08);
+}
+
+textarea::placeholder{
+    color:#94a3b8;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.section-divider{
+
+    height:1px;
+
+    background:#edf2f7;
+}
+
+
+/* =========================================================
+   JOB PREFERENCE
+========================================================= */
+
+.preference-section{
+
+    padding:
+        32px
+        38px
+        36px;
+}
+
+.preference-grid{
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:20px;
+}
+
+.input-group{
+
+    text-align:left;
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#334155;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:.2px;
+}
+
+.input-box{
+
+    position:relative;
+}
+
+.input-icon{
+
+    position:absolute;
+
+    left:15px;
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size:16px;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+.input-group input,
+.input-group select{
+
+    width:100%;
+
+    height:52px;
+
+    padding:
+        0
+        15px
+        0
+        43px;
+
+    border:
+        1px solid
+        #dbe3ef;
+
+    border-radius:14px;
+
+    background:#f8fafc;
+
+    color:#1e293b;
+
+    font-size:13px;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+.input-group input::placeholder{
+
+    color:#94a3b8;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+    background:white;
+
+    border-color:#60a5fa;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37,99,235,.08);
+}
+
+
+/* =========================================================
+   ANALYZE
+========================================================= */
+
+.analyze-section{
+
+    padding:
+        0
+        38px
+        38px;
+}
+
+.analyze-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #38bdf8
+        );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 28px
+        rgba(37,99,235,.22);
+
+    transition:.25s;
+}
+
+.analyze-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(37,99,235,.28);
+}
+
+.analyze-btn:active{
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+#result{
+
+    margin-top:35px;
+}
+
+.result-card{
+
+    background:
+        rgba(255,255,255,.94);
+
+    border:
+        1px solid
+        #e5eaf2;
+
+    border-radius:27px;
+
+    padding:32px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(15,23,42,.06);
+}
+
+
+/* RESULT HEADER */
+
+.result-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding-bottom:25px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+.result-heading{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
+
+.result-icon{
+
+    width:47px;
+    height:47px;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0f2fe
+        );
+
+    font-size:21px;
+}
+
+.result-heading h2{
+
+    font-size:21px;
+
+    color:#172033;
+
+    margin-bottom:3px;
+}
+
+.result-heading p{
+
+    color:#64748b;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   RESULT SECTIONS
+========================================================= */
+
+.result-section{
+
+    margin-top:27px;
+}
+
+.result-section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:14px;
+
+    color:#172033;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+}
+
+.skill-badge{
+
+    padding:
+        8px
+        14px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #e0f2fe
+        );
+
+    border:
+        1px solid
+        #dbeafe;
+
+    color:#2563eb;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+}
+
+.info-box{
+
+    padding:18px;
+
+    border-radius:17px;
+
+    background:#f8fafc;
+
+    border:
+        1px solid
+        #e8edf4;
+}
+
+.info-label{
+
+    color:#94a3b8;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.7px;
+
+    margin-bottom:7px;
+}
+
+.info-value{
+
+    color:#1e293b;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   JOBS
+========================================================= */
+
+#jobsContainer{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px,1fr)
+        );
+
+    gap:17px;
+}
+
+.job-card{
+
+    background:white;
+
+    padding:21px;
+
+    border-radius:18px;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    box-shadow:
+        0 5px 15px
+        rgba(15,23,42,.04);
+
+    transition:.25s;
+}
+
+.job-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#bfdbfe;
+
+    box-shadow:
+        0 15px 30px
+        rgba(37,99,235,.10);
+}
+
+.company-logo{
+
+    width:45px;
+    height:45px;
+
+    border-radius:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0f2fe
+        );
+
+    color:#2563eb;
+
+    font-size:17px;
+
+    font-weight:800;
+
+    margin-bottom:13px;
+}
+
+.job-title{
+
+    color:#172033;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    line-height:1.4;
+
+    margin-bottom:5px;
+}
+
+.job-company{
+
+    color:#64748b;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.job-location{
+
+    margin-top:9px;
+
+    color:#475569;
+
+    font-size:12px;
+}
+
+.salary-badge{
+
+    display:inline-flex;
+
+    margin-top:11px;
+
+    padding:
+        6px
+        10px;
+
+    border-radius:8px;
+
+    background:#ecfdf5;
+
+    color:#15803d;
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+.apply-btn{
+
+    display:block;
+
+    margin-top:15px;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.apply-btn:hover{
+
+    background:#1d4ed8;
+}
+
+
+/* =========================================================
+   PORTALS
+========================================================= */
+
+.portal-section{
+
+    margin-top:30px;
+
+    padding-top:26px;
+
+    border-top:
+        1px solid
+        #edf2f7;
+}
+
+.portal-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(145px,1fr)
+        );
+
+    gap:11px;
+}
+
+.portal-btn{
+
+    min-height:47px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px;
+
+    border:
+        1px solid
+        #dbeafe;
+
+    border-radius:12px;
+
+    background:#f8fafc;
+
+    color:#2563eb;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.portal-btn:hover{
+
+    background:#eff6ff;
+
+    border-color:#93c5fd;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-box{
+
+    background:
+        rgba(255,255,255,.92);
+
+    border:
+        1px solid
+        #e5eaf2;
+
+    border-radius:23px;
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 15px 40px
+        rgba(15,23,42,.05);
+}
+
+.loading-spinner{
+
+    width:44px;
+    height:44px;
+
+    margin:
+        0
+        auto
+        16px;
+
+    border:
+        4px solid
+        #dbeafe;
+
+    border-top-color:#2563eb;
+
+    border-radius:50%;
+
+    animation:
+        spin
+        1s
+        linear
+        infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.loading-box p{
+
+    color:#2563eb;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-message{
+
+    padding:20px;
+
+    border-radius:14px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    font-size:13px;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .cg-nav-container{
+        padding:0 15px;
+    }
+
+    .cg-nav-links{
+        gap:2px;
+    }
+
+    .cg-nav-link{
+        padding:8px 9px;
+        font-size:12px;
+    }
+
+    .page-wrapper{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .cg-logo-img{
+        width:125px;
+    }
+
+    .cg-nav-links{
+        display:none;
+    }
+
+    .page-wrapper{
+        padding-top:105px;
+    }
+
+    .hero h1{
+        font-size:34px;
+        letter-spacing:-1px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .step-header,
+    .upload-section,
+    .preference-section{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .analyze-section{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .preference-grid,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .result-card{
+        padding:20px;
+    }
+
+    .result-header{
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .analyzer-card{
+        border-radius:21px;
+    }
+
+    .resume-drop-area{
+        padding:28px 15px;
+    }
+
+    .upload-option{
+        width:100%;
+    }
+
+    #jobsContainer{
+        grid-template-columns:1fr;
+    }
+
+    .portal-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =========================================================
+   NAVBAR — MATCH REFERENCE SCREENSHOT
+========================================================= */
+
+.cg-navbar{
+    width:100%;
+    height:90px;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid rgba(148,163,184,.16);
+    box-shadow:0 2px 10px rgba(15,23,42,.025);
+}
+
+.cg-nav-container{
+    width:100%;
+    max-width:none;
+    height:90px;
+    min-height:90px;
+    margin:0;
+    padding:0 9.5%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:0;
+}
+
+.cg-logo{
+    flex:0 0 auto;
+    margin:0;
+    display:flex;
+    align-items:center;
+}
+
+.cg-logo-img{
+    width:180px;
+    height:auto;
+    display:block;
+}
+
+.cg-nav-links{
+    margin-left:auto;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:36px;
+    background:transparent;
+    border:none;
+    border-radius:0;
+}
+
+.cg-nav-link{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:58px;
+    padding:0 0;
+    border-radius:16px;
+    color:#475569;
+    font-size:16px;
+    font-weight:600;
+    white-space:nowrap;
+    background:transparent;
+    box-shadow:none;
+    transition:color .2s ease, background .2s ease;
+}
+
+.cg-nav-link:hover{
+    color:#2563eb;
+    background:transparent;
+}
+
+.cg-nav-link.active{
+    color:#1264df;
+    background:linear-gradient(135deg,#eef4ff 0%,#f3f0ff 100%);
+    padding:0 20px;
+    box-shadow:none;
+}
+
+.cg-nav-link.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:100%;
+    height:3px;
+    transform:none;
+    background:linear-gradient(90deg,#526cff 0%,#f04fc5 100%);
+    border-radius:3px;
+}
+
+/* Existing Login button from the shared header */
+.cg-nav-container > .cg-login-btn,
+.cg-nav-links + .cg-login-btn{
+    flex:0 0 auto;
+    margin-left:38px;
+    width:130px;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#23418f 0%,#347ee8 100%);
+    font-size:16px;
+    font-weight:700;
+    box-shadow:0 10px 24px rgba(37,99,235,.18);
+}
+
+.cg-nav-container > .cg-login-btn:hover,
+.cg-nav-links + .cg-login-btn:hover{
+    color:#fff;
+    transform:translateY(-1px);
+}
+
+@media(max-width:1200px){
+    .cg-nav-container{
+        padding:0 5%;
+    }
+    .cg-nav-links{
+        gap:20px;
+    }
+    .cg-nav-link{
+        font-size:14px;
+    }
+    .cg-nav-container > .cg-login-btn,
+    .cg-nav-links + .cg-login-btn{
+        margin-left:22px;
+        width:110px;
+    }
+}
+
+@media(max-width:850px){
+    .cg-nav-container{
+        padding:0 20px;
+    }
+    .cg-logo-img{
+        width:145px;
+    }
+    .cg-nav-links{
+        gap:10px;
+    }
+    .cg-nav-link{
+        font-size:12px;
+    }
+    .cg-nav-link.active{
+        padding:0 12px;
+    }
+}
+
+@media(max-width:700px){
+    .cg-navbar,
+    .cg-nav-container{
+        height:68px;
+        min-height:68px;
+    }
+    .cg-logo-img{
+        width:125px;
+    }
+    .cg-nav-links{
+        display:none;
+    }
+}
+
+
+
+/* =========================================================
+   POLISHED UI — VISUAL ONLY
+   Keeps the existing page background and functionality.
+========================================================= */
+
+:root{
+    --ui-blue:#2563eb;
+    --ui-indigo:#5b5cf6;
+    --ui-pink:#ec4899;
+    --ui-text:#172033;
+    --ui-muted:#64748b;
+    --ui-border:#e4eaf3;
+}
+
+/* Navbar: clean, spacious and friendly */
+.cg-navbar{
+    height:88px;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(148,163,184,.16);
+    box-shadow:0 6px 24px rgba(15,23,42,.045);
+}
+
+.cg-nav-container{
+    width:100%;
+    max-width:none;
+    height:88px;
+    padding:0 5.5%;
+    display:flex;
+    align-items:center;
+}
+
+.cg-logo-img{
+    width:178px;
+    transition:transform .25s ease;
+}
+.cg-logo:hover .cg-logo-img{ transform:translateY(-1px); }
+
+.cg-nav-links{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0;
+    background:transparent;
+    border:0;
+}
+
+.cg-nav-link{
+    min-height:54px;
+    padding:0 15px;
+    border-radius:15px;
+    color:#475569;
+    font-size:15px;
+    font-weight:650;
+    letter-spacing:.05px;
+}
+.cg-nav-link:hover{
+    color:var(--ui-blue);
+    background:rgba(239,246,255,.72);
+}
+.cg-nav-link.active{
+    color:#1264df;
+    background:linear-gradient(135deg,#edf4ff 0%,#f4efff 100%);
+    box-shadow:none;
+}
+.cg-nav-link.active::after{
+    left:8px;
+    right:8px;
+    bottom:-2px;
+    width:auto;
+    height:3px;
+    transform:none;
+    background:linear-gradient(90deg,#526cff,#f04fc5);
+}
+
+/* Existing shared Login button — style only, never add another one */
+.cg-nav-container > .cg-login-btn,
+.cg-nav-links + .cg-login-btn{
+    flex:0 0 auto;
+    margin-left:26px;
+    width:128px;
+    height:62px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#23418f 0%,#347ee8 100%);
+    box-shadow:0 12px 26px rgba(37,99,235,.18);
+    transition:transform .22s ease,box-shadow .22s ease;
+}
+.cg-nav-container > .cg-login-btn:hover,
+.cg-nav-links + .cg-login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 30px rgba(37,99,235,.25);
+}
+
+/* Main spacing */
+.page-wrapper{
+    max-width:1220px;
+    padding:132px 25px 90px;
+}
+
+/* Hero */
+.hero{
+    max-width:900px;
+    margin:0 auto 42px;
+}
+.hero-tag{
+    padding:9px 16px;
+    background:rgba(239,246,255,.82);
+    border:1px solid rgba(191,219,254,.8);
+    box-shadow:0 7px 20px rgba(37,99,235,.06);
+}
+.hero h1{
+    font-size:clamp(38px,5vw,58px);
+    letter-spacing:-2.5px;
+    margin-bottom:18px;
+}
+.hero h1 span{
+    background:linear-gradient(135deg,#2563eb 10%,#635bff 58%,#ec4899 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+}
+.hero p{
+    font-size:15.5px;
+    max-width:720px;
+    line-height:1.85;
+}
+
+/* Main analyzer */
+.analyzer-card{
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 28px 75px rgba(37,99,235,.10),0 8px 25px rgba(15,23,42,.045);
+}
+
+.step-header{
+    padding:30px 40px 27px;
+    background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(248,251,255,.75));
+}
+.step-number{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#635bff);
+    box-shadow:0 9px 22px rgba(37,99,235,.2);
+}
+.step-title h2{ font-size:20px; }
+.step-description{ color:#718096; }
+
+.upload-section,
+.preference-section{
+    padding-left:40px;
+    padding-right:40px;
+}
+
+/* Upload area becomes an obvious action zone */
+.resume-drop-area{
+    padding:40px 28px;
+    border:1.5px dashed #b9c9e2;
+    background:linear-gradient(145deg,rgba(248,251,255,.96),rgba(239,246,255,.82));
+    border-radius:23px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.resume-drop-area:hover{
+    transform:translateY(-2px);
+    border-color:#7aa7f8;
+    box-shadow:0 18px 40px rgba(37,99,235,.09);
+}
+.big-upload-icon{
+    width:72px;
+    height:72px;
+    margin-bottom:17px;
+    border-radius:21px;
+    background:linear-gradient(135deg,#dbeafe,#ede9fe);
+    box-shadow:0 12px 28px rgba(37,99,235,.12);
+}
+.resume-drop-area h3{
+    font-size:19px;
+    color:#172033;
+    margin-bottom:8px;
+}
+.resume-drop-area p{ margin-bottom:24px; }
+
+.upload-options{ gap:13px; }
+.upload-option{
+    min-width:155px;
+    min-height:48px;
+    padding:12px 18px;
+    border:1px solid #dbe4f0;
+    border-radius:14px;
+    background:rgba(255,255,255,.95);
+    box-shadow:0 5px 15px rgba(15,23,42,.035);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease;
+}
+.upload-option:hover{
+    transform:translateY(-3px);
+    border-color:#93c5fd;
+    background:#fff;
+    box-shadow:0 10px 22px rgba(37,99,235,.10);
+}
+
+.file-status{
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(22,101,52,.05);
+}
+
+/* Form controls */
+.preference-grid{ gap:22px; }
+.input-group label{
+    font-size:12.5px;
+    margin-bottom:9px;
+    color:#334155;
+}
+.input-group input,
+.input-group select{
+    height:54px;
+    border-radius:15px;
+    background:rgba(248,250,252,.9);
+    border-color:#dbe4ef;
+    box-shadow:0 2px 5px rgba(15,23,42,.02);
+}
+.input-group input:hover,
+.input-group select:hover{ border-color:#b7c9e2; }
+.input-group input:focus,
+.input-group select:focus{
+    background:#fff;
+    border-color:#7aa7f8;
+    box-shadow:0 0 0 4px rgba(37,99,235,.08),0 8px 20px rgba(37,99,235,.05);
+}
+
+/* Primary CTA */
+.analyze-section{ padding:0 40px 40px; }
+.analyze-btn{
+    height:60px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#2563eb 0%,#5b5cf6 58%,#7c5cff 100%);
+    box-shadow:0 14px 30px rgba(37,99,235,.20);
+    letter-spacing:.1px;
+}
+.analyze-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 38px rgba(37,99,235,.26);
+}
+
+/* Result section */
+#result{ margin-top:40px; }
+.result-card{
+    border-radius:26px;
+    border:1px solid rgba(226,232,240,.95);
+    box-shadow:0 20px 55px rgba(15,23,42,.065);
+}
+.result-header{ padding-bottom:23px; }
+
+/* Job cards / result grids */
+.job-card{
+    border:1px solid #e4eaf3;
+    border-radius:19px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 8px 24px rgba(15,23,42,.045);
+    transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.job-card:hover{
+    transform:translateY(-4px);
+    border-color:#c7d7f0;
+    box-shadow:0 16px 32px rgba(37,99,235,.10);
+}
+.apply-btn{
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#5b5cf6);
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+.apply-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 18px rgba(37,99,235,.18);
+}
+
+.empty-message{
+    border:1px solid #e5eaf2;
+    box-shadow:0 8px 22px rgba(15,23,42,.035);
+}
+
+/* Mobile polish */
+@media(max-width:1200px){
+    .cg-nav-container{ padding:0 4%; }
+    .cg-nav-links{ gap:5px; }
+    .cg-nav-link{ font-size:14px; padding:0 11px; }
+    .cg-nav-container > .cg-login-btn,
+    .cg-nav-links + .cg-login-btn{ margin-left:15px; width:112px; }
+}
+@media(max-width:900px){
+    .page-wrapper{ padding-left:18px; padding-right:18px; }
+    .step-header,.upload-section,.preference-section{ padding-left:25px; padding-right:25px; }
+    .analyze-section{ padding-left:25px; padding-right:25px; }
+}
+@media(max-width:700px){
+    .cg-navbar,.cg-nav-container{ height:72px; min-height:72px; }
+    .cg-nav-container{ padding:0 18px; }
+    .cg-logo-img{ width:130px; }
+    .page-wrapper{ padding-top:102px; }
+    .hero h1{ font-size:34px; letter-spacing:-1.5px; }
+    .hero p{ font-size:13.5px; }
+    .step-header,.upload-section,.preference-section{ padding-left:20px; padding-right:20px; }
+    .analyze-section{ padding-left:20px; padding-right:20px; }
+    .resume-drop-area{ padding:30px 16px; }
+}
+
+</style>
+
+<link rel="stylesheet" href="header.css?v=4">
+<script src="header.js?v=4" defer></script>
+
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="cg-navbar">
+    <div class="cg-nav-container">
+
+        <a class="cg-logo" href="index.jsp">
+            <img class="cg-logo-img"
+                 src="images/nexthorizon-logo.png"
+                 alt="NextHorizon">
+        </a>
+
+        <div class="cg-nav-links">
+
+            <a href="index.jsp" class="cg-nav-link">
+                Home
+            </a>
+
+            <a href="assessment/index.jsp" class="cg-nav-link">
+                Career Assessment
+            </a>
+
+            <a href="learning-resources.html" class="cg-nav-link">
+                Resource
+            </a>
+
+            <a href="resume.html" class="cg-nav-link active">
+                Resume
+            </a>
+
+            <a href="job-profile.html" class="cg-nav-link">
+                Job Profile
+            </a>
+
+            <a href="feedback.html" class="cg-nav-link">
+                Feedback
+            </a>
+
+        </div>
+
+
+    </div>
+</nav>
+
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
+
+<main class="page-wrapper">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        
+
+
+        <h1>
+
+            Turn Your Resume Into
+
+            <span>
+                Career Opportunities
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Upload your resume, discover your key skills,
+            and find relevant job opportunities based on
+            your career field and preferred location.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         ANALYZER
+    ====================================================== -->
+
+    <section class="analyzer-card">
+
+
+        <!-- STEP 01 -->
+
+        <div class="step-header">
+
+            <div class="step-title">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h2>
+                    Add Your Resume
+                </h2>
+
+            </div>
+
+
+            <p class="step-description">
+
+                Upload a PDF, upload an image, or write your
+                resume manually.
+
+            </p>
+
+        </div>
+
+
+        <!-- UPLOAD -->
+
+        <div class="upload-section">
+
+
+            <div class="resume-drop-area">
+
+
+                <div class="big-upload-icon">
+                    📄
+                </div>
+
+
+                <h3>
+                    How would you like to add your resume?
+                </h3>
+
+
+                <p>
+                    Choose one of the options below to continue
+                </p>
+
+
+                <div class="upload-options">
+
+
+                    <!-- PDF -->
+
+                    <label
+                        class="upload-option"
+                        onclick="
+                        document
+                        .getElementById('pdfFile')
+                        .click()">
+
+                        📄 Upload PDF
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="pdfFile"
+                        accept=".pdf"
+                        onchange="
+                        showSelectedFile(this,'pdf')">
+
+
+                    <!-- IMAGE -->
+
+                    <label
+                        class="upload-option"
+                        onclick="
+                        document
+                        .getElementById('imageFile')
+                        .click()">
+
+                        🖼️ Upload Image
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="imageFile"
+                        accept="image/*"
+                        onchange="
+                        showSelectedFile(this,'image')">
+
+
+                    <!-- TEXT -->
+
+                    <div
+                        class="upload-option"
+                        onclick="showText()">
+
+                        ✍️ Write Resume
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="fileStatus"
+                    class="file-status">
+                </div>
+
+
+                <div
+                    class="text-wrapper"
+                    id="textWrapper">
+
+                    <textarea
+                        id="resumeText"
+                        placeholder="Write or paste your resume here...
+
+Example:
+Name
+Education
+Skills
+Projects
+Experience
+Certifications"></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-divider"></div>
+
+
+        <!-- =================================================
+             STEP 02
+        ================================================== -->
+
+        <div class="preference-section">
+
+
+            <div class="step-title">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h2>
+                    Tell Us What You Want
+                </h2>
+
+            </div>
+
+
+            <p class="step-description">
+
+                Add your preferred location and career field
+                so we can find more relevant jobs.
+
+            </p>
+
+
+            <div class="preference-grid">
+
+
+                <!-- LOCATION -->
+
+                <div class="input-group">
+
+                    <label>
+                        JOB CITY
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            📍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="locationInput"
+                            placeholder="e.g. Pune, Mumbai, Bengaluru">
+
+                    </div>
+
+                </div>
+
+
+                <!-- COUNTRY -->
+
+                <div class="input-group">
+
+                    <label>
+                        COUNTRY
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            🌎
+                        </span>
+
+                        <select id="countryInput">
+
+                            <option value="in">
+                                India
+                            </option>
+
+                            <option value="us">
+                                USA
+                            </option>
+
+                            <option value="ca">
+                                Canada
+                            </option>
+
+                            <option value="au">
+                                Australia
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FIELD -->
+
+                <div class="input-group">
+
+                    <label>
+                        CAREER FIELD
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            💼
+                        </span>
+
+                        <select id="fieldInput">
+
+                            <option value="">
+                                Select your field
+                            </option>
+
+                            <option value="technical">
+                                Technical
+                            </option>
+
+                            <option value="non-technical">
+                                Non-Technical
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="input-group">
+
+                    <label>
+                        PREFERRED JOB ROLE
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">
+                            🎯
+                        </span>
+
+                        <input
+                            type="text"
+                            id="desiredRole"
+                            placeholder="e.g. Data Analyst">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANALYZE -->
+
+        <div class="analyze-section">
+
+            <button
+                class="analyze-btn"
+                onclick="analyzeResume()">
+
+                ✨ Analyze My Resume
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+
+    <div id="result"></div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   PDF WORKER
+========================================================= */
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+
+/* =========================================================
+   SHOW TEXT
+========================================================= */
+
+function showText(){
+
+    const wrapper =
+        document.getElementById("textWrapper");
+
+    const textarea =
+        document.getElementById("resumeText");
+
+    wrapper.style.display = "block";
+
+    textarea.focus();
+
+}
+
+
+/* =========================================================
+   FILE STATUS
+========================================================= */
+
+function showSelectedFile(input,type){
+
+    const fileStatus =
+        document.getElementById("fileStatus");
+
+
+    if(
+        !input.files ||
+        !input.files[0]
+    ){
+
+        fileStatus.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    fileStatus.innerHTML =
+        "✓ " +
+        file.name +
+        " selected successfully";
+
+
+    fileStatus.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   ANALYZE RESUME
+========================================================= */
+
+async function analyzeResume(){
+
+    const pdf =
+        document
+        .getElementById("pdfFile")
+        .files[0];
+
+
+    const image =
+        document
+        .getElementById("imageFile")
+        .files[0];
+
+
+    const textInput =
+        document
+        .getElementById("resumeText")
+        .value;
+
+
+    const location =
+        document
+        .getElementById("locationInput")
+        .value
+        .trim();
+
+
+    const desiredRole =
+        document
+        .getElementById("desiredRole")
+        .value
+        .trim();
+
+
+    const country =
+        document
+        .getElementById("countryInput")
+        .value;
+
+
+    const field =
+        document
+        .getElementById("fieldInput")
+        .value;
+
+
+    if(!location){
+
+        alert(
+            "Please enter your preferred job city."
+        );
+
+        return;
+
+    }
+
+
+    if(!field){
+
+        alert(
+            "Please select your career field."
+        );
+
+        return;
+
+    }
+
+
+    document
+    .getElementById("result")
+    .innerHTML = `
+
+        <div class="loading-box">
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Analyzing your resume and
+                finding suitable jobs...
+            </p>
+
+        </div>
+
+    `;
+
+
+    if(pdf){
+
+        extractPDF(
+            pdf,
+            location,
+            country,
+            field,
+            desiredRole
+        );
+
+    }
+
+    else if(image){
+
+        extractImageText(
+            image,
+            location,
+            country,
+            field,
+            desiredRole
+        );
+
+    }
+
+    else if(
+        textInput.trim() !== ""
+    ){
+
+        processText(
+            textInput,
+            location,
+            country,
+            field,
+            desiredRole
+        );
+
+    }
+
+    else{
+
+        alert(
+            "Please upload a resume or write your resume first."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PDF
+========================================================= */
+
+async function extractPDF(
+    file,
+    location,
+    country,
+    field,
+    desiredRole
+){
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        async function(){
+
+            try{
+
+                const typedarray =
+                    new Uint8Array(
+                        this.result
+                    );
+
+
+                const pdf =
+                    await pdfjsLib
+                    .getDocument(
+                        typedarray
+                    )
+                    .promise;
+
+
+                let text = "";
+
+
+                for(
+                    let i=1;
+                    i<=pdf.numPages;
+                    i++
+                ){
+
+                    const page =
+                        await pdf.getPage(i);
+
+
+                    const content =
+                        await page
+                        .getTextContent();
+
+
+                    content.items.forEach(
+                        item =>
+                        text +=
+                        item.str + " "
+                    );
+
+                }
+
+
+                processText(
+                    text,
+                    location,
+                    country,
+                    field,
+                    desiredRole
+                );
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+
+                document
+                .getElementById("result")
+                .innerHTML = `
+
+                    <div class="empty-message">
+
+                        Unable to read the PDF.
+                        Please try another file.
+
+                    </div>
+
+                `;
+
+            }
+
+        };
+
+
+    reader.readAsArrayBuffer(file);
+
+}
+
+
+/* =========================================================
+   IMAGE OCR
+========================================================= */
+
+function extractImageText(
+    file,
+    location,
+    country,
+    field,
+    desiredRole
+){
+
+    Tesseract
+    .recognize(file,'eng')
+
+    .then(
+        ({data:{text}})=>{
+
+            processText(
+                text,
+                location,
+                country,
+                field,
+                desiredRole
+            );
+
+        }
+    )
+
+    .catch(error=>{
+
+        console.error(error);
+
+
+        document
+        .getElementById("result")
+        .innerHTML = `
+
+            <div class="empty-message">
+
+                Unable to read the image.
+                Please try another image.
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+function detectExperienceYears(text){
+
+    const match =
+        text.match(
+            /(\d+)\s*(year|years)/i
+        );
+
+
+    return match
+        ? match[0]
+        : "Fresher";
+
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+function detectProjects(text){
+
+    let projects=[];
+
+
+    const sectionMatch =
+        text.match(
+            /projects?([\s\S]*?)(certifications|skills|education|experience|internship|$)/i
+        );
+
+
+    if(!sectionMatch)
+        return projects;
+
+
+    let section =
+        sectionMatch[1];
+
+
+    const lines =
+        section.split(
+            /\n|•|-|\./
+        );
+
+
+    const skills=[
+
+        "html",
+        "css",
+        "javascript",
+        "react",
+
+        "python",
+        "java",
+        "sql",
+        "excel",
+
+        "graphic design",
+        "ui",
+        "ux",
+
+        "marketing",
+        "sales",
+        "finance",
+
+        "teacher",
+        "teaching",
+        "education",
+
+        "share market",
+        "trading",
+        "stock market",
+
+        "civil",
+        "construction",
+        "autocad",
+
+        "mechanical",
+        "solidworks",
+        "manufacturing",
+
+        "electrical",
+        "power system",
+        "electronics"
+
+    ];
+
+
+    lines.forEach(line=>{
+
+        line=line.trim();
+
+
+        if(line.length<10)
+            return;
+
+
+        let title =
+            line.split("–")[0]
+            ||
+            line.split(":")[0]
+            ||
+            line;
+
+
+        let tech=[];
+
+
+        skills.forEach(t=>{
+
+            if(
+                line
+                .toLowerCase()
+                .includes(t)
+            ){
+
+                tech.push(t);
+
+            }
+
+        });
+
+
+        projects.push(
+
+            title +
+            " | Tech: " +
+            (
+                tech.join(", ")
+                ||
+                "Not Mentioned"
+            )
+
+        );
+
+    });
+
+
+    projects=[
+        ...new Set(projects)
+    ];
+
+
+    return projects;
+
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+function processText(
+    text,
+    location,
+    country,
+    field,
+    desiredRole
+){
+
+    text =
+        text.toLowerCase();
+
+
+    const skills=[
+
+        "html",
+        "css",
+        "javascript",
+        "react",
+
+        "python",
+        "java",
+        "sql",
+        "excel",
+
+        "graphic design",
+        "ui",
+        "ux",
+
+        "marketing",
+        "sales",
+        "finance",
+
+        "teacher",
+        "teaching",
+        "education",
+
+        "share market",
+        "trading",
+        "stock market",
+
+        "civil",
+        "construction",
+        "autocad",
+
+        "mechanical",
+        "solidworks",
+        "manufacturing",
+
+        "electrical",
+        "power system",
+        "electronics"
+
+    ];
+
+
+    const foundSkills =
+        skills.filter(
+            skill =>
+            text.includes(skill)
+        );
+
+
+    const experience =
+        detectExperienceYears(text);
+
+
+    const projects =
+        detectProjects(text);
+
+
+    let jobs=[];
+
+
+    /* TECHNICAL */
+
+    if(field==="technical"){
+
+        if(
+            foundSkills.includes("html")
+            ||
+            foundSkills.includes("javascript")
+        ){
+
+            jobs.push(
+                "Frontend Developer",
+                "Website Developer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("python")
+        ){
+
+            jobs.push(
+                "Python Developer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("java")
+        ){
+
+            jobs.push(
+                "Backend Developer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("excel")
+            ||
+            foundSkills.includes("sql")
+        ){
+
+            jobs.push(
+                "Data Analyst"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("ui")
+            ||
+            foundSkills.includes("ux")
+        ){
+
+            jobs.push(
+                "UI UX Designer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("graphic design")
+        ){
+
+            jobs.push(
+                "Graphic Designer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("civil")
+            ||
+            foundSkills.includes("construction")
+        ){
+
+            jobs.push(
+                "Civil Engineer",
+                "Site Engineer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("mechanical")
+            ||
+            foundSkills.includes("solidworks")
+        ){
+
+            jobs.push(
+                "Mechanical Engineer",
+                "Production Engineer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("electrical")
+            ||
+            foundSkills.includes("power system")
+        ){
+
+            jobs.push(
+                "Electrical Engineer"
+            );
+
+        }
+
+    }
+
+
+    /* NON TECHNICAL */
+
+    else{
+
+        if(
+            foundSkills.includes("marketing")
+        ){
+
+            jobs.push(
+                "Digital Marketing Executive",
+                "SEO Specialist",
+                "Social Media Manager"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("sales")
+        ){
+
+            jobs.push(
+                "Sales Executive",
+                "Business Development Executive"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("finance")
+        ){
+
+            jobs.push(
+                "Banking Associate",
+                "Accountant",
+                "Financial Analyst",
+                "Loan Officer"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("share market")
+            ||
+            foundSkills.includes("trading")
+        ){
+
+            jobs.push(
+                "Stock Market Analyst",
+                "Equity Advisor"
+            );
+
+        }
+
+
+        if(
+            foundSkills.includes("teacher")
+            ||
+            foundSkills.includes("education")
+        ){
+
+            jobs.push(
+                "Teacher",
+                "Tutor",
+                "Academic Coordinator"
+            );
+
+        }
+
+
+        if(
+            text.includes("hr")
+            ||
+            text.includes("recruitment")
+        ){
+
+            jobs.push(
+                "HR Executive",
+                "Recruiter"
+            );
+
+        }
+
+
+        if(
+            text.includes("management")
+            ||
+            text.includes("business")
+        ){
+
+            jobs.push(
+                "Business Analyst",
+                "Operations Manager"
+            );
+
+        }
+
+
+        if(
+            text.includes("communication")
+            ||
+            text.includes("customer")
+        ){
+
+            jobs.push(
+                "Customer Support Executive",
+                "Call Center Executive"
+            );
+
+        }
+
+
+        if(
+            text.includes("office")
+            ||
+            text.includes("admin")
+        ){
+
+            jobs.push(
+                "Administrative Assistant",
+                "Office Executive"
+            );
+
+        }
+
+
+        if(
+            text.includes("content")
+            ||
+            text.includes("writing")
+        ){
+
+            jobs.push(
+                "Content Writer",
+                "Copywriter"
+            );
+
+        }
+
+
+        if(
+            text.includes("bank")
+            ||
+            text.includes("account")
+        ){
+
+            jobs.push(
+                "Bank Clerk",
+                "Relationship Manager"
+            );
+
+        }
+
+
+        if(
+            text.includes("gym")
+            ||
+            text.includes("fitness")
+            ||
+            text.includes("trainer")
+            ||
+            text.includes("workout")
+            ||
+            text.includes("bodybuilding")
+            ||
+            text.includes("nutrition")
+        ){
+
+            jobs.push(
+                "Gym Trainer",
+                "Personal Trainer",
+                "Fitness Coach",
+                "Nutrition Consultant"
+            );
+
+        }
+
+    }
+
+
+    jobs=[
+        ...new Set(jobs)
+    ];
+
+
+    if(
+        desiredRole &&
+        desiredRole.length>0
+    ){
+
+        jobs=[
+            desiredRole
+        ];
+
+    }
+
+
+    if(jobs.length===0){
+
+        jobs.push(
+            "Fresher Jobs",
+            "Internship Opportunities"
+        );
+
+    }
+
+
+    let skillsHTML="";
+
+
+    if(foundSkills.length>0){
+
+        skillsHTML =
+            foundSkills
+            .map(
+                skill =>
+                `<span class="skill-badge">
+                    ${skill}
+                </span>`
+            )
+            .join("");
+
+    }
+
+    else{
+
+        skillsHTML=`
+
+            <span
+                style="
+                color:#64748b;
+                font-size:13px;">
+                No specific skills detected
+            </span>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       RESULT
+    ====================================================== */
+
+    document
+    .getElementById("result")
+    .innerHTML = `
+
+        <div class="result-card">
+
+
+            <!-- RESULT HEADER -->
+
+            <div class="result-header">
+
+                <div class="result-heading">
+
+                    <div class="result-icon">
+                        ✨
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Resume Analysis
+                        </h2>
+
+                        <p>
+                            Skills, experience and job opportunities
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="result-section">
+
+                <div class="result-section-title">
+                    🧠 Skills Found
+                </div>
+
+                <div class="skills-container">
+
+                    ${skillsHTML}
+
+                </div>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="result-section">
+
+                <div class="result-section-title">
+                    📋 Resume Overview
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <div class="info-label">
+                            EXPERIENCE
+                        </div>
+
+                        <div class="info-value">
+                            ${experience}
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="info-label">
+                            LOCATION
+                        </div>
+
+                        <div class="info-value">
+
+                            ${location},
+                            ${country.toUpperCase()}
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="info-box"
+                        style="grid-column:1/-1;">
+
+                        <div class="info-label">
+                            PROJECTS
+                        </div>
+
+                        <div class="info-value">
+
+                            ${
+                                projects.length
+                                ?
+                                projects.join("<br>")
+                                :
+                                "Not Mentioned"
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOBS -->
+
+            <div class="result-section">
+
+                <div class="result-section-title">
+                    💼 Recommended Jobs
+                </div>
+
+                <div id="jobsContainer"></div>
+
+            </div>
+
+
+            <!-- PORTALS -->
+
+            <div class="portal-section">
+
+                <div class="result-section-title">
+                    🔎 Explore More Jobs
+                </div>
+
+
+                <div class="portal-grid">
+
+
+                    <a
+                        id="linkedinLink"
+                        target="_blank"
+                        class="portal-btn">
+                        LinkedIn Jobs
+                    </a>
+
+
+                    <a
+                        id="naukriLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Naukri Jobs
+                    </a>
+
+
+                    <a
+                        id="apnaLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Apna Jobs
+                    </a>
+
+
+                    <a
+                        id="indeedLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Indeed Jobs
+                    </a>
+
+
+                    <a
+                        id="glassdoorLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Glassdoor Jobs
+                    </a>
+
+
+                    <a
+                        id="monsterLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Monster Jobs
+                    </a>
+
+
+                    <a
+                        id="internshalaLink"
+                        target="_blank"
+                        class="portal-btn">
+                        Internshala Jobs
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    /* FETCH JOBS */
+
+    const container =
+        document
+        .getElementById(
+            "jobsContainer"
+        );
+
+
+    jobs.forEach(job=>{
+
+        fetchJobs(
+            job,
+            location,
+            country,
+            container
+        );
+
+    });
+
+
+    /* PORTAL LINKS */
+
+    const role =
+        jobs[0] || "jobs";
+
+
+    document
+    .getElementById("linkedinLink")
+    .href =
+        `https://www.linkedin.com/jobs/search/?keywords=${role}&location=${location}`;
+
+
+    document
+    .getElementById("naukriLink")
+    .href =
+        `https://www.naukri.com/${role.replace(/\s/g,"-")}-jobs-in-${location}`;
+
+
+    document
+    .getElementById("apnaLink")
+    .href =
+        `https://apna.co/jobs?search=${role}&location=${location}`;
+
+
+    document
+    .getElementById("indeedLink")
+    .href =
+        `https://www.indeed.com/jobs?q=${role}&l=${location}`;
+
+
+    document
+    .getElementById("glassdoorLink")
+    .href =
+        `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=${role}&locKeyword=${location}`;
+
+
+    document
+    .getElementById("monsterLink")
+    .href =
+        `https://www.monsterindia.com/srp/results?query=${role}&locations=${location}`;
+
+
+    document
+    .getElementById("internshalaLink")
+    .href =
+        `https://internshala.com/jobs/${role.replace(/\s/g,"-")}-jobs-in-${location}`;
+
+}
+
+
+/* =========================================================
+   FETCH JOBS
+========================================================= */
+
+async function fetchJobs(
+    role,
+    location,
+    country,
+    container
+){
+
+    const APP_ID =
+        "f74b29e7";
+
+
+    const APP_KEY =
+        "63719a82e5b5c6f2caa44388e482e098";
+
+
+    const url =
+        `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${APP_ID}&app_key=${APP_KEY}&results_per_page=3&what=${role}&where=${location}`;
+
+
+    try{
+
+        const res =
+            await fetch(url);
+
+
+        const data =
+            await res.json();
+
+
+        if(
+            !data ||
+            !data.results ||
+            data.results.length===0
+        ){
+
+            container.innerHTML += `
+
+                <div class="empty-message">
+
+                    No jobs found for ${role}
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        data.results.forEach(job=>{
+
+            container.innerHTML += `
+
+                <div class="job-card">
+
+
+                    <div class="company-logo">
+
+                        ${
+                            job.company &&
+                            job.company.display_name
+                            ?
+                            job.company.display_name[0]
+                            :
+                            "?"
+                        }
+
+                    </div>
+
+
+                    <div class="job-title">
+
+                        ${job.title}
+
+                    </div>
+
+
+                    <div class="job-company">
+
+                        ${
+                            job.company
+                            ?
+                            job.company.display_name
+                            :
+                            "Unknown"
+                        }
+
+                    </div>
+
+
+                    <div class="job-location">
+
+                        📍
+                        ${job.location.display_name}
+
+                    </div>
+
+
+                    <div class="salary-badge">
+
+                        💰
+
+                        ${
+                            job.salary_min
+                            ?
+                            "₹" +
+                            Math.round(
+                                job.salary_min
+                            )
+                            :
+                            "Salary Not Disclosed"
+                        }
+
+                    </div>
+
+
+                    <a
+                        class="apply-btn"
+                        href="${job.redirect_url}"
+                        target="_blank">
+
+                        View & Apply →
+
+                    </a>
+
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(e){
+
+        console.log(
+            "ERROR:",
+            e
+        );
+
+
+        container.innerHTML += `
+
+            <div class="empty-message">
+
+                No jobs found for ${role}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,3050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile Analysis | NextHorizon</title>
+
+<style>
+
+
+@media(max-width:900px){
+    .cg-nav-container{
+        padding:12px 18px;
+        align-items:flex-start
+    }
+
+    .cg-nav-links{
+        gap:3px
+    }
+
+    .cg-nav-link{
+        font-size:12px;
+        padding:8px 9px
+    }
+}
+
+@media(max-width:650px){
+    .cg-nav-container{
+        flex-direction:column;
+        align-items:center;
+        gap:10px
+    }
+
+    .cg-nav-links{
+        justify-content:center
+    }
+
+    .cg-nav-link{
+        font-size:11px;
+        padding:7px 8px
+    }
+
+    .cg-logo-img{
+        width:135px
+    }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:#1e293b;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f4f0ff 0%,#eef4ff 48%,#f8faff 100%)
+}
+
+a{
+    text-decoration:none
+}
+
+.page-wrap{
+    width:min(1180px,92%);
+    margin:0 auto;
+    padding:112px 0 60px
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:28px
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 16px;
+    border-radius:30px;
+    background:rgba(99,102,241,.10);
+    border:1px solid rgba(99,102,241,.16);
+    color:#4f46e5;
+    font-size:13px;
+    font-weight:600
+}
+
+.hero h1{
+    margin-top:14px;
+    font-size:42px;
+    line-height:1.18;
+    background:linear-gradient(135deg,#4f46e5,#2563eb,#c026d3);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent
+}
+
+.hero p{
+    max-width:760px;
+    margin:12px auto 0;
+    color:#64748b;
+    line-height:1.7
+}
+
+.panel{
+    background:rgba(255,255,255,.91);
+    border:1px solid rgba(148,163,184,.18);
+    border-radius:22px;
+    box-shadow:0 18px 50px rgba(71,85,105,.10);
+    padding:28px;
+    margin-bottom:22px
+}
+
+.panel-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:18px;
+    margin-bottom:22px
+}
+
+.panel-head h2{
+    font-size:21px;
+    color:#172554
+}
+
+.panel-head p{
+    font-size:13px;
+    color:#64748b;
+    margin-top:4px
+}
+
+.step{
+    min-width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#4f46e5,#2563eb);
+    color:white;
+    font-weight:700
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px
+}
+
+.field.full{
+    grid-column:1/-1
+}
+
+.field label{
+    font-size:13px;
+    font-weight:600;
+    color:#334155
+}
+
+.field label span{
+    color:#ef4444
+}
+
+input,select,textarea{
+    width:100%;
+    border:1px solid #dbe2ea;
+    background:#fff;
+    border-radius:12px;
+    padding:12px 14px;
+    font:inherit;
+    font-size:14px;
+    color:#1e293b;
+    outline:none;
+    transition:.2s
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:#818cf8;
+    box-shadow:0 0 0 4px rgba(99,102,241,.09)
+}
+
+textarea{
+    min-height:125px;
+    resize:vertical;
+    line-height:1.6
+}
+
+.hint{
+    font-size:11.5px;
+    color:#94a3b8;
+    line-height:1.5
+}
+
+.upload-box{
+    border:2px dashed #c7d2fe;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    background:#f8faff;
+    cursor:pointer;
+    transition:.2s
+}
+
+.upload-box:hover{
+    border-color:#818cf8;
+    background:#f5f3ff
+}
+
+.upload-icon{
+    width:52px;
+    height:52px;
+    margin:0 auto 10px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+    background:linear-gradient(135deg,#e0e7ff,#dbeafe)
+}
+
+.upload-box strong{
+    display:block;
+    color:#334155;
+    font-size:15px
+}
+
+.upload-box small{
+    display:block;
+    color:#94a3b8;
+    margin-top:4px
+}
+
+#resumeFile{
+    display:none
+}
+
+.file-name{
+    margin-top:10px;
+    color:#4f46e5;
+    font-size:13px;
+    font-weight:600;
+    min-height:18px
+}
+
+.optional{
+    border:1px solid #e2e8f0;
+    border-radius:17px;
+    padding:20px;
+    background:#fbfdff
+}
+
+.optional-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:13px
+}
+
+.optional-head .circle{
+    width:32px;
+    height:32px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    background:#eef2ff;
+    color:#4f46e5;
+    font-weight:700
+}
+
+.optional-head strong{
+    font-size:15px
+}
+
+.optional-head small{
+    color:#94a3b8
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    margin-top:24px
+}
+
+.analyze-btn{
+    border:0;
+    border-radius:13px;
+    padding:14px 34px;
+    color:#fff;
+    font:600 15px Poppins,sans-serif;
+    cursor:pointer;
+    background:linear-gradient(135deg,#4f46e5,#2563eb);
+    box-shadow:0 10px 25px rgba(79,70,229,.22);
+    transition:.2s
+}
+
+.analyze-btn:hover{
+    transform:translateY(-2px)
+}
+
+.analyze-btn:disabled{
+    opacity:.6;
+    cursor:wait;
+    transform:none
+}
+
+.privacy{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-top:17px;
+    padding:13px 15px;
+    border-radius:12px;
+    background:#f8fafc;
+    color:#64748b;
+    font-size:12px;
+    line-height:1.55
+}
+
+.privacy b{
+    color:#334155
+}
+
+#status{
+    display:none;
+    margin:0 0 20px
+}
+
+.status-box{
+    padding:14px 16px;
+    border-radius:12px;
+    font-size:13px
+}
+
+.status-info{
+    background:#eff6ff;
+    color:#1d4ed8
+}
+
+.status-ok{
+    background:#f0fdf4;
+    color:#166534
+}
+
+.status-error{
+    background:#fef2f2;
+    color:#b91c1c
+}
+
+.results{
+    display:none
+}
+
+.result-top{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:20px
+}
+
+.score-card{
+    padding:24px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#f5f3ff,#eff6ff);
+    text-align:center;
+    border:1px solid #e0e7ff
+}
+
+.score-ring{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    margin:5px auto 14px;
+    display:grid;
+    place-items:center;
+    background:conic-gradient(#4f46e5 var(--score),#e2e8f0 0);
+    position:relative
+}
+
+.score-ring:after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border-radius:50%;
+    background:white
+}
+
+.score-number{
+    position:relative;
+    z-index:1;
+    font-size:34px;
+    font-weight:700;
+    color:#312e81
+}
+
+.score-label{
+    font-size:12px;
+    color:#64748b
+}
+
+.score-card h3{
+    font-size:16px;
+    margin-top:10px;
+    color:#312e81
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px
+}
+
+.metric{
+    padding:17px;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    background:#fff
+}
+
+.metric strong{
+    display:block;
+    font-size:21px;
+    color:#312e81
+}
+
+.metric span{
+    font-size:11.5px;
+    color:#64748b
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:20px
+}
+
+.result-card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:20px
+}
+
+.result-card.full{
+    grid-column:1/-1
+}
+
+.result-card h3{
+    font-size:16px;
+    margin-bottom:12px;
+    color:#1e293b
+}
+
+.result-card h3 .dot{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#6366f1;
+    margin-right:7px
+}
+
+.result-card ul{
+    padding-left:20px;
+    color:#475569;
+    font-size:13px;
+    line-height:1.75
+}
+
+.result-card li{
+    margin-bottom:5px
+}
+
+.chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px
+}
+
+.chip{
+    padding:6px 10px;
+    border-radius:20px;
+    background:#eef2ff;
+    color:#4338ca;
+    font-size:11.5px;
+    font-weight:600
+}
+
+.chip.warn{
+    background:#fff7ed;
+    color:#c2410c
+}
+
+.chip.good{
+    background:#f0fdf4;
+    color:#15803d
+}
+
+.github-card{
+    display:grid;
+    grid-template-columns:70px 1fr;
+    gap:15px;
+    align-items:center
+}
+
+.github-avatar{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    object-fit:cover;
+    background:#eef2ff
+}
+
+.repo-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:12px
+}
+
+.repo{
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:12px
+}
+
+.repo strong{
+    display:block;
+    font-size:12px;
+    color:#334155
+}
+
+.repo small{
+    display:block;
+    color:#64748b;
+    margin-top:4px;
+    line-height:1.45
+}
+
+.review-intro{
+    color:#64748b;
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:15px
+}
+
+.review-box{
+    background:#f8fafc;
+    border-radius:13px;
+    padding:14px;
+    margin-top:12px
+}
+
+.review-box strong{
+    display:block;
+    font-size:13px;
+    color:#334155;
+    margin-bottom:7px
+}
+
+.sanitized{
+    max-height:190px;
+    overflow:auto;
+    background:#f8fafc;
+    border-radius:12px;
+    padding:14px;
+    font-size:11.5px;
+    line-height:1.6;
+    color:#475569;
+    white-space:pre-wrap
+}
+
+.next-step{
+    margin-top:20px;
+    padding:22px;
+    border-radius:17px;
+    background:linear-gradient(135deg,#eef2ff,#eff6ff);
+    border:1px solid #dbeafe;
+    text-align:center
+}
+
+.next-step h3{
+    color:#312e81;
+    font-size:18px;
+    margin-bottom:7px
+}
+
+.next-step p{
+    color:#64748b;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:14px
+}
+
+.next-step-btn{
+    display:inline-block;
+    padding:11px 22px;
+    border-radius:11px;
+    color:white;
+    background:linear-gradient(135deg,#4f46e5,#2563eb);
+    font-size:13px;
+    font-weight:600
+}
+
+.footer-note{
+    text-align:center;
+    color:#94a3b8;
+    font-size:11px;
+    margin-top:22px
+}
+
+@media(max-width:800px){
+
+    .page-wrap{
+        padding-top:125px
+    }
+
+    .hero h1{
+        font-size:32px
+    }
+
+    .form-grid,
+    .result-top,
+    .result-grid{
+        grid-template-columns:1fr
+    }
+
+    .field.full,
+    .result-card.full{
+        grid-column:auto
+    }
+
+    .metrics,
+    .repo-list{
+        grid-template-columns:1fr 1fr
+    }
+}
+
+@media(max-width:520px){
+
+    .panel{
+        padding:18px
+    }
+
+    .metrics,
+    .repo-list{
+        grid-template-columns:1fr
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="page-wrap">
+
+<section class="hero">
+
+    <span class="badge">
+        🔎 AI-Powered Profile Analysis
+    </span>
+
+    <h1>
+        Make Your Profile Ready for Your Target Job
+    </h1>
+
+    <p>
+        Add your resume, choose the job you want, and optionally add your LinkedIn and GitHub profiles.
+        We will review each profile separately, find missing skills, and show you simple ways to improve.
+    </p>
+
+</section>
+
+
+<!-- TARGET JOB -->
+
+<section class="panel">
+
+    <div class="panel-head">
+
+        <div>
+
+            <h2>
+                01 · Target Job
+            </h2>
+
+            <p>
+                Select the job you want to prepare your profile for.
+            </p>
+
+        </div>
+
+        <div class="step">
+            01
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+        <div class="field full">
+
+            <label>
+                Target Job / Role
+                <span>*</span>
+            </label>
+
+            <input
+                id="targetRole"
+                type="text"
+                placeholder="e.g. Data Analyst, Frontend Developer">
+
+            <div class="hint">
+                We will compare your resume, LinkedIn and GitHub information with this job.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESUME -->
+
+<section class="panel">
+
+    <div class="panel-head">
+
+        <div>
+
+            <h2>
+                02 · Resume
+            </h2>
+
+            <p>
+                Your resume is the main information used for your profile review.
+            </p>
+
+        </div>
+
+        <div class="step">
+            02
+        </div>
+
+    </div>
+
+
+    <div class="upload-box"
+         id="uploadBox"
+         onclick="document.getElementById('resumeFile').click()">
+
+        <div class="upload-icon">
+            📄
+        </div>
+
+        <strong>
+            Upload your resume
+        </strong>
+
+        <small>
+            PDF, PNG, JPG or JPEG
+        </small>
+
+        <div class="file-name"
+             id="fileName">
+        </div>
+
+    </div>
+
+
+    <input
+        id="resumeFile"
+        type="file"
+        accept=".pdf,.png,.jpg,.jpeg">
+
+
+    <div class="field full"
+         style="margin-top:18px">
+
+        <label>
+            Or paste your resume text
+        </label>
+
+        <textarea
+            id="resumeText"
+            placeholder="Paste your resume text here if you do not want to upload a file..."></textarea>
+
+    </div>
+
+</section>
+
+
+<!-- LINKEDIN + GITHUB -->
+
+<section class="panel">
+
+    <div class="panel-head">
+
+        <div>
+
+            <h2>
+                03 · LinkedIn & GitHub
+            </h2>
+
+            <p>
+                These profiles are optional, but they can give a better picture of your professional work.
+            </p>
+
+        </div>
+
+        <div class="step">
+            03
+        </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <!-- LINKEDIN -->
+
+        <div class="optional">
+
+            <div class="optional-head">
+
+                <div class="circle">
+                    in
+                </div>
+
+                <div>
+
+                    <strong>
+                        LinkedIn
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        Optional
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    LinkedIn Profile URL
+                </label>
+
+                <input
+                    id="linkedinUrl"
+                    type="url"
+                    placeholder="https://www.linkedin.com/in/your-profile">
+
+                <div class="hint">
+                    Add your LinkedIn link if you want to include it in your profile review.
+                </div>
+
+            </div>
+
+
+            <div class="field"
+                 style="margin-top:12px">
+
+                <label>
+                    LinkedIn Profile Information
+                </label>
+
+                <textarea
+                    id="linkedinText"
+                    placeholder="Paste your LinkedIn Headline, About, Skills, Experience, Projects or Certifications here if available."></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- GITHUB -->
+
+        <div class="optional">
+
+            <div class="optional-head">
+
+                <div class="circle">
+                    GH
+                </div>
+
+                <div>
+
+                    <strong>
+                        GitHub
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        Optional
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    GitHub Profile URL
+                </label>
+
+                <input
+                    id="githubUrl"
+                    type="url"
+                    placeholder="https://github.com/username">
+
+                <div class="hint">
+                    If your GitHub profile is public, we can review your public projects and basic profile details.
+                </div>
+
+            </div>
+
+
+            <div class="field"
+                 style="margin-top:12px">
+
+                <label>
+                    Extra GitHub / Project Information
+                </label>
+
+                <textarea
+                    id="githubText"
+                    placeholder="Add any project details that are not available on GitHub."></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRIVACY -->
+
+<div class="privacy"
+     style="margin-bottom:22px">
+
+    <span>
+        🔐
+    </span>
+
+    <div>
+
+        <b>Your Privacy:</b>
+
+        Before AI analysis, unnecessary personal information such as your email,
+        phone number, address and common ID numbers is removed.
+        The analysis focuses on your skills, education, projects, experience and certifications.
+
+    </div>
+
+</div>
+
+
+<!-- BUTTON -->
+
+<div class="actions"
+     style="margin-bottom:22px">
+
+    <button
+        class="analyze-btn"
+        id="analyzeBtn"
+        onclick="startAnalysis()">
+
+        Analyze My Profile
+
+    </button>
+
+</div>
+
+
+<div id="status"></div>
+
+
+<!-- RESULTS -->
+
+<section class="panel results"
+         id="results">
+
+
+    <div class="panel-head">
+
+        <div>
+
+            <h2>
+                Your Profile Analysis
+            </h2>
+
+            <p>
+                Here is a simple review of your resume, LinkedIn, GitHub and job match.
+            </p>
+
+        </div>
+
+        <div class="step">
+            ✓
+        </div>
+
+    </div>
+
+
+    <!-- SCORE -->
+
+    <div class="result-top">
+
+
+        <div class="score-card">
+
+            <div
+                class="score-ring"
+                id="scoreRing"
+                style="--score:0deg">
+
+                <div
+                    class="score-number"
+                    id="atsScore">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="score-label">
+                Job Match Score
+            </div>
+
+
+            <h3 id="scoreMessage">
+                Checking your profile...
+            </h3>
+
+        </div>
+
+
+        <div>
+
+            <div class="metrics">
+
+                <div class="metric">
+
+                    <strong id="keywordScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        Job Skill Match
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <strong id="sectionScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        Resume Sections
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <strong id="projectScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        Project Strength
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <strong id="profileScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        Overall Profile Score
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                style="margin-top:15px"
+                class="result-card">
+
+                <h3>
+                    <span class="dot"></span>
+                    Skills for Your Target Job
+                </h3>
+
+                <div
+                    class="chips"
+                    id="keywordChips">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GENERAL RESULTS -->
+
+    <div class="result-grid">
+
+
+        <div class="result-card">
+
+            <h3>
+                ✅ What You Are Doing Well
+            </h3>
+
+            <ul id="strengths"></ul>
+
+        </div>
+
+
+        <div class="result-card">
+
+            <h3>
+                ⚠️ Skills You Should Improve
+            </h3>
+
+            <ul id="skillGaps"></ul>
+
+        </div>
+
+
+        <div class="result-card">
+
+            <h3>
+                🔎 Problems We Found
+            </h3>
+
+            <ul id="profileIssues"></ul>
+
+        </div>
+
+
+        <div class="result-card">
+
+            <h3>
+                📝 What You Should Do Next
+            </h3>
+
+            <ul id="suggestions"></ul>
+
+        </div>
+
+
+        <div class="result-card">
+
+            <h3>
+                🎯 How Well You Match This Job
+            </h3>
+
+            <ul id="roleMatch"></ul>
+
+        </div>
+
+
+        <!-- RESUME REVIEW -->
+
+        <div class="result-card full">
+
+            <h3>
+                📄 Resume Profile Review
+            </h3>
+
+            <p class="review-intro">
+                This section explains what is good in your resume,
+                what should be fixed, and what you can change to make it stronger for your target job.
+            </p>
+
+
+            <div class="review-box">
+
+                <strong>
+                    Resume Review
+                </strong>
+
+                <ul id="resumeReview"></ul>
+
+            </div>
+
+
+            <div class="review-box">
+
+                <strong>
+                    Resume Changes You Can Make
+                </strong>
+
+                <ul id="resumeImprovements"></ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- LINKEDIN REVIEW -->
+
+        <div class="result-card full"
+             id="linkedinResult"
+             style="display:none">
+
+            <h3>
+                💼 LinkedIn Profile Review
+            </h3>
+
+            <p class="review-intro">
+                This section checks the LinkedIn information you provided
+                and gives simple suggestions to make your profile stronger for your target job.
+            </p>
+
+
+            <div class="review-box">
+
+                <strong>
+                    LinkedIn Review
+                </strong>
+
+                <ul id="linkedinReview"></ul>
+
+            </div>
+
+
+            <div class="review-box">
+
+                <strong>
+                    LinkedIn Changes You Can Make
+                </strong>
+
+                <ul id="linkedinImprovements"></ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- GITHUB REVIEW -->
+
+        <div class="result-card full"
+             id="githubResult"
+             style="display:none">
+
+            <h3>
+                💻 GitHub Profile Review
+            </h3>
+
+            <p class="review-intro">
+                This section checks your public GitHub profile and projects
+                to show how they support your target job.
+            </p>
+
+
+            <div id="githubSummary"></div>
+
+
+            <div class="repo-list"
+                 id="repoList">
+            </div>
+
+        </div>
+
+
+        <!-- MISSING SKILLS -->
+
+        <div class="result-card full">
+
+            <h3>
+                ⚠️ Missing Skills
+            </h3>
+
+            <p class="review-intro">
+                These are skills that may be useful for your target job but were not clearly found in your profile.
+            </p>
+
+            <ul id="missingSkills"></ul>
+
+        </div>
+
+
+        <!-- AI INFORMATION -->
+
+        <div class="result-card full">
+
+            <h3>
+                🔐 Information Used for AI Analysis
+            </h3>
+
+            <div
+                class="sanitized"
+                id="sanitizedPreview">
+            </div>
+
+        </div>
+
+    </div>
+
+
+   <!-- NEXT STEP: JOB READINESS -->
+
+<div class="next-step">
+
+    <h3>
+        🚀 Next Step: Prepare for Interviews
+    </h3>
+
+    <p>
+        Your profile has been analysed successfully.
+        Continue to Job Readiness to generate personalised
+        interview questions based on your resume, skills,
+        projects and target job role.
+    </p>
+
+    <a
+        href="job-readiness.html"
+        class="next-step-btn">
+
+        🎯 Go to Job Readiness
+
+    </a>
+
+</div>
+
+
+<div class="footer-note">
+
+    Profile Analysis helps you improve your resume and professional profile.
+    Job Recommendation helps you find suitable jobs.
+
+</div>
+
+</main>
+
+
+<script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+
+const ROLE_KEYWORDS = {
+
+    "data analyst":[
+        "sql","excel","python","power bi","tableau","statistics",
+        "data visualization","pandas","numpy","dashboard"
+    ],
+
+    "data scientist":[
+        "python","sql","machine learning","statistics","pandas",
+        "numpy","scikit-learn","tensorflow","pytorch","data visualization"
+    ],
+
+    "software engineer":[
+        "java","python","javascript","sql","git","github",
+        "data structures","algorithms","api","testing"
+    ],
+
+    "frontend developer":[
+        "html","css","javascript","react","typescript",
+        "responsive design","git","api"
+    ],
+
+    "backend developer":[
+        "java","python","node.js","sql","rest api","api",
+        "git","database","spring","testing"
+    ],
+
+    "full stack developer":[
+        "html","css","javascript","react","node.js",
+        "sql","api","git","database"
+    ],
+
+    "machine learning engineer":[
+        "python","machine learning","tensorflow","pytorch",
+        "scikit-learn","sql","git","model deployment"
+    ],
+
+    "ai engineer":[
+        "python","machine learning","deep learning",
+        "llm","api","tensorflow","pytorch","git"
+    ],
+
+    "web developer":[
+        "html","css","javascript","responsive design","git","api"
+    ],
+
+    "ui ux designer":[
+        "figma","wireframe","prototype","user research",
+        "usability","ui","ux"
+    ],
+
+    "business analyst":[
+        "sql","excel","requirements","stakeholder",
+        "documentation","data analysis","power bi"
+    ],
+
+    "hr":[
+        "recruitment","communication","human resources",
+        "onboarding","employee","interview"
+    ],
+
+    "digital marketing":[
+        "seo","sem","google analytics","content",
+        "social media","marketing","campaign"
+    ],
+
+    "cybersecurity":[
+        "network security","linux","python","siem","soc",
+        "vulnerability","incident response","cybersecurity"
+    ],
+
+    "cloud engineer":[
+        "aws","azure","gcp","linux","docker",
+        "kubernetes","terraform","networking"
+    ],
+
+    "devops engineer":[
+        "docker","kubernetes","jenkins","ci/cd",
+        "linux","aws","terraform","git"
+    ],
+
+    "java developer":[
+        "java","spring","sql","hibernate","rest api","git","junit"
+    ],
+
+    "python developer":[
+        "python","django","flask","fastapi","sql","git","api"
+    ],
+
+    "project manager":[
+        "project management","agile","scrum","stakeholder",
+        "jira","communication","planning"
+    ]
+
+};
+
+
+const COMMON_KEYWORDS = [
+
+    "communication",
+    "problem solving",
+    "leadership",
+    "teamwork",
+    "agile",
+    "scrum",
+    "git",
+    "github",
+    "api",
+    "sql",
+    "python",
+    "java",
+    "javascript",
+    "excel",
+    "cloud",
+    "testing",
+    "documentation",
+    "analytics",
+    "project management"
+
+];
+
+
+document.getElementById("resumeFile")
+.addEventListener("change",function(){
+
+    document.getElementById("fileName").textContent =
+        this.files[0]
+        ? "Selected: " + this.files[0].name
+        : "";
+
+});
+
+
+function setStatus(message,type="info"){
+
+    const box=document.getElementById("status");
+
+    box.style.display="block";
+
+    box.innerHTML =
+        '<div class="status-box status-'+type+'">'+
+        escapeHtml(message)+
+        '</div>';
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function safeList(items){
+
+    if(!Array.isArray(items))
+        return ["No specific information was found."];
+
+    const clean =
+        items
+        .filter(x=>String(x||"").trim())
+        .slice(0,10);
+
+    return clean.length
+        ? clean
+        : ["No specific information was found."];
+
+}
+
+
+function renderList(id,items){
+
+    document.getElementById(id).innerHTML =
+        safeList(items)
+        .map(x=>"<li>"+escapeHtml(x)+"</li>")
+        .join("");
+
+}
+
+
+function getRoleKeywords(role){
+
+    const r=String(role||"").toLowerCase();
+
+    let selected=[];
+
+    Object.keys(ROLE_KEYWORDS).forEach(k=>{
+
+        if(r.includes(k))
+            selected.push(...ROLE_KEYWORDS[k]);
+
+    });
+
+    selected.push(
+        ...COMMON_KEYWORDS.filter(k=>r.includes(k))
+    );
+
+    if(!selected.length)
+        selected=COMMON_KEYWORDS.slice(0,10);
+
+    return [...new Set(selected)];
+
+}
+
+
+function sanitizeProfessionalText(raw){
+
+    let text=String(raw||"");
+
+
+    text=text.replace(
+        /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi,
+        "[EMAIL REMOVED]"
+    );
+
+
+    text=text.replace(
+        /(?:\+?\d[\d\s().-]{8,}\d)/g,
+        "[PHONE REMOVED]"
+    );
+
+
+    text=text.replace(
+        /\b(?:aadhaar|aadhar|pan|passport|ssn|national id|student id|employee id)\b[\s:#-]*[A-Z0-9-]{4,}/gi,
+        "[IDENTIFIER REMOVED]"
+    );
+
+
+    text=text.replace(
+        /\b\d{10,16}\b/g,
+        "[NUMBER REMOVED]"
+    );
+
+
+    text=text.replace(
+        /\b(?:street|st\.|road|rd\.|lane|ln\.|house|flat|apartment|apt\.|address)\s*[:#-]?[^\n]{0,100}/gi,
+        "[ADDRESS REMOVED]"
+    );
+
+
+    const lines=text.split(/\r?\n/);
+
+
+    if(lines.length>0){
+
+        const first=lines[0].trim();
+
+        if(
+            first &&
+            first.length<80 &&
+            !/resume|curriculum|cv/i.test(first)
+        ){
+
+            lines[0]="[NAME REMOVED]";
+
+        }
+
+    }
+
+
+    return lines
+        .join("\n")
+        .replace(/\n{3,}/g,"\n\n")
+        .trim();
+
+}
+
+
+async function extractResumeText(){
+
+    const file=document
+        .getElementById("resumeFile")
+        .files[0];
+
+
+    const typed=document
+        .getElementById("resumeText")
+        .value
+        .trim();
+
+
+    if(typed)
+        return typed;
+
+
+    if(!file)
+        throw new Error(
+            "Please upload your resume or paste your resume text."
+        );
+
+
+    if(
+        file.type==="application/pdf" ||
+        /\.pdf$/i.test(file.name)
+    ){
+
+        const buffer=await file.arrayBuffer();
+
+        const pdf=
+            await pdfjsLib
+            .getDocument({
+                data:new Uint8Array(buffer)
+            })
+            .promise;
+
+
+        let text="";
+
+
+        for(let i=1;i<=pdf.numPages;i++){
+
+            const page=
+                await pdf.getPage(i);
+
+            const content=
+                await page.getTextContent();
+
+            text +=
+                content.items
+                .map(item=>item.str)
+                .join(" ")+"\n";
+
+        }
+
+
+        if(text.trim())
+            return text;
+
+
+        throw new Error(
+            "We could not read text from this PDF. Please use a text-based PDF or paste your resume text."
+        );
+
+    }
+
+
+    if(file.type.startsWith("image/")){
+
+        const result=
+            await Tesseract.recognize(file,"eng");
+
+        return result.data.text || "";
+
+    }
+
+
+    throw new Error(
+        "This resume file type is not supported."
+    );
+
+}
+
+
+function parseGitHubUrl(url){
+
+    try{
+
+        const u=new URL(url);
+
+        if(
+            u.hostname.toLowerCase()!=="github.com"
+        )
+            return null;
+
+
+        const parts=
+            u.pathname
+            .split("/")
+            .filter(Boolean);
+
+
+        return parts[0] || null;
+
+    }catch(e){
+
+        return null;
+
+    }
+
+}
+
+
+async function fetchGitHubProfile(url){
+
+    const username=parseGitHubUrl(url);
+
+
+    if(!username)
+        throw new Error(
+            "Please enter a valid public GitHub profile link."
+        );
+
+
+    const headers={
+        "Accept":"application/vnd.github+json"
+    };
+
+
+    const userRes=
+        await fetch(
+            "https://api.github.com/users/"+
+            encodeURIComponent(username),
+            {headers}
+        );
+
+
+    if(!userRes.ok)
+        throw new Error(
+            "We could not load this GitHub profile. Please check the link and try again."
+        );
+
+
+    const user=await userRes.json();
+
+
+    const repoRes=
+        await fetch(
+            "https://api.github.com/users/"+
+            encodeURIComponent(username)+
+            "/repos?per_page=20&sort=updated",
+            {headers}
+        );
+
+
+    const repos=
+        repoRes.ok
+        ? await repoRes.json()
+        : [];
+
+
+    const usefulRepos=
+        (Array.isArray(repos)?repos:[])
+        .filter(r=>!r.fork)
+        .slice(0,8);
+
+
+    const enriched=[];
+
+
+    for(const repo of usefulRepos){
+
+        let readme="";
+
+
+        try{
+
+            const rr=
+                await fetch(
+                    "https://api.github.com/repos/"+
+                    encodeURIComponent(username)+
+                    "/"+
+                    encodeURIComponent(repo.name)+
+                    "/readme",
+                    {headers}
+                );
+
+
+            if(rr.ok){
+
+                const rd=await rr.json();
+
+
+                if(rd && rd.content){
+
+                    readme=
+                        atob(
+                            String(rd.content)
+                            .replace(/\n/g,"")
+                        );
+
+                    readme=readme.slice(0,3000);
+
+                }
+
+            }
+
+        }catch(e){}
+
+
+        enriched.push({
+
+            name:repo.name,
+
+            description:
+                repo.description || "",
+
+            language:
+                repo.language || "",
+
+            stars:
+                repo.stargazers_count || 0,
+
+            forks:
+                repo.forks_count || 0,
+
+            topics:
+                Array.isArray(repo.topics)
+                ? repo.topics.slice(0,8)
+                : [],
+
+            updated:
+                repo.updated_at || "",
+
+            readme
+
+        });
+
+    }
+
+
+    return {
+
+        username:user.login,
+
+        name:user.name || "",
+
+        bio:user.bio || "",
+
+        avatar:user.avatar_url || "",
+
+        publicRepos:user.public_repos || 0,
+
+        followers:user.followers || 0,
+
+        profileUrl:user.html_url || url,
+
+        repos:enriched
+
+    };
+
+}
+
+
+function buildGitHubProfessionalText(g){
+
+    if(!g)
+        return "";
+
+
+    let out=[
+
+        "GitHub username: "+g.username,
+
+        "GitHub bio: "+g.bio,
+
+        "Public repositories: "+g.publicRepos,
+
+        "Followers: "+g.followers,
+
+        "Repositories:"
+
+    ];
+
+
+    g.repos.forEach(r=>{
+
+        out.push(
+
+            "Project: "+r.name+
+            " | Language: "+r.language+
+            " | Stars: "+r.stars+
+            " | Description: "+r.description+
+            " | Topics: "+r.topics.join(", ")
+
+        );
+
+
+        if(r.readme)
+            out.push(
+                "README: "+
+                r.readme.slice(0,1500)
+            );
+
+    });
+
+
+    return out.join("\n");
+
+}
+
+
+function calculateATS(text,role){
+
+    const lower=text.toLowerCase();
+
+    const keywords=
+        getRoleKeywords(role);
+
+
+    const matched=
+        keywords.filter(
+            k=>lower.includes(k.toLowerCase())
+        );
+
+
+    const missing=
+        keywords.filter(
+            k=>!lower.includes(k.toLowerCase())
+        );
+
+
+    const sections={
+
+        summary:
+            /\b(summary|objective|profile)\b/i.test(text),
+
+        skills:
+            /\bskills?|technical skills|core competencies\b/i.test(text),
+
+        education:
+            /\beducation|academic\b/i.test(text),
+
+        experience:
+            /\bexperience|internship|employment\b/i.test(text),
+
+        projects:
+            /\bprojects?|portfolio\b/i.test(text),
+
+        certifications:
+            /\bcertifications?|certificates?\b/i.test(text)
+
+    };
+
+
+    const sectionCount=
+        Object.values(sections)
+        .filter(Boolean)
+        .length;
+
+
+    const sectionScore=
+        Math.round(sectionCount/6*100);
+
+
+    const quantified=
+        (
+            text.match(
+                /\b\d+(?:\.\d+)?\s*(?:%|percent|users|customers|projects|years|months|members|records|hours|days|x)\b/gi
+            ) || []
+        ).length;
+
+
+    const actionWords=
+        (
+            text.match(
+                /\b(developed|built|created|implemented|designed|analyzed|improved|led|automated|optimized|managed|deployed|tested|integrated)\b/gi
+            ) || []
+        ).length;
+
+
+    const projectScore=
+        Math.min(
+            100,
+            Math.round(
+                ((actionWords*2)+quantified*3)/20*100
+            )
+        );
+
+
+    const keywordScore=
+        keywords.length
+        ? Math.round(
+            matched.length/keywords.length*100
+        )
+        : 0;
+
+
+    const formattingScore=
+        Math.max(
+            0,
+            Math.min(
+                100,
+
+                (text.length>700?30:15)+
+                (/\n/.test(text)?15:5)+
+                (/\b[\w.+-]+@[\w.-]+\.\w+\b/.test(text)?0:10)+
+                (sectionCount*7)
+
+            )
+        );
+
+
+    const ats=
+        Math.round(
+            keywordScore*.45+
+            sectionScore*.25+
+            projectScore*.20+
+            formattingScore*.10
+        );
+
+
+    return {
+
+        ats,
+        keywordScore,
+        sectionScore,
+        projectScore,
+        formattingScore,
+        matched,
+        missing,
+        sections
+
+    };
+
+}
+
+
+/* =========================================================
+   OPENROUTER
+   ========================================================= */
+
+const AI_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+const AI_API_KEY ="KEY";
+
+const AI_MODEL = "openrouter/free";
+async function callAI(payload){
+
+    if(
+        !AI_API_KEY ||
+        AI_API_KEY==="YOUR_OPENROUTER_API_KEY" ||
+        AI_API_KEY==="key"
+    ){
+
+        throw new Error(
+            "AI is not connected yet. Please add your OpenRouter API key in the JavaScript settings."
+        );
+
+    }
+
+
+    const systemPrompt = `
+
+You are a friendly career profile assistant for students and job seekers.
+
+Your job is to review the user's professional information and compare it with the selected target job.
+
+Use VERY SIMPLE English.
+
+The user should understand every sentence easily.
+
+Do not use difficult business words when simple words are available.
+
+Do not use unexplained abbreviations.
+
+Do not invent skills, projects, experience, education, certificates or achievements.
+
+Only use information provided by the user.
+
+The review must be practical and helpful.
+
+IMPORTANT:
+
+Create separate reviews for:
+
+1. Resume
+2. LinkedIn
+3. GitHub
+
+The Resume Review should talk specifically about:
+
+- resume content
+- skills
+- education
+- experience
+- projects
+- certificates
+- resume sections
+- job-related skills
+- information that is missing
+- things that can make the resume stronger
+
+The LinkedIn Review should talk specifically about:
+
+- LinkedIn headline
+- About section
+- skills
+- experience
+- projects
+- certificates
+- profile completeness
+- how well the LinkedIn information supports the target job
+
+The GitHub Review should talk specifically about:
+
+- public projects
+- programming languages
+- project descriptions
+- README files
+- project documentation
+- project variety
+- project quality
+- how GitHub supports the target job
+
+If LinkedIn was not provided, return a short message explaining that LinkedIn information was not provided.
+
+If GitHub was not provided, return a short message explaining that GitHub information was not provided.
+
+Also identify:
+
+- skills already found
+- skills that may be missing
+- problems in the profile
+- simple improvements
+- how well the user matches the target job
+
+VERY IMPORTANT:
+
+Do not tell the user that they must have a specific skill unless it is actually useful for the selected target job.
+
+Do not make negative personal comments.
+
+Use short sentences.
+
+Use simple words that a college student can understand.
+
+Avoid unnecessary technical jargon.
+
+For example:
+
+Instead of:
+"ATS keyword optimization"
+
+Say:
+"Add the important skills from the job description to your resume."
+
+Instead of:
+"Profile deficiencies"
+
+Say:
+"Things that are missing."
+
+Instead of:
+"Actionable recommendations"
+
+Say:
+"Things you can do next."
+
+Instead of:
+"Professional credibility"
+
+Say:
+"Things that make your profile stronger."
+
+Return valid JSON only.
+
+Use EXACTLY these top-level keys:
+
+strengths
+skill_gaps
+profile_issues
+suggestions
+resume_review
+resume_improvements
+linkedin_review
+linkedin_improvements
+github_improvements
+role_match
+
+Each value must be an array of short, simple sentences.
+
+The resume_review array must contain specific resume review points.
+
+The linkedin_review array must contain specific LinkedIn review points.
+
+The github_improvements array must contain specific GitHub review points.
+
+Keep every point easy to understand.
+
+Remember:
+
+Profile Analysis helps the user IMPROVE their profile.
+
+Job Recommendation is a separate feature that helps the user FIND JOBS.
+
+Do not confuse these two features.
+
+`;
+
+
+    const response=
+        await fetch(
+            AI_API_URL,
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Authorization":
+                        "Bearer "+AI_API_KEY,
+
+                    "HTTP-Referer":
+                        window.location.href,
+
+                    "X-Title":
+                        "NextHorizon Profile Analysis"
+
+                },
+
+                body:JSON.stringify({
+
+                    model:AI_MODEL,
+
+                    messages:[
+
+                        {
+                            role:"system",
+                            content:systemPrompt
+                        },
+
+                        {
+                            role:"user",
+                            content:
+                                JSON.stringify(payload)
+                        }
+
+                    ],
+
+                    temperature:0.2,
+
+                    response_format:{
+                        type:"json_object"
+                    }
+
+                })
+
+            }
+        );
+
+
+    const data=
+        await response.json();
+
+
+    if(!response.ok){
+
+        throw new Error(
+            data?.error?.message ||
+            "AI analysis could not be completed."
+        );
+
+    }
+
+
+    const output=
+        data?.choices?.[0]?.message?.content;
+
+
+    if(!output)
+        throw new Error(
+            "AI did not return an analysis."
+        );
+
+
+    try{
+
+        return JSON.parse(output);
+
+    }catch(e){
+
+        const start=
+            output.indexOf("{");
+
+        const end=
+            output.lastIndexOf("}");
+
+
+        if(
+            start>=0 &&
+            end>start
+        ){
+
+            return JSON.parse(
+                output.slice(start,end+1)
+            );
+
+        }
+
+
+        throw new Error(
+            "AI returned an invalid result."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+function renderATS(ats){
+
+    document.getElementById("atsScore")
+        .textContent=ats.ats;
+
+
+    document.getElementById("keywordScore")
+        .textContent=ats.keywordScore+"%";
+
+
+    document.getElementById("sectionScore")
+        .textContent=ats.sectionScore+"%";
+
+
+    document.getElementById("projectScore")
+        .textContent=ats.projectScore+"%";
+
+
+    document.getElementById("profileScore")
+        .textContent=
+            Math.round(
+                (
+                    ats.ats+
+                    ats.keywordScore+
+                    ats.sectionScore
+                )/3
+            )+"%";
+
+
+    document.getElementById("scoreRing")
+        .style.setProperty(
+            "--score",
+            (ats.ats*3.6)+"deg"
+        );
+
+
+    document.getElementById("scoreMessage")
+        .textContent=
+
+            ats.ats>=80
+            ? "Great match for this job"
+
+            : ats.ats>=60
+            ? "Good start — a few things can improve"
+
+            : "More improvement is needed for this job";
+
+
+    document.getElementById("keywordChips").innerHTML=
+
+        ats.matched
+        .map(
+            k=>
+            '<span class="chip good">'+
+            escapeHtml(k)+
+            "</span>"
+        )
+        .join("")
+
+        +
+
+        ats.missing
+        .map(
+            k=>
+            '<span class="chip warn">'+
+            escapeHtml(k)+
+            "</span>"
+        )
+        .join("");
+
+
+    renderList(
+        "missingSkills",
+        ats.missing
+    );
+
+}
+
+
+/* =========================================================
+   GITHUB
+   ========================================================= */
+
+function renderGitHub(g){
+
+    const wrap=
+        document.getElementById("githubResult");
+
+
+    if(!g){
+
+        wrap.style.display="none";
+
+        return;
+
+    }
+
+
+    wrap.style.display="block";
+
+
+    const languages=
+        [
+            ...new Set(
+                g.repos
+                .map(r=>r.language)
+                .filter(Boolean)
+            )
+        ];
+
+
+    document.getElementById("githubSummary")
+        .innerHTML=
+
+        '<div class="github-card">'+
+
+        '<img class="github-avatar" src="'+
+        escapeHtml(g.avatar)+
+        '" alt="GitHub profile picture">'+
+
+        '<div>'+
+
+        '<strong>@'+
+        escapeHtml(g.username)+
+        '</strong><br>'+
+
+        '<span style="font-size:12px;color:#64748b">'+
+        escapeHtml(
+            g.bio ||
+            "No bio added yet"
+        )+
+        '</span>'+
+
+        '<div class="chips" style="margin-top:8px">'+
+
+        '<span class="chip">'+
+        g.publicRepos+
+        " public projects</span>"+
+
+        '<span class="chip">'+
+        g.followers+
+        " followers</span>"+
+
+        languages
+        .map(
+            l=>
+            '<span class="chip good">'+
+            escapeHtml(l)+
+            "</span>"
+        )
+        .join("")+
+
+        '</div></div></div>';
+
+
+    document.getElementById("repoList")
+        .innerHTML=
+
+        g.repos.map(
+            r=>
+
+            '<div class="repo">'+
+
+            '<strong>'+
+            escapeHtml(r.name)+
+            '</strong>'+
+
+            '<small>'+
+
+            escapeHtml(
+                r.description ||
+                "No project description"
+            )+
+
+            (
+                r.language
+                ? " · "+escapeHtml(r.language)
+                : ""
+            )+
+
+            " · ⭐ "+
+            r.stars+
+
+            '</small></div>'
+
+        ).join("");
+
+}
+
+
+/* =========================================================
+   START ANALYSIS
+   ========================================================= */
+
+async function startAnalysis(){
+
+    const role=
+        document.getElementById("targetRole")
+        .value.trim();
+
+
+    if(!role){
+
+        alert(
+            "Please enter the job you want to prepare your profile for."
+        );
+
+        return;
+
+    }
+
+
+    const btn=
+        document.getElementById("analyzeBtn");
+
+
+    btn.disabled=true;
+
+
+    document.getElementById("results")
+        .style.display="none";
+
+
+    try{
+
+        setStatus(
+            "Reading your resume and protecting your personal information...",
+            "info"
+        );
+
+
+        const rawResume=
+            await extractResumeText();
+
+
+        if(!rawResume.trim())
+            throw new Error(
+                "No resume information was found."
+            );
+
+
+        const sanitizedResume=
+            sanitizeProfessionalText(
+                rawResume
+            );
+
+
+        /* =====================================================
+           SAVE PROFILE DATA FOR JOB READINESS
+           No backend required.
+           Data is temporarily stored in this browser tab.
+        ====================================================== */
+
+        const profileForReadiness = {
+
+            resumeText: sanitizedResume,
+
+            targetRole: role,
+
+            linkedinUrl:
+                document.getElementById("linkedinUrl")
+                .value.trim(),
+
+            linkedinText:
+                document.getElementById("linkedinText")
+                .value.trim(),
+
+            githubUrl:
+                document.getElementById("githubUrl")
+                .value.trim(),
+
+            githubText:
+                document.getElementById("githubText")
+                .value.trim()
+
+        };
+
+        sessionStorage.setItem(
+            "nextHorizonCandidateProfile",
+            JSON.stringify(profileForReadiness)
+        );
+
+
+        let githubData=null;
+
+        let githubText="";
+
+
+        const githubUrl=
+            document.getElementById("githubUrl")
+            .value.trim();
+
+
+        if(githubUrl){
+
+            setStatus(
+                "Checking your public GitHub information...",
+                "info"
+            );
+
+
+            githubData=
+                await fetchGitHubProfile(
+                    githubUrl
+                );
+
+
+            githubText=
+                buildGitHubProfessionalText(
+                    githubData
+                );
+
+        }
+
+
+        const linkedinUrl=
+            document.getElementById("linkedinUrl")
+            .value.trim();
+
+
+        const linkedinText=
+            sanitizeProfessionalText(
+                document
+                .getElementById("linkedinText")
+                .value.trim()
+            );
+
+
+        const extraGithub=
+            sanitizeProfessionalText(
+                document
+                .getElementById("githubText")
+                .value.trim()
+            );
+
+
+        const combinedForATS=
+            [
+                sanitizedResume,
+                linkedinText,
+                githubText,
+                extraGithub
+            ].join("\n");
+
+
+        const ats=
+            calculateATS(
+                combinedForATS,
+                role
+            );
+
+
+        setStatus(
+            "Checking your resume, LinkedIn, GitHub and job match...",
+            "info"
+        );
+
+
+        const payload={
+
+            target_role:
+                role,
+
+
+            resume:
+                sanitizedResume.slice(
+                    0,
+                    18000
+                ),
+
+
+            linkedin:{
+
+                provided:
+                    !!(
+                        linkedinUrl ||
+                        linkedinText
+                    ),
+
+                profile_url:
+                    linkedinUrl || "",
+
+                professional_text:
+                    linkedinText.slice(
+                        0,
+                        8000
+                    )
+
+            },
+
+
+            github:{
+
+                provided:
+                    !!(
+                        githubData ||
+                        extraGithub
+                    ),
+
+                profile_url:
+                    githubData?.profileUrl ||
+                    githubUrl ||
+                    "",
+
+                professional_text:
+                    (
+                        githubText+
+                        "\n"+
+                        extraGithub
+                    ).slice(
+                        0,
+                        12000
+                    )
+
+            },
+
+
+            local_ats_metrics:{
+
+                ats_score:
+                    ats.ats,
+
+                keyword_coverage:
+                    ats.keywordScore,
+
+                section_completeness:
+                    ats.sectionScore,
+
+                project_strength:
+                    ats.projectScore,
+
+                matched_keywords:
+                    ats.matched,
+
+                missing_keywords:
+                    ats.missing
+
+            }
+
+        };
+
+
+        const ai=
+            await callAI(payload);
+
+
+        renderATS(ats);
+
+
+        renderList(
+            "strengths",
+            ai.strengths
+        );
+
+
+        renderList(
+            "skillGaps",
+            ai.skill_gaps
+        );
+
+
+        renderList(
+            "profileIssues",
+            ai.profile_issues
+        );
+
+
+        renderList(
+            "suggestions",
+            ai.suggestions
+        );
+
+
+        renderList(
+            "roleMatch",
+            ai.role_match
+        );
+
+
+        /* =====================================================
+           RESUME REVIEW
+           ===================================================== */
+
+        renderList(
+            "resumeReview",
+            ai.resume_review
+        );
+
+
+        renderList(
+            "resumeImprovements",
+            ai.resume_improvements
+        );
+
+
+        /* =====================================================
+           LINKEDIN REVIEW
+           ===================================================== */
+
+        const hasLinkedIn=
+            !!(
+                linkedinUrl ||
+                linkedinText
+            );
+
+
+        document.getElementById(
+            "linkedinResult"
+        ).style.display=
+            hasLinkedIn
+            ? "block"
+            : "none";
+
+
+        if(hasLinkedIn){
+
+            renderList(
+                "linkedinReview",
+                ai.linkedin_review
+            );
+
+
+            renderList(
+                "linkedinImprovements",
+                ai.linkedin_improvements
+            );
+
+        }
+
+
+        /* =====================================================
+           GITHUB REVIEW
+           ===================================================== */
+
+        renderGitHub(githubData);
+
+
+        if(githubData || extraGithub){
+
+            document.getElementById(
+                "githubResult"
+            ).style.display="block";
+
+
+            if(!githubData){
+
+                document.getElementById(
+                    "githubSummary"
+                ).innerHTML=
+
+                    "<p style='font-size:13px;color:#64748b'>"+
+                    "Your extra project information was included in the GitHub review."+
+                    "</p>";
+
+
+                document.getElementById(
+                    "repoList"
+                ).innerHTML="";
+
+            }
+
+
+            const githubSuggestions=
+                safeList(
+                    ai.github_improvements
+                );
+
+
+            document.getElementById(
+                "githubSummary"
+            ).innerHTML +=
+
+                "<div style='margin-top:14px'>"+
+
+                "<strong style='font-size:13px'>"+
+                "What You Can Improve on GitHub"+
+                "</strong>"+
+
+                "<ul style='margin-top:7px;padding-left:20px;color:#475569;font-size:13px;line-height:1.7'>"+
+
+                githubSuggestions
+                .map(
+                    x=>
+                    "<li>"+
+                    escapeHtml(x)+
+                    "</li>"
+                )
+                .join("")+
+
+                "</ul></div>";
+
+        }
+
+
+        /* =====================================================
+           SANITIZED RESUME
+           ===================================================== */
+
+        document.getElementById(
+            "sanitizedPreview"
+        ).textContent=
+            sanitizedResume;
+
+
+        /* =====================================================
+           SHOW RESULTS
+           ===================================================== */
+
+        document.getElementById(
+            "results"
+        ).style.display="block";
+
+
+        document.getElementById(
+            "results"
+        ).scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"start"
+
+        });
+
+
+        setStatus(
+
+            "Your profile review is complete. Your score is an estimate based on the job you selected and the information you provided.",
+
+            "ok"
+
+        );
+
+
+    }catch(err){
+
+        console.error(err);
+
+
+        setStatus(
+
+            err.message ||
+            "Something went wrong. Please try again.",
+
+            "error"
+
+        );
+
+
+    }finally{
+
+        btn.disabled=false;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -104,7 +104,8 @@
 }
 
 /* ---- Login / Logout button (identical on Home, Resume, Feedback, Recommendation) ---- */
-.cg-nav-links .cg-auth-btn {
+.cg-nav-links .cg-auth-btn,
+.cg-nav-links .logout-link {
     padding: 14px 30px;
     font-size: 16px;
     font-weight: 600;
@@ -119,7 +120,8 @@
     transition: all 0.3s ease;
 }
 
-.cg-nav-links .cg-auth-btn:hover {
+.cg-nav-links .cg-auth-btn:hover,
+.cg-nav-links .logout-link:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
 }
@@ -139,30 +141,113 @@
     border-radius: 10px;
 }
 
-/* ---- Small screens: let the tabs wrap instead of overflowing ---- */
+/* ---- Small screens: smooth horizontal touch scrolling for tabs ---- */
 @media (max-width: 768px) {
+    .cg-navbar {
+        width: 100%;
+        overflow: hidden;
+    }
+    .cg-nav-container {
+        height: 60px;
+        min-height: 60px;
+        padding: 0 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        overflow: hidden;
+        gap: 10px;
+    }
+    .cg-logo {
+        flex-shrink: 0;
+    }
+    .cg-logo-img {
+        height: 36px;
+    }
+    .cg-nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 14px;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        scrollbar-width: none;
+        padding: 4px 6px;
+        flex: 1 1 auto;
+        min-width: 0;
+        flex-shrink: 1 !important;
+    }
+    .cg-nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    .cg-nav-link {
+        font-size: 13.5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .cg-nav-links .cg-auth-btn,
+    .cg-nav-links .logout-link {
+        padding: 7px 15px;
+        font-size: 13.5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .cg-nav-spacer {
+        height: 60px;
+    }
+}
+
+/* ---- 6 tabs + Login: tighten on mid-size laptops so the bar stays on one line ---- */
+@media (max-width: 1180px) and (min-width: 769px) {
+    .cg-nav-links { gap: 18px; }
+    .cg-nav-link { font-size: 14.5px; }
+    .cg-nav-links .cg-auth-btn,
+.cg-nav-links .logout-link { padding: 11px 22px; font-size: 14.5px; }
+}
+
+/* =====================================================================
+   HEADER-FIX-v5
+   1) Tabs never wrap or shrink: "Career Assessment", "Profile Analysis"
+      and "Job Recommendation" used to break onto two lines and push the
+      logo into "Home" when the bar ran out of room.
+   2) Assessment pages (page1-4, results) had an extra "name chip + Log out"
+      block that made the bar wider than every other page. It now looks
+      exactly like the other pages: same tabs, same blue Logout button.
+      (The chip stays in the HTML because assessment JS fills it in; it is
+      only hidden. Delete the ".user-chip" rule below to show it again.)
+   3) On narrow desktop windows the bar wraps neatly onto two rows
+      instead of overflowing.
+   ===================================================================== */
+@media (min-width: 769px) {
+    .cg-logo { flex-shrink: 0; }
+    .cg-nav-links { flex-shrink: 0; }
+    .cg-nav-link { white-space: nowrap; flex-shrink: 0; }
+}
+
+.cg-nav-links .header-right { display: contents; }
+.cg-nav-links .user-chip { display: none; }
+.cg-nav-links .logout-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+    border-bottom: none;
+}
+.cg-nav-links .logout-link:hover { color: #fff; border: none; }
+
+@media (max-width: 1050px) and (min-width: 769px) {
     .cg-nav-container {
         height: auto;
         min-height: 64px;
-        padding: 8px 14px;
+        padding: 8px 20px;
         flex-wrap: wrap;
-        row-gap: 4px;
+        justify-content: center;
+        row-gap: 6px;
     }
     .cg-nav-links {
         flex-wrap: wrap;
-        gap: 6px 16px;
+        justify-content: center;
+        gap: 6px 18px;
     }
-    .cg-nav-link {
-        font-size: 14px;
-    }
-    .cg-logo-img {
-        height: 38px;
-    }
-    .cg-nav-links .cg-auth-btn {
-        padding: 8px 18px;
-        font-size: 14px;
-    }
-    .cg-nav-spacer {
-        height: 104px;
-    }
+    .cg-nav-spacer { height: 104px; }
 }

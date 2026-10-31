@@ -41,7 +41,7 @@ public class SignupServlet extends HttpServlet {
             );
 
             ps.setString(1, phone);
-            ps.setString(2, password);
+            ps.setString(2, PasswordUtil.hash(password)); // stored as salted hash, never plain text
 
             ps.executeUpdate();
 

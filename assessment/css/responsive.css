@@ -118,3 +118,46 @@
     gap: 8px;
   }
 }
+
+
+
+/* ---------- Mobile horizontal navigation fix ---------- */
+@media (max-width: 560px) {
+  .site-header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .site-header nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    white-space: nowrap;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: auto;
+  }
+
+  .site-header nav a {
+    display: inline-flex;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    height: 3px;
+  }
+}

@@ -8,9 +8,8 @@ resume.html
 *Resume*.class
 
 # Feedback module - temporarily excluded
-feedback.html
-*Feedback*.java
-*Feedback*.class
+
+
 
 # IDE files
 .vscode/
@@ -25,3 +24,12 @@ Thumbs.db
 
 # Local secrets
 *.properties
+
+# Browser-side AI keys
+ai-config.js
+
+# Temporary backups
+*.bak
+*.bak_tasks
+WEB-INF_backup/
+*.bak_*

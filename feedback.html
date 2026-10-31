@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback - CareerGuide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css?v=6">
+<script src="header.js?v=4" defer></script>
+<link rel="stylesheet" href="feedback.css?v=1">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="cg-navbar">
+        <div class="cg-nav-container">
+            <a class="cg-logo" href="index.jsp">
+                <img class="cg-logo-img" src="images/nexthorizon-logo.png" alt="NextHorizon">
+            </a>
+            <div class="cg-nav-links">
+                <a href="index.jsp" class="cg-nav-link">Home</a>
+                <a href="assessment/index.jsp" class="cg-nav-link">Career Assessment</a>
+                <a href="learning-resources.html" class="cg-nav-link">Resources</a>
+                <a href="job-profile.html" class="cg-nav-link">Profile Analysis</a>
+                <a href="job-recommendation.html" class="cg-nav-link">Job Recommendation</a>
+                <a href="feedback.html" class="cg-nav-link active">Feedback</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Spacer for fixed navbar -->
+    <div style="margin-top:120px;"></div>
+
+    <!-- Content -->
+    <section class="features">
+        <div class="fb-wrap">
+
+            <!-- Left column: intro -->
+            <div class="fb-col">
+                <h2 class="fb-title">Shaping a Better Experience Together</h2>
+                <hr class="fb-divider">
+                <div class="fb-hero">
+                    <svg viewBox="0 0 500 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Feedback illustration">
+                    <defs>
+                        <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E3A8A"/><stop offset=".55" stop-color="#3B82F6"/><stop offset="1" stop-color="#6366F1"/></linearGradient>
+                    </defs>
+                    <rect width="500" height="310" fill="url(#fbg)"/>
+                    <circle cx="430" cy="50" r="90" fill="#fff" opacity=".08"/>
+                    <circle cx="60" cy="280" r="110" fill="#fff" opacity=".08"/>
+                    <rect x="70" y="60" width="230" height="120" rx="22" fill="#fff"/>
+                    <path d="M110 180 l-6 38 l44 -38z" fill="#fff"/>
+                    <rect x="95" y="85" width="150" height="10" rx="5" fill="#C7D2FE"/>
+                    <rect x="95" y="108" width="180" height="10" rx="5" fill="#E5E7EB"/>
+                    <rect x="95" y="131" width="120" height="10" rx="5" fill="#E5E7EB"/>
+                    <g fill="#FBBF24">
+                        <polygon points="105,160 109,169 119,170 112,176 114,186 105,181 96,186 98,176 91,170 101,169" transform="translate(0,-6) scale(.9) translate(10,10)"/>
+                        <polygon points="105,160 109,169 119,170 112,176 114,186 105,181 96,186 98,176 91,170 101,169" transform="translate(32,0) scale(.9) translate(10,4)"/>
+                        <polygon points="105,160 109,169 119,170 112,176 114,186 105,181 96,186 98,176 91,170 101,169" transform="translate(64,0) scale(.9) translate(10,4)"/>
+                        <polygon points="105,160 109,169 119,170 112,176 114,186 105,181 96,186 98,176 91,170 101,169" transform="translate(96,0) scale(.9) translate(10,4)"/>
+                        <polygon points="105,160 109,169 119,170 112,176 114,186 105,181 96,186 98,176 91,170 101,169" transform="translate(128,0) scale(.9) translate(10,4)"/>
+                    </g>
+                    <rect x="260" y="150" width="180" height="95" rx="20" fill="#fff" opacity=".95"/>
+                    <path d="M400 245 l8 30 l-36 -30z" fill="#fff" opacity=".95"/>
+                    <circle cx="300" cy="198" r="9" fill="#6366F1"/><circle cx="335" cy="198" r="9" fill="#3B82F6"/><circle cx="370" cy="198" r="9" fill="#1E3A8A"/>
+                </svg>
+                </div>
+                <p>At CareerGuide, we believe great career guidance gets better with every voice. Your thoughts on the assessment, resources and job recommendations help us build a platform that truly fits your journey.</p>
+                <p>Every suggestion is read with care. Whether it is a feature you wish existed, something that confused you, or just a kind word, we would love to hear it.</p>
+            </div>
+
+            <!-- Right column: heading + ORIGINAL form (unchanged, still posts to FeedbackServlet) -->
+            <div class="fb-col">
+                <h2 class="fb-big">Feedback</h2>
+                <h3>Review &amp; Suggestions</h3>
+                <hr class="fb-divider">
+                <p>Tell us what is working and what could be better. Your honest feedback is our compass, and it only takes a minute to share.</p>
+                <div class="fb-stats">
+                    <span class="fb-chip">&#9733; Your voice matters</span>
+                    <span class="fb-chip">&#9889; Takes under a minute</span>
+                    <span class="fb-chip">&#128140; Read by our team</span>
+                </div>
+
+                <div class="fb-form-card">
+           <form action="FeedbackServlet" method="post">
+    <label>Your Feedback:</label><br><br>
+
+    <textarea name="feedback" rows="5" style="width:100%; padding:10px;" required></textarea><br><br>
+
+    <button type="submit" class="btn-login">Send</button>
+</form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -83,7 +83,7 @@
     .hero-shell { padding: 8vh 20px; }
   }
 </style>
-<link rel="stylesheet" href="../header.css">
+<link rel="stylesheet" href="../header.css?v=6">
 </head>
 <body>
 
@@ -95,7 +95,9 @@
             <div class="cg-nav-links">
                 <a href="../index.jsp" class="cg-nav-link">Home</a>
                 <a href="../assessment/index.jsp" class="cg-nav-link active">Career Assessment</a>
-                <a href="../resume.html" class="cg-nav-link">Resume</a>
+                <a href="../learning-resources.html" class="cg-nav-link">Resources</a>
+                <a href="../job-profile.html" class="cg-nav-link">Profile Analysis</a>
+                <a href="../job-recommendation.html" class="cg-nav-link">Job Recommendation</a>
                 <a href="../feedback.html" class="cg-nav-link">Feedback</a>
             </div>
         </div>

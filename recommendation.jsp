@@ -72,7 +72,7 @@
             font-weight: 600;
         }
     </style>
-<link rel="stylesheet" href="header.css?v=4">
+<link rel="stylesheet" href="header.css?v=6">
 <script src="header.js?v=4" defer></script>
 </head>
 
@@ -87,7 +87,9 @@
             <div class="cg-nav-links">
                 <a href="index.jsp" class="cg-nav-link">Home</a>
                 <a href="assessment/index.jsp" class="cg-nav-link">Career Assessment</a>
-                <a href="resume.html" class="cg-nav-link">Resume</a>
+                <a href="learning-resources.html" class="cg-nav-link">Resources</a>
+                <a href="job-profile.html" class="cg-nav-link">Profile Analysis</a>
+                <a href="job-recommendation.html" class="cg-nav-link">Job Recommendation</a>
                 <a href="feedback.html" class="cg-nav-link">Feedback</a>
             </div>
         </div>

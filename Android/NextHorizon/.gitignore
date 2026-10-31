@@ -1,0 +1,28 @@
+
+# Android Studio
+*.iml
+.gradle/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# Local configuration
+local.properties
+
+# Build files
+/build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Operating system
+.DS_Store
+
+# Signing keys and private configuration
+*.jks
+*.keystore
+keystore.properties

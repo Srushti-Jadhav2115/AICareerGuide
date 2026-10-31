@@ -249,3 +249,22 @@ cp WEB-INF/gemini.properties WEB-INF/classes/gemini.properties
   match the existing servlets' convention — update `DBUtil.java` (and
   the 4 original servlets, if you choose to) if your MySQL instance
   differs.
+
+
+---
+
+## Update — Navigation + Profile Analysis / Job Recommendation / Resources pages
+
+Final header tabs (identical on every page, from the shared `header.css` / `header.js`):
+
+`Home | Career Assessment | Resources | Profile Analysis | Job Recommendation | Feedback` (+ Login/Logout)
+
+| Tab | File |
+|---|---|
+| Resources | `learning-resources.html` (new, from complete_code.docx) |
+| Profile Analysis | `job-profile.html` (new landing page) → sub-parts `profile-analysis.html` and `job-readiness.html` (new) |
+| Job Recommendation | `job-recommendation.html` (the old "Resume" tab, renamed; replaces `resume.html`) |
+
+Notes
+- The docx pages' own inline navbar CSS/markup was removed; they now use the shared header.
+- Browser-side AI keys moved out of the pages into `ai-config.js` (git-ignored). See `ai-config.sample.js`.

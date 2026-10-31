@@ -1,152 +1,225 @@
 /**
- * page4.js — Tell Us More About You (final step)
- *
- * On submit this assembles the full assessment payload and POSTs it to
- * the backend. Update BACKEND_SUBMIT_URL to point at the real
- * Java Servlet endpoint when it's available. The Gemini call itself
- * must happen server-side — never add an API key here.
+ * page4.js — Tell Us More About You
+ * Final step of the NextHorizon Career Assessment
  */
 
-// Relative to /assessment/page4.jsp -> resolves to the AssessmentSubmitServlet
-// mounted at the webapp root, regardless of the app's deployed context path.
 const BACKEND_SUBMIT_URL = "../AssessmentSubmitServlet";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const state = requireStepsBefore(["profile", "interests", "selfAssessment"]);
-  renderProgress("aboutYou");
-  hydrateHeaderChip(state);
+    const state = requireStepsBefore([
+        "profile",
+        "interests",
+        "selfAssessment"
+    ]);
 
-  renderEssays(window.ESSAY_BANK, state.page4Responses || {});
+    renderProgress("aboutYou");
+    hydrateHeaderChip(state);
 
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    window.location.href = "page3.jsp";
-  });
+    renderEssays(
+        window.ESSAY_BANK,
+        state.page4Responses || {}
+    );
 
-  document.getElementById("page4Form").addEventListener("submit", onSubmit);
+    document.getElementById("prevBtn").addEventListener("click", () => {
+        window.location.href = "page3.jsp";
+    });
+
+    document.getElementById("page4Form").addEventListener(
+        "submit",
+        onSubmit
+    );
 });
 
 function hydrateHeaderChip(state) {
-  if (!state.profile) return;
-  document.getElementById("userAvatar").textContent = state.profile.name.charAt(0).toUpperCase();
-  document.getElementById("userNameChip").textContent = state.profile.name;
+    if (!state.profile) return;
+
+    const name = state.profile.name || "Student";
+
+    document.getElementById("userAvatar").textContent =
+        name.charAt(0).toUpperCase();
+
+    document.getElementById("userNameChip").textContent = name;
 }
 
 function renderEssays(essays, savedResponses) {
-  const list = document.getElementById("essayList");
-  list.innerHTML = "";
+    const list = document.getElementById("essayList");
 
-  essays.forEach((essay) => {
-    const card = el("div", "card textarea-card");
-    card.appendChild(el("p", "q-text", essay.text));
-    card.appendChild(el("p", "q-explainer", essay.explainer));
+    if (!list || !Array.isArray(essays)) return;
 
-    const textarea = document.createElement("textarea");
-    textarea.className = "essay-input";
-    textarea.id = essay.id;
-    textarea.maxLength = essay.maxLength;
-    textarea.placeholder = "Write as much or as little as feels right…";
-    textarea.value = savedResponses[essay.id] || "";
-    card.appendChild(textarea);
+    list.innerHTML = "";
 
-    const counter = el("div", "char-counter");
-    counter.id = `${essay.id}_counter`;
-    card.appendChild(counter);
+    essays.forEach((essay) => {
+        const card = el("div", "card textarea-card");
 
-    card.appendChild(el(
-      "p", "security-note",
-      "Please avoid entering passwords, financial information, contact details, or other sensitive personal information."
-    ));
+        card.appendChild(
+            el("p", "q-text", essay.text)
+        );
 
-    const updateCounter = () => {
-      const len = textarea.value.length;
-      counter.textContent = `${len}/${essay.maxLength}`;
-      counter.classList.toggle("is-near-limit", len >= essay.maxLength - 20);
-    };
-    updateCounter();
+        card.appendChild(
+            el("p", "q-explainer", essay.explainer)
+        );
 
-    textarea.addEventListener("input", () => {
-      markDirty();
-      updateCounter();
+        const textarea = document.createElement("textarea");
+
+        textarea.className = "essay-input";
+        textarea.id = essay.id;
+        textarea.maxLength = essay.maxLength;
+        textarea.placeholder =
+            "Write as much or as little as feels right…";
+
+        textarea.value = savedResponses[essay.id] || "";
+
+        card.appendChild(textarea);
+
+        const counter = el("div", "char-counter");
+        counter.id = `${essay.id}_counter`;
+
+        card.appendChild(counter);
+
+        card.appendChild(
+            el(
+                "p",
+                "security-note",
+                "Please avoid entering passwords, financial information, " +
+                "contact details, or other sensitive personal information."
+            )
+        );
+
+        function updateCounter() {
+            const length = textarea.value.length;
+
+            counter.textContent =
+                `${length}/${essay.maxLength}`;
+
+            counter.classList.toggle(
+                "is-near-limit",
+                length >= essay.maxLength - 20
+            );
+        }
+
+        updateCounter();
+
+        textarea.addEventListener("input", () => {
+            markDirty();
+            updateCounter();
+        });
+
+        list.appendChild(card);
     });
-
-    list.appendChild(card);
-  });
 }
 
-function onSubmit(e) {
-  e.preventDefault();
-  const banner = document.getElementById("formErrorBanner");
-  hideErrorBanner(banner);
+function onSubmit(event) {
+    event.preventDefault();
 
-  const responses = {};
-  let allFilled = true;
+    const banner = document.getElementById("formErrorBanner");
 
-  window.ESSAY_BANK.forEach((essay) => {
-    const value = document.getElementById(essay.id).value.trim();
-    if (!value) allFilled = false;
-    responses[essay.id] = value;
-  });
+    hideErrorBanner(banner);
 
-  if (!allFilled) {
-    showErrorBanner(banner, "Please answer all four questions before completing the assessment.");
-    return;
-  }
+    const responses = {};
+    let allFilled = true;
 
-  const state = getState();
-  const finalState = saveState({
-    page4Responses: responses,
-    completed: Object.assign(state.completed, { aboutYou: true })
-  });
+    window.ESSAY_BANK.forEach((essay) => {
+        const field = document.getElementById(essay.id);
+        const value = field ? field.value.trim() : "";
 
-  clearDirty();
-  submitAssessment(finalState);
+        if (!value) {
+            allFilled = false;
+        }
+
+        responses[essay.id] = value;
+    });
+
+    if (!allFilled) {
+        showErrorBanner(
+            banner,
+            "Please answer all four questions before completing the assessment."
+        );
+        return;
+    }
+
+    const state = getState();
+
+    const finalState = saveState({
+        page4Responses: responses,
+        completed: Object.assign(
+            {},
+            state.completed || {},
+            { aboutYou: true }
+        )
+    });
+
+    clearDirty();
+
+    submitAssessment(finalState);
 }
 
 function submitAssessment(finalState) {
-  const overlay = document.getElementById("submitOverlay");
-  overlay.classList.add("visible");
-  document.getElementById("submitBtn").disabled = true;
+    const overlay = document.getElementById("submitOverlay");
+    const submitButton = document.getElementById("submitBtn");
+    const banner = document.getElementById("formErrorBanner");
 
-  const payload = {
-    profile: finalState.profile,
-    consent: !!finalState.consent,
-    page2Answers: finalState.page2Answers,
-    page3Ratings: finalState.page3Ratings,
-    page4Responses: finalState.page4Responses
-  };
+    overlay.classList.add("visible");
+    submitButton.disabled = true;
 
-  fetch(BACKEND_SUBMIT_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  })
-    .then((res) => {
-      if (!res.ok) {
-        // Surface the server's message (e.g. missing consent) instead of a generic one.
-        return res.json().catch(() => ({})).then((b) => {
-          const e = new Error("Submission failed with status " + res.status);
-          if (res.status === 403 && b && b.message) e.serverMessage = b.message;
-          throw e;
+    const payload = {
+        profile: finalState.profile,
+        consent: !!finalState.consent,
+        page2Answers: finalState.page2Answers,
+        page3Ratings: finalState.page3Ratings,
+        page4Responses: finalState.page4Responses
+    };
+
+    fetch(BACKEND_SUBMIT_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(async (response) => {
+            const body = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                const error = new Error(
+                    body.message ||
+                    `Submission failed with status ${response.status}`
+                );
+
+                error.serverMessage = body.message;
+                throw error;
+            }
+
+            return body;
+        })
+        .then((body) => {
+            if (!body || body.status !== "success") {
+                throw new Error(
+                    "Assessment submission was not confirmed."
+                );
+            }
+
+            try {
+                clearAssessmentState();
+            } catch (error) {
+                try {
+                    localStorage.removeItem("careerAssessmentData");
+                } catch (storageError) {
+                    // Ignore local storage cleanup errors.
+                }
+            }
+
+            window.location.href = "results.jsp";
+        })
+        .catch((error) => {
+            console.error("Assessment submission error:", error);
+
+            overlay.classList.remove("visible");
+            submitButton.disabled = false;
+
+            showErrorBanner(
+                banner,
+                error.serverMessage ||
+                "We couldn't reach the server. Your answers are saved locally. Please try again."
+            );
         });
-      }
-      return res.json();
-    })
-    .then((body) => {
-      // Only a confirmed success (server has stored a validated result and set
-      // status = completed) clears the temporary answers. On any failure the
-      // answers stay in this browser so the student can simply retry.
-      if (!body || body.status !== "success") throw new Error("Submission was not confirmed");
-      try { clearAssessmentState(); }
-      catch (e) { try { localStorage.removeItem("careerAssessmentData"); } catch (e2) { /* ignore */ } }
-      window.location.href = "results.jsp";
-    })
-    .catch((err) => {
-      console.error("Assessment submission error:", err);
-      overlay.classList.remove("visible");
-      document.getElementById("submitBtn").disabled = false;
-      showErrorBanner(
-        document.getElementById("formErrorBanner"),
-        err.serverMessage || "We couldn't reach the server. Your answers are saved locally — please try again."
-      );
-    });
 }

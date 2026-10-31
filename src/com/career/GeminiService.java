@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class GeminiService {
 
-    private static final String DEFAULT_MODEL = "gemini-3.6-flash";
+    private static final String DEFAULT_MODEL = "gemini-flash-lite-latest";
 
     private static final String API_BASE =
             "https://generativelanguage.googleapis.com/v1beta/models/";
@@ -93,9 +93,46 @@ public class GeminiService {
 
         String requestBody = buildRequestBody(prompt);
 
+        List<String> modelsToTry = new ArrayList<>();
+        if (model != null && !model.trim().isEmpty()) {
+            modelsToTry.add(model.trim());
+        }
+        for (String fallback : Arrays.asList("gemini-flash-lite-latest", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite")) {
+            if (!modelsToTry.contains(fallback)) {
+                modelsToTry.add(fallback);
+            }
+        }
+
+        IOException lastException = null;
+
+        for (int i = 0; i < modelsToTry.size(); i++) {
+            String candidateModel = modelsToTry.get(i);
+            try {
+                return callModel(candidateModel, requestBody);
+            } catch (IOException e) {
+                lastException = e;
+                System.err.println("Gemini call failed for model '" + candidateModel + "': " + e.getMessage());
+                if (i < modelsToTry.size() - 1) {
+                    System.err.println("Retrying with fallback model: " + modelsToTry.get(i + 1));
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException ignored) {}
+                }
+            }
+        }
+
+        if (lastException != null) {
+            throw lastException;
+        }
+
+        throw new IOException("Failed to generate career recommendation from Gemini.");
+    }
+
+    private String callModel(String targetModel, String requestBody) throws IOException {
+
         String endpoint =
                 API_BASE
-                        + model
+                        + targetModel
                         + ":generateContent?key="
                         + apiKey;
 

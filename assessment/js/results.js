@@ -208,7 +208,7 @@ function buildReportHtml(data) {
     ".road div{background:#f6f7fb;border:1px solid #dfe2ee;border-radius:10px;padding:10px 12px}.road b{display:block;font-size:12px;color:#4a33b5;margin-bottom:4px}" +
     "footer{font-size:12px;color:#7a8095;text-align:center;margin-top:24px}" +
     "@media(max-width:640px){.road{grid-template-columns:1fr}}" +
-    "@media print{body{background:#fff;padding:0}}" +
+    "@media print{body{background:#fff;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}.wrap{max-width:100%}}@page{size:A4 portrait;margin:12mm 15mm}" +
     "</style></head><body><div class=\"wrap\"><header><h1>Career Assessment Report</h1>" +
     "<p>" + (data.userName ? "Prepared for " + escapeHtml(data.userName) + " · " : "") + escapeHtml(dateStr) + " · NextHorizon</p></header>" +
     cards +
@@ -256,6 +256,11 @@ function setupDownloadMenu() {
 
 function downloadReportHtml() {
   if (!hasReport()) return;
+  if (window.AndroidReport && typeof window.AndroidReport.saveHtml === "function") {
+    showToast("Report downloaded — check your Downloads folder.");
+    window.AndroidReport.saveHtml(reportFileName("html"), buildReportHtml(reportData));
+    return;
+  }
   try {
     const blob = new Blob([buildReportHtml(reportData)], { type: "text/html;charset=utf-8" });
     if (window.navigator && typeof window.navigator.msSaveOrOpenBlob === "function") {
@@ -280,26 +285,36 @@ function downloadReportHtml() {
 
 function downloadReportPdf() {
   if (!hasReport()) return;
+
+  const fileName = reportFileName("pdf");
+  const htmlContent = buildReportHtml(reportData);
+
+  // If inside Android and native printReport bridge exists
+  if (window.AndroidReport && typeof window.AndroidReport.printReport === "function") {
+    showToast("Opening print dialog — choose \"Save as PDF\"...");
+    window.AndroidReport.printReport(htmlContent);
+    return;
+  }
+
+  // Desktop browser (and fallback): print from hidden iframe to trigger Save as PDF
   try {
-    // Print from a hidden frame (no pop-up, so pop-up blockers can't stop it).
     const frame = document.createElement("iframe");
     frame.setAttribute("aria-hidden", "true");
     frame.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden;";
     document.body.appendChild(frame);
     const doc = frame.contentWindow.document;
     doc.open();
-    doc.write(buildReportHtml(reportData));
+    doc.write(htmlContent);
     doc.close();
-    // Name the PDF after the report (browsers use the document title as the default file name).
-    doc.title = reportFileName("pdf").replace(/\.pdf$/, "");
+    doc.title = fileName.replace(/\.pdf$/, "");
     setTimeout(() => {
       frame.contentWindow.focus();
       frame.contentWindow.print();
-      showToast("Choose “Save as PDF” as the destination in the print window.");
+      showToast("Choose \"Save as PDF\" as the destination in the print window.");
       setTimeout(() => { if (frame.parentNode) frame.parentNode.removeChild(frame); }, 60000);
     }, 350);
   } catch (err) {
     console.error("PDF export failed:", err);
-    showToast("Couldn't open the print dialog. Try the .html download instead.", true);
+    showToast("Couldn\x27t open the print dialog. Try the .html download instead.", true);
   }
 }

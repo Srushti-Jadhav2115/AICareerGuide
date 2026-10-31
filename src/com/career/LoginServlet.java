@@ -32,15 +32,34 @@ public class LoginServlet extends HttpServlet {
             );
 
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT * FROM users WHERE phone=? AND password=?"
+                    "SELECT id, password FROM users WHERE phone=?"
             );
 
             ps.setString(1, phone);
-            ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
 
+            boolean valid = false;
+
             if (rs.next()) {
+                String stored = rs.getString("password");
+
+                if (PasswordUtil.isHashed(stored)) {
+                    valid = PasswordUtil.verify(password, stored);
+                } else if (stored != null && password != null && stored.equals(password)) {
+                    // Old account saved with a plain-text password:
+                    // accept it once, then upgrade it to a hash.
+                    valid = true;
+                    PreparedStatement up = con.prepareStatement(
+                            "UPDATE users SET password=? WHERE id=?"
+                    );
+                    up.setString(1, PasswordUtil.hash(password));
+                    up.setInt(2, rs.getInt("id"));
+                    up.executeUpdate();
+                }
+            }
+
+            if (valid) {
 
                 HttpSession session = req.getSession(true);
 
